@@ -11,6 +11,7 @@ import Src from "./components/page/Src";
 import Public from "./components/page/Public";
 import Node from "./components/page/Node";
 import MealPlanner from "./components/page/MealPlanner";
+import Recipe from "./components/page/Recipe";
 
 import Pokedex from "./components/page/Pokedex";
 import Pokemon from "./components/page/Pokemon";
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/public" element={<Public />}></Route>
         <Route exact path="/node" element={<Node />}></Route>
         <Route exact path="/mealplanner" element={<MealPlanner />}></Route>
+        <Route exact path="/recipes" element={<Recipe />}></Route>
         <Route exact path="/pokedex" element={<Pokedex />}></Route>
         <Route exact path="/pokemon/:pokemonName" element={<Pokemon />}></Route>
         <Route exact path="/blockchain" element={<BlockChain />}></Route>

@@ -26,6 +26,15 @@ const LeftBar = () => {
         />
         Album Photo
       </Link>
+        <Link to="/recipes" className="">
+            <img
+                src={TSIcon}
+                alt="TS Icon"
+                className="text-yellow_vs me-1"
+                style={{ width: "20px" }}
+            />
+            Recettes
+        </Link>
       <Link to="/mealplanner" className="">
         <img
           src={TSIcon}
