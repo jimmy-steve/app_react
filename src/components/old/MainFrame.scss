@@ -1,0 +1,29 @@
+  .gray {
+    color: #292929;
+    font-family: 'Roboto';
+  }
+
+  .tab {
+    color: white;    
+  }
+
+  .tab--planning {
+    background-color: red;
+    border: 1px solid red;
+  }
+
+  .tab--ingredients {
+    background-color: blue;
+    border: 1px solid blue;
+    color: blue;
+  }
+
+  .tab--recipes {
+    background-color: green;
+    border: 1px solid green;
+  }
+
+  // .tabs {
+  //   background-color: rgb(209, 202, 202);
+  //   border: 1px solid rgb(209, 202, 202);    
+  // }

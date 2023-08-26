@@ -1,0 +1,59 @@
+.week-calendar {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.week-calendar__header {
+  margin: 5px;
+  display: flex;
+}
+.week-calendar__header button {
+  margin-left: 10px;
+  color: blue;
+}
+
+.week-calendar__day {
+  display: inline-block;
+  width: calc(100% / 7);
+  vertical-align: top;
+  text-align: center;
+  padding: 10px 5px;
+}
+
+.week-calendar__day-label {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.week-calendar__day-number {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.week-calendar__day-cell {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.card-title {
+  color: aliceblue;
+  margin-top: auto; /* pour descendre le titre en bas */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* pour ajouter un léger noircissement autour du texte */
+}
+.recipe--title {
+  font-family: "Zeyada", cursive;
+}
+.card--img {
+  max-width: 100%;
+  max-height: 400px;
+}
+
+
