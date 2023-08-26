@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../incs/SideBar";
-import Footer from "../incs/Footer";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -110,7 +109,6 @@ const Album = () => {
           <i className="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </>
   );
 };

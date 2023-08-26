@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import React, { Suspense } from "react";
-import Footer from "../incs/Footer";
 import SideBar from "../incs/SideBar";
 
 
@@ -175,7 +174,6 @@ function ThreeD() {
           <i class="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </>
   );
 }

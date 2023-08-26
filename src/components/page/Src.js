@@ -1,6 +1,5 @@
 import React from "react";
 import SideBar from "../incs/SideBar";
-import Footer from "../incs/Footer";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 
 const Src = () => {
@@ -20,7 +19,6 @@ const Src = () => {
           <i class="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </>
   );
 };

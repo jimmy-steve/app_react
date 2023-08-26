@@ -1,6 +1,5 @@
 import React from "react";
 import SideBar from "../incs/SideBar";
-import Footer from "../incs/Footer";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import Hero from "../incs/Hero";
 import Featured from "../incs/Featured";
@@ -26,7 +25,6 @@ const BlockChain = () => {
           <i class="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </>
   );
 };
