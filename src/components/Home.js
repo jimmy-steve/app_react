@@ -1,6 +1,5 @@
 import React from "react";
 import SideBar from "./incs/SideBar";
-import Footer from "./incs/Footer";
 import NavBarBootstrap from "./incs/NavBarBootstrap";
 
 const Home = () => {
@@ -13,7 +12,7 @@ const Home = () => {
           <div class="container-fluid px-4">
             <div class="row g-4">
               <div className="col-md-12 mt-5">
-                <h1 className="display-4">Howdy, code wrangler!</h1>
+                <h1 className="display-4">Hello</h1>
                 <p className="lead text-muted">
                   Well, well, well, look who rode into my digital saloon.
                 </p>
@@ -46,7 +45,6 @@ const Home = () => {
           <i class="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </>
   );
 };

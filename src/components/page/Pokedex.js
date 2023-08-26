@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import SideBar from "../incs/SideBar";
-import Footer from "../incs/Footer";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import { Link } from "react-router-dom";
 
@@ -59,7 +58,6 @@ const Pokedex = ({ argumentToDisplay }) => {
           <i className="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </div>
   );
 };

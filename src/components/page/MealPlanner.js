@@ -1,5 +1,4 @@
 import SideBar from "../incs/SideBar";
-import Footer from "../incs/Footer";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import React from "react";
 import dayjs from "dayjs";
@@ -47,7 +46,6 @@ const MealPlanner = () => {
           <i className="bi bi-arrow-up"></i>
         </button>
       </div>
-      <Footer />
     </>
   );
 };
