@@ -1,14 +1,18 @@
 import React from "react";
 import SideBar from "./incs/SideBar";
 import NavBarBootstrap from "./incs/NavBarBootstrap";
+import {Link} from "react-router-dom";
+
+
 
 const Home = () => {
   return (
     <>
       <div className="container-fluid position-relative p-0">
+        <NavBarBootstrap pageTitle="VSS"/>
         <SideBar />
         <div class="content">
-          <NavBarBootstrap />
+
           <div class="container-fluid px-4">
             <div class="row g-4">
               <div className="col-md-12 mt-5">

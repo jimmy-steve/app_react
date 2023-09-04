@@ -18,10 +18,10 @@ const Recipe = () => {
 
   return (
     <>
+      <NavBarBootstrap pageTitle="Recettes" />
       <div className="container-fluid position-relative p-0">
         <SideBar />
         <div className="content">
-          <NavBarBootstrap pageTitle="Recettes" />
           <div className="container-fluid px-4">
             <div className="row">
               <div className="col-md-4 mt-2 mb-2">

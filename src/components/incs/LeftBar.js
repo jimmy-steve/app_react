@@ -16,7 +16,7 @@ const LeftBar = () => {
   const [showContactList, setContactList] = useState(true);
 
   const NewProjectList = () => (
-    <div className="list-group ms-4">
+    <div className="list-group bg-light ms-4">
       <Link to="/album" className="">
         <img
           src={JSIcon}
@@ -76,7 +76,7 @@ const LeftBar = () => {
   );
 
   const ContactList = () => (
-    <div className="list-group ms-4">
+    <div className="list-group bg-light ms-4">
       <a href="/" className="">
         <img
           src={JSIcon}
@@ -91,7 +91,7 @@ const LeftBar = () => {
   );
 
   const MyAppList = () => (
-    <div className="list-group ms-4">
+    <div className="list-group  bg-light no-border ms-4">
       <Link to="/node" className="">
         <img
           src={FolderIcon}
@@ -150,10 +150,10 @@ const LeftBar = () => {
   );
 
   return (
-    <div className="">
+    <div className="directory">
       <div>
         <div
-          className=""
+          className="directory"
           onClick={() => setShowProjectsList(!showProjectsList)}
         >
           {showProjectsList ? (
@@ -185,7 +185,7 @@ const LeftBar = () => {
       </div>
 
       <div
-        className=""
+        className="directory"
         onClick={() => setShowNewProjectList(!showNewProjectList)}
       >
         {showNewProjectList ? (
@@ -197,7 +197,7 @@ const LeftBar = () => {
       </div>
       {showNewProjectList ? <NewProjectList /> : null}
 
-      <div className="" onClick={() => setContactList(!showContactList)}>
+      <div className="directory" onClick={() => setContactList(!showContactList)}>
         {showContactList ? (
           <ChevronDownIcon className="" style={{ width: "50px" }} />
         ) : (

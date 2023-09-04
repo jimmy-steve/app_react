@@ -126,10 +126,10 @@ const Img = styled.img`
 function ThreeD() {
   return (
     <>
-      <div className="container-fluid position-relative p-0">
+      <NavBarBootstrap />
+      <div className="container-fluid p-0">
         <SideBar />
         <div class="content">
-          <NavBarBootstrap />
           <div class="container-fluid px-4">
             <div class="row g-4">
               <Section>

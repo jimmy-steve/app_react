@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
+import Home2 from "./components/Home2";
 import Login from "./components/page/Login";
 import Register from "./components/page/Register";
 import PostPicture from "./components/page/PostPicture";
@@ -23,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route exact path="/" element={<Home2 />}></Route>
         <Route exact path="/login" element={<Login />}></Route>
         <Route exact path="/register" element={<Register />}></Route>
         <Route exact path="/pictures/new" element={<PostPicture />}></Route>

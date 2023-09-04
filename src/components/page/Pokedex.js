@@ -28,10 +28,11 @@ const Pokedex = ({ argumentToDisplay }) => {
   };
 
   return (
+
     <div className="container-fluid position-relative p-0">
+      <NavBarBootstrap pageTitle="Pokedex" />
       <SideBar />
       <div className="content">
-        <NavBarBootstrap pageTitle="Pokedex" />
         <div className="container-fluid px-4">
           <div className="row g-4 mt-1">
             {pokemonList.map((pokemon, index) => (

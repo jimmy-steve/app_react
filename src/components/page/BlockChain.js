@@ -8,9 +8,9 @@ const BlockChain = () => {
   return (
     <>
       <div className="container-fluid position-relative p-0">
+        <NavBarBootstrap pageTitle="BlockChain" />
         <SideBar />
         <div class="content">
-          <NavBarBootstrap pageTitle="BlockChain" />
           <div class="container-fluid px-4 bg-light">
             <div class="row g-4">
               <Hero />

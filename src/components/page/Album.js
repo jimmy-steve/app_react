@@ -47,9 +47,9 @@ const Album = () => {
   return (
     <>
       <div className="container-fluid position-relative p-0">
+        <NavBarBootstrap pageTitle="Super Album" />
         <SideBar />
         <div className="content">
-          <NavBarBootstrap pageTitle="Super Album" />
 
           {isLoading ? ( // Display loader while loading
             <div className="d-flex justify-content-center mt-5">
