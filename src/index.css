@@ -393,6 +393,80 @@
   margin-top: 20px; /* You can adjust the margin as needed */
 }
 
+@media (min-width: 768px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+
+/* Styles pour les écrans mobiles (<= 768px) */
+@media (max-width: 768px) {
+
+  .navbar-nav .nav-item {
+    margin-bottom: 10px; /* Ajoutez de l'espace entre les éléments de menu */
+  }
+.navbar-nav{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  /* Supprimez la marge des boutons et faites-les occuper toute la largeur du menu */
+  .navbar-nav .nav-item {
+    width: 100%;
+    text-align: center; /* Centrez le texte à l'intérieur des boutons */
+  }
+
+  /* Facultatif : Ajustez les styles des boutons si nécessaire */
+  .navbar-nav .btn {
+    padding: 10px; /* Ajustez la taille des boutons */
+    border-radius: 5px; /* Ajoutez des coins arrondis */
+  }
+
+
+}
+
+
+.add-btn-container {
+  position: fixed; /* Position fixe par rapport à la fenêtre du navigateur */
+  bottom: 20px; /* Espacement depuis le bas */
+  right: 40px; /* Espacement depuis la droite */
+  z-index: 9999; /* Indice de profondeur élevé pour être au-dessus de tous les autres éléments */
+  color: #fff; /* Couleur du texte */
+  width: 75px; /* Largeur du conteneur */
+  height: 75px; /* Hauteur du conteneur */
+  display: flex; /* Affiche les éléments à l'intérieur en ligne */
+  justify-content: center; /* Centre le contenu horizontalement */
+  align-items: center; /* Centre le contenu verticalement */
+  border-radius: 50%; /* Transforme le conteneur en cercle */
+  cursor: pointer; /* Curseur pointeur au survol */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Ombre légère pour le conteneur */
+}
+
+/* Style pour l'icône à l'intérieur du conteneur */
+.add-btn-container i {
+  font-size: 50px; /* Taille de l'icône */
+}
+
+.dropdown-item{
+  text-align: center;
+}
+
+.btn-pas-inscrit{
+  text-align: right;
+}
+
+.pas-inscrit-container{
+  display: flex;
+  position: absolute;
+  right: 10%;
+  top: 340px;
+  justify-content: right;
+}
+
+
 
 
 

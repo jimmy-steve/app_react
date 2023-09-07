@@ -52,23 +52,54 @@ class NavbarBootstrap extends React.Component {
                         <>
                           <li className="nav-item">
                             <Link
-                                className="btn btn-outline-dark me-3"
+                                className="btn btn-sm btn-outline-dark me-3"
                                 to="/pictures/new"
                             >
                               Poster une photo
                             </Link>
                           </li>
+
+
                           <li className="nav-item">
                             <Link
-                                className="btn btn-outline-dark me-3"
+                                className="btn btn-sm btn-outline-dark me-3"
                                 to="/dashboard"
                             >
-                              <i className="fa-solid fa-house-user"></i>
+                              <i className="fa-solid fa-burger"></i><span className="hide-desktop"> Recipe</span>
+                            </Link>
+                          </li>
+
+                          <li className="nav-item">
+                            <Link
+                                className="btn btn-sm btn-outline-dark me-3"
+                                to="/dashboard"
+                            >
+                              <i className="fa-solid fa-images"></i><span className="hide-desktop"> Picture</span>
+                            </Link>
+                          </li>
+
+
+                          <li className="nav-item">
+                            <Link
+                                className="btn btn-sm btn-outline-dark me-3"
+                                to="/dashboard"
+                            >
+                              <i className="fa-solid fa-blog"></i><span className="hide-desktop"> Blog</span>
+                            </Link>
+                          </li>
+
+
+                          <li className="nav-item">
+                            <Link
+                                className="btn btn-sm btn-outline-dark me-3"
+                                to="/dashboard"
+                            >
+                              <i className="fa-solid fa-house-user"></i><span className="hide-desktop"> Dashboard</span>
                             </Link>
                           </li>
                           <li className="nav-item">
                             <button
-                                className="btn btn-outline-dark me-2"
+                                className="btn btn-sm btn-outline-dark me-2"
                                 onClick={() => this.logout()}
                             >
                               Déconnexion
@@ -81,33 +112,13 @@ class NavbarBootstrap extends React.Component {
                             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                                aria-haspopup="true" aria-expanded="false">Try</a>
                             <div className="dropdown-menu">
-                              <li><a className="dropdown-item"
-                                     href="https://64da9dd2cc16ee008f7ba43a--dreamy-puffpuff-1d7ca0.netlify.app/">Super
-                                react</a></li>
-                              <li>
-                                <Link  to="/#">
-                                  3.0
-                                </Link>
-                                {/*<a className="dropdown-item" href="#">3.0</a>*/}
-                              </li>
+
                               {/*<li><a className="dropdown-item" href="#">Super Forum</a></li>*/}
                               {/*<li><a className="dropdown-item" href="#">MealPlanner</a></li>*/}
-                              {/*<li><a className="dropdown-item" href="#">Porte-Folio</a></li>*/}
-                              {/*<li><a className="dropdown-item" href="#">Offroad</a></li>*/}
-                              {/*<li><a className="dropdown-item" href="https://teal-manatee-eb9fae.netlify.app/">Projet*/}
-                              {/*  React Country</a></li>*/}
                             </div>
                           </li>
                           <BlogDropdown /> {/* Utilisez le composant BlogDropdown ici */}
-                          {/*<li className="nav-item dropdown">*/}
-                          {/*  <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"*/}
-                          {/*     aria-haspopup="true" aria-expanded="false">Blog</a>*/}
-                          {/*  <div className="dropdown-menu">*/}
-                          {/*    <a className="dropdown-item" href="#">Action</a>*/}
-                          {/*    <a className="dropdown-item" href="#">Another action</a>*/}
-                          {/*    <a className="dropdown-item" href="#">Something else here</a>*/}
-                          {/*  </div>*/}
-                          {/*</li>*/}
+
                           <li className="nav-item">
                             <a className="nav-link" href="#">About</a>
                           </li>

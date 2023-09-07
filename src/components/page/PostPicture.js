@@ -75,8 +75,8 @@ class PostPicture extends React.Component {
       <>
         <Navbar />
         <div className="container">
-          <div className="row">
-            <div className="card mt-5 p-4 col-6 mx-auto">
+          <div className="row p-1">
+            <div className="card mt-2 p-4 col-md-6 col-lg-8 col-sm-12 mx-auto">
               <h3>Ajouter une nouvelle Photo</h3>
               <form
                 method="POST"

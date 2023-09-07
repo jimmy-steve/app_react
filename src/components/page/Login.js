@@ -79,7 +79,7 @@ class Login extends React.Component {
             <div className=" col-md-6 col-sm-10 col-lg-6 mx-auto">
 
 
-            <div className="card mt-5 p-4 mx-auto">
+            <div className="card mt-3 p-4 mx-auto">
               <h3>Login</h3>
               <form method="POST" onSubmit={this.handleSubmit}>
                 <div className="form-group mt-4">
@@ -132,6 +132,10 @@ class Login extends React.Component {
                 <button type="submit" className="btn btn-primary mt-4">
                   Login
                 </button>
+                <div className="pas-inscrit-container">
+                  <a className="btn-pas-inscrit" href="/register">Pas encore inscrit ?</a>
+                </div>
+
               </form>
             </div>
 

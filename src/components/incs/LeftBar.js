@@ -177,7 +177,7 @@ const LeftBar = () => {
                   style={{ width: "50px" }}
                 />
               )}
-              My App
+              Your stuff
             </div>
             {showWebList ? <MyAppList /> : null}
           </>
@@ -193,7 +193,7 @@ const LeftBar = () => {
         ) : (
           <ChevronRightIcon className="" style={{ width: "50px" }} />
         )}
-        My Projects
+        Our Stuff
       </div>
       {showNewProjectList ? <NewProjectList /> : null}
 
@@ -203,7 +203,7 @@ const LeftBar = () => {
         ) : (
           <ChevronRightIcon className="" style={{ width: "50px" }} />
         )}
-        Your Files
+        My Stuff
       </div>
       {showContactList ? <ContactList /> : null}
     </div>
