@@ -7,10 +7,10 @@ const GitIgnore = () => {
     <>
       <div className="container-fluid position-relative p-0">
         <SideBar />
-        <div class="content">
+        <div className="content">
           <NavBarBootstrap />
-          <div class="container-fluid px-4">
-            <div class="row g-4">
+          <div className="container-fluid px-4">
+            <div className="row g-4">
               <div className="col-md-12 mt-5">
                 <code>
                   <pre>
@@ -92,8 +92,8 @@ const GitIgnore = () => {
             </div>
           </div>
         </div>
-        <button class="btn btn-lg btn-lg-square back-to-top">
-          <i class="bi bi-arrow-up"></i>
+        <button className="btn btn-lg btn-lg-square back-to-top">
+          <i className="bi bi-arrow-up"></i>
         </button>
       </div>
     </>

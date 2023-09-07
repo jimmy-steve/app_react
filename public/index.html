@@ -35,26 +35,12 @@
       rel="stylesheet"
     />
 
-    <!-- Libraries Stylesheet -->
-    <link
-      href="./lib/owlcarousel/assets/owl.carousel.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="./lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
-      rel="stylesheet"
-    />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
 
     <!-- //////Bootstrap//////// -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://bootswatch.com/5/slate/bootstrap.css"
-    /> -->
     <link
       href="https://bootswatch.com/5/sketchy/bootstrap.css"
       rel="stylesheet"
@@ -82,13 +68,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./lib/chart/chart.min.js"></script>
-    <script src="./lib/easing/easing.min.js"></script>
-    <script src="./lib/waypoints/waypoints.min.js"></script>
-    <script src="./lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="./lib/tempusdominus/js/moment.min.js"></script>
-    <script src="./lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- <script src="./js/main.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 
@@ -97,39 +76,5 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-      (function ($) {
-        "use strict";
-
-        // Spinner
-        var spinner = function () {
-          setTimeout(function () {
-            if ($("#spinner").length > 0) {
-              $("#spinner").removeClass("show");
-            }
-          }, 1);
-        };
-        spinner();
-
-        // Back to top button
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 300) {
-            $(".back-to-top").fadeIn("slow");
-          } else {
-            $(".back-to-top").fadeOut("slow");
-          }
-        });
-        $(".back-to-top").click(function () {
-          $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
-          return false;
-        });
-
-        // Sidebar Toggler
-        $(".sidebar-toggler").click(function () {
-          $(".sidebar, .content").toggleClass("open");
-          return false;
-        });
-      })(jQuery);
-    </script>
   </body>
 </html>

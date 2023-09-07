@@ -2,9 +2,12 @@ import React from "react";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import Axios from "axios";
 import { Navigate } from "react-router-dom";
-// import { GoogleLoginButton } from "react-social-login-buttons";
+
+// const { login } = useAuth();
 
 class Login extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -49,6 +52,8 @@ class Login extends React.Component {
         localStorage.setItem("userId", userId);
         localStorage.setItem("token", response.data.user.api_token);
 
+        // Marquez l'utilisateur comme connecté en définissant un drapeau dans localStorage
+        localStorage.setItem("userLoggedIn", "true");
         this.setState({ redirect: true });
       })
       .catch((error) => {
@@ -71,7 +76,10 @@ class Login extends React.Component {
         <NavBarBootstrap />
         <div className="container">
           <div className="row">
-            <div className="card mt-5 p-4 col-6 mx-auto">
+            <div className=" col-md-6 col-sm-10 col-lg-6 mx-auto">
+
+
+            <div className="card mt-5 p-4 mx-auto">
               <h3>Login</h3>
               <form method="POST" onSubmit={this.handleSubmit}>
                 <div className="form-group mt-4">
@@ -126,6 +134,10 @@ class Login extends React.Component {
                 </button>
               </form>
             </div>
+
+
+            </div>
+
           </div>
         </div>
         <div className="d-flex justify-content-center mt-5">

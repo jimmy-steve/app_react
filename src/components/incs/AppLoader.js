@@ -8,7 +8,7 @@ class AppLoader extends React.Component {
         <ThreeCircles
           height="200"
           width="200"
-          color="#e95420"
+          color="#ffc107"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}

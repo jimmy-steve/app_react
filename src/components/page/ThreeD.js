@@ -23,7 +23,7 @@ const Section = styled.div`
 const Container = styled.div`
   height: 100%;
   scroll-snap-align: center;
-  width: 1400px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 
@@ -126,54 +126,55 @@ const Img = styled.img`
 function ThreeD() {
   return (
     <>
-      <NavBarBootstrap />
-      <div className="container-fluid p-0">
-        <SideBar />
-        <div class="content">
-          <div class="container-fluid px-4">
-            <div class="row g-4">
-              <Section>
-                <Container>
-                  <Left>
-                    <Title>Think. Make. Solve.</Title>
-                    <WhatWeDo>
-                      <Line src="./img/line.png" />
-                      <Subtitle>What we Do</Subtitle>
-                    </WhatWeDo>
-                    <Desc>
-                      we enjoy creating delightful, human-centered digital
-                      experiences.
-                    </Desc>
-                    <Button>Learn More</Button>
-                  </Left>
-                  <Right>
-                    <Canvas>
-                      <Suspense fallback={null}>
-                        
-                        <OrbitControls enableZoom={false} />
-                        <ambientLight intensity={1} />
-                        <directionalLight position={[3, 2, 1]} />
-                        <Sphere args={[1, 100, 200]} scale={2.4}>
-                          <MeshDistortMaterial
-                            color="#e95420"
-                            attach="material"
-                            distort={0.5}
-                            speed={2}
-                          />
-                        </Sphere>
-                      </Suspense>
-                    </Canvas>
-                    <Img src="../../img/moon.png" />
-                  </Right>
-                </Container>
-              </Section>
+      <NavBarBootstrap pageTitle="3d"/>
+      <div className="container-fluid m-1">
+        <div className="row">
+          <div className="col-2 p-0 sidebar">
+            <SideBar />
+          </div>
+          <div className="col-md-10">
+
+            <div className="container-fluid px-4">
+              <div className="row g-4">
+                <Section>
+                  <Container>
+                    <Right>
+                      <Canvas>
+                        <Suspense fallback={null}>
+
+                          <OrbitControls enableZoom={false}/>
+                          <ambientLight intensity={1}/>
+                          <directionalLight position={[3, 2, 1]}/>
+                          <Sphere args={[1, 100, 200]} scale={2.4}>
+                            <MeshDistortMaterial
+                                color="#e95420"
+                                attach="material"
+                                distort={0.5}
+                                speed={2}
+                            />
+                          </Sphere>
+                        </Suspense>
+                      </Canvas>
+                      <Img src="../../img/moon.png"/>
+                    </Right>
+                  </Container>
+                </Section>
+              </div>
             </div>
+
+
           </div>
         </div>
-        <button class="btn btn-lg btn-lg-square back-to-top">
-          <i class="bi bi-arrow-up"></i>
-        </button>
       </div>
+
+
+
+
+
+
+
+
+
     </>
   );
 }

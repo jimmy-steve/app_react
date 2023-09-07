@@ -17,6 +17,15 @@ const LeftBar = () => {
 
   const NewProjectList = () => (
     <div className="list-group bg-light ms-4">
+        <Link to="/blog" className="">
+            <img
+                src={JSIcon}
+                alt="JS Icon"
+                className="text-yellow_vs me-1"
+                style={{ width: "20px" }}
+            />
+            Blog
+        </Link>
       <Link to="/album" className="">
         <img
           src={JSIcon}
@@ -53,15 +62,6 @@ const LeftBar = () => {
         />
         Pokedex
       </Link>
-      <Link to="/blockchain" className="">
-        <img
-          src={JSIcon}
-          alt="JS Icon"
-          className="text-yellow_vs me-1"
-          style={{ width: "20px" }}
-        />
-        BlockChain
-      </Link>
 
       <Link to="/three-d" className="">
         <img
@@ -91,66 +91,66 @@ const LeftBar = () => {
   );
 
   const MyAppList = () => (
-    <div className="list-group  bg-light no-border ms-4">
-      <Link to="/node" className="">
-        <img
-          src={FolderIcon}
-          alt="Folder Icon"
-          className="text-yellow_vs ms-2 me-1"
-          style={{ width: "20px" }}
-        />
-        node_modules
-      </Link>
-      <Link to="/public" className="">
-        <img
-          src={FolderIcon}
-          alt="Folder Icon"
-          className="text-yellow_vs ms-2 me-1"
-          style={{ width: "20px" }}
-        />
-        public
-      </Link>
-      <Link to="/src" className="">
-        <img
-          src={FolderIcon}
-          alt="Folder Icon"
-          className="text-yellow_vs ms-2 me-1"
-          style={{ width: "20px" }}
-        />
-        src
-      </Link>
-      <a href="/gitignore" className="">
-        <img
-          src={GitIgnoreIcon}
-          alt="GitIgnore Icon"
-          className="text-yellow_vs ms-2 me-1"
-          style={{ width: "20px" }}
-        />
-        gitignore
-      </a>
-      <a href="/package" className="">
-        <img
-          src={JsonIcon}
-          alt="Json Icon"
-          className="text-yellow_vs ms-2 me-1"
-          style={{ width: "20px" }}
-        />
-        package.json
-      </a>
-      <a href="/readme" className="">
-        <img
-          src={InfoIcon}
-          alt="Info Icon"
-          className="text-yellow_vs ms-2 me-1"
-          style={{ width: "20px" }}
-        />
-        README.md
-      </a>
+    <div className="list-group  bg-light ms-4">
+      {/*<Link to="/node" className="">*/}
+      {/*  <img*/}
+      {/*    src={FolderIcon}*/}
+      {/*    alt="Folder Icon"*/}
+      {/*    className="text-yellow_vs ms-2 me-1"*/}
+      {/*    style={{ width: "20px" }}*/}
+      {/*  />*/}
+      {/*  node_modules*/}
+      {/*</Link>*/}
+      {/*<Link to="/public" className="">*/}
+      {/*  <img*/}
+      {/*    src={FolderIcon}*/}
+      {/*    alt="Folder Icon"*/}
+      {/*    className="text-yellow_vs ms-2 me-1"*/}
+      {/*    style={{ width: "20px" }}*/}
+      {/*  />*/}
+      {/*  public*/}
+      {/*</Link>*/}
+      {/*<Link to="/src" className="">*/}
+      {/*  <img*/}
+      {/*    src={FolderIcon}*/}
+      {/*    alt="Folder Icon"*/}
+      {/*    className="text-yellow_vs ms-2 me-1"*/}
+      {/*    style={{ width: "20px" }}*/}
+      {/*  />*/}
+      {/*  src*/}
+      {/*</Link>*/}
+      {/*<a href="/gitignore" className="">*/}
+      {/*  <img*/}
+      {/*    src={GitIgnoreIcon}*/}
+      {/*    alt="GitIgnore Icon"*/}
+      {/*    className="text-yellow_vs ms-2 me-1"*/}
+      {/*    style={{ width: "20px" }}*/}
+      {/*  />*/}
+      {/*  gitignore*/}
+      {/*</a>*/}
+      {/*<a href="/package" className="">*/}
+      {/*  <img*/}
+      {/*    src={JsonIcon}*/}
+      {/*    alt="Json Icon"*/}
+      {/*    className="text-yellow_vs ms-2 me-1"*/}
+      {/*    style={{ width: "20px" }}*/}
+      {/*  />*/}
+      {/*  package.json*/}
+      {/*</a>*/}
+        <Link to="/readme" className="">
+            <img
+                src={InfoIcon}
+                alt="Info Icon"
+                className="text-yellow_vs ms-2 me-1"
+                style={{ width: "20px" }}
+            />
+            README.md
+        </Link>
     </div>
   );
 
   return (
-    <div className="directory">
+    <div className="card">
       <div>
         <div
           className="directory"

@@ -85,7 +85,9 @@ class Register extends React.Component {
         <NavBarBootstrap />
         <div className="container">
           <div className="row">
-            <div className="card mt-5 p-4 col-6 mx-auto">
+
+            <div className=" col-md-6 col-sm-10 col-lg-6 mx-auto">
+            <div className="card mt-5 p-4 mx-auto">
               <h3>Register</h3>
               <form method="POST" onSubmit={this.handleSubmit}>
                 <div className="form-group mt-4">
@@ -177,6 +179,8 @@ class Register extends React.Component {
                 </button>
               </form>
             </div>
+            </div>
+
           </div>
         </div>
       </>
