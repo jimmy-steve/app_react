@@ -5,6 +5,7 @@ import FLogo from "../../assets/logos/f-low-resolution-logo-black-on-transparent
 const Footer = () => {
 
     return (
+        <>
             <div className="container-fluid ">
                 <footer className="d-flex flex-wrap justify-content-between align-items-center border-top border-dark">
                     <p className="col-md-4 mb-0 text-muted">© 2023 Jimmy-Steve, Inc</p>
@@ -34,6 +35,7 @@ const Footer = () => {
                     </ul>
                 </footer>
             </div>
+        </>
     );
 
 };

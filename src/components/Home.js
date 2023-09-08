@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Footer from "./incs/Footer";
 import { Howl, Howler } from "howler"; // Importez Howler et Howl depuis la bibliothèque howler
 import ClicSound from "../assets/mp3/sound1.wav"; // Chemin vers le fichier audio du clic
-
+import Banner from "./incs/Banner";
 
 
 const Home = () => {
@@ -29,8 +29,11 @@ const Home = () => {
             </div>
             <div className="col">
               <div className="content">
-                <div className="container-fluid px-4">
-                  <div className="row g-4">
+
+
+
+                <div className="container-fluid">
+                  <div className="row">
                     <div className="col-md-12 mt-5">
                       <h1 className="display-4">Hello my Friend !</h1>
                       <p className="lead text-muted">
@@ -56,11 +59,17 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
+
+
+
+
+
+
               </div>
             </div>
           </div>
         </div>
-
+        <Banner/>
         <Footer/>
       </>
   );
