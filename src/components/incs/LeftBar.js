@@ -15,6 +15,60 @@ const LeftBar = () => {
   const [showNewProjectList, setShowNewProjectList] = useState(true);
   const [showContactList, setContactList] = useState(true);
 
+    const MyAppList = () => {
+        const isLoggedIn = localStorage.getItem("token");
+
+        return (
+            <div className="list-group bg-light ms-4">
+                {isLoggedIn ? (
+                    <>
+                        {/*On affiche la liste des applications privées*/}
+                        <Link to="/your-blog" className="">
+                            <img
+                                src={TSIcon}
+                                alt="Ts Icon"
+                                className="text-yellow_vs me-1"
+                                style={{ width: "20px" }}
+                            />
+                            this->Articles
+                        </Link>
+                        <Link to="/your-picture" className="">
+                            <img
+                                src={JSIcon}
+                                alt="JS Icon"
+                                className="text-yellow_vs me-1"
+                                style={{ width: "20px" }}
+                            />
+                            this->Pictures
+                        </Link>
+                        <Link to="/your-recipe" className="">
+                            <img
+                                src={TSIcon}
+                                alt="Ts Icon"
+                                className="text-yellow_vs me-1"
+                                style={{ width: "20px" }}
+                            />
+                            this->Recipes
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        {/*On affiche la liste des applications publiques*/}
+                        <Link to="/readme" className="">
+                            <img
+                                src={InfoIcon}
+                                alt="Info Icon"
+                                className="text-yellow_vs ms-2 me-1"
+                                style={{ width: "20px" }}
+                            />
+                            README.md
+                        </Link>
+                    </>
+                )}
+            </div>
+        );
+    };
+
   const NewProjectList = () => (
     <div className="list-group bg-light ms-4">
         <Link to="/blog" className="">
@@ -71,41 +125,7 @@ const LeftBar = () => {
     </div>
   );
 
-    const MyAppList = () => {
-        const isLoggedIn = localStorage.getItem("token");
 
-        return (
-            <div className="list-group bg-light ms-4">
-                {isLoggedIn ? (
-                    <>
-                        {/*On affiche la liste des applications privées*/}
-                        <Link to="/blog" className="">
-                            <img
-                                src={JSIcon}
-                                alt="JS Icon"
-                                className="text-yellow_vs me-1"
-                                style={{ width: "20px" }}
-                            />
-                            this->Articles
-                        </Link>
-                    </>
-                ) : (
-                    <>
-                        {/*On affiche la liste des applications publiques*/}
-                    <Link to="/readme" className="">
-                        <img
-                            src={InfoIcon}
-                            alt="Info Icon"
-                            className="text-yellow_vs ms-2 me-1"
-                            style={{ width: "20px" }}
-                        />
-                        README.md
-                    </Link>
-                    </>
-                )}
-            </div>
-        );
-    };
 
 
     // const MyAppList = () => (

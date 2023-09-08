@@ -61,15 +61,11 @@ const Home = () => {
                 </div>
 
 
-
-
-
-
               </div>
             </div>
           </div>
         </div>
-        <Banner/>
+
         <Footer/>
       </>
   );

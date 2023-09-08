@@ -449,6 +449,9 @@
 .add-btn-container i {
   font-size: 50px; /* Taille de l'icône */
 }
+.add-btn-container i{
+  color: white;
+}
 
 .dropdown-item{
   text-align: center;

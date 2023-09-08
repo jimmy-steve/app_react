@@ -47,48 +47,50 @@ const Dashboard = () => {
                                 </div>
                             ) : (
                                 <>
-                                    <table className="table table-hover border border-dark">
-                                        <thead>
-                                        <tr className="table-dark">
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Action</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {articles.map((article) => (
-                                            <tr key={article.id} className="table-active">
-                                                <th scope="row">{article.id}</th>
-                                                <td>{article.title}</td>
-                                                <td>
-                                                    <i className="fa-solid fa-pen-to-square ms-1"></i>
-                                                    <i className="fa-solid fa-delete-left ms-3"></i>
-                                                </td>
-                                                <td>{article.status === "1" ? "Active" : "Inactive"}</td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
+                                    <h1>Dashboard</h1>
+
+                                    {/*<table className="table table-hover border border-dark">*/}
+                                    {/*    <thead>*/}
+                                    {/*    <tr className="table-dark">*/}
+                                    {/*        <th scope="col">ID</th>*/}
+                                    {/*        <th scope="col">Title</th>*/}
+                                    {/*        <th scope="col">Action</th>*/}
+                                    {/*        <th scope="col">Status</th>*/}
+                                    {/*    </tr>*/}
+                                    {/*    </thead>*/}
+                                    {/*    <tbody>*/}
+                                    {/*    {articles.map((article) => (*/}
+                                    {/*        <tr key={article.id} className="table-active">*/}
+                                    {/*            <th scope="row">{article.id}</th>*/}
+                                    {/*            <td>{article.title}</td>*/}
+                                    {/*            <td>*/}
+                                    {/*                <i className="fa-solid fa-pen-to-square ms-1"></i>*/}
+                                    {/*                <i className="fa-solid fa-delete-left ms-3"></i>*/}
+                                    {/*            </td>*/}
+                                    {/*            <td>{article.status === "1" ? "Active" : "Inactive"}</td>*/}
+                                    {/*        </tr>*/}
+                                    {/*    ))}*/}
+                                    {/*    </tbody>*/}
+                                    {/*</table>*/}
 
                                     {/* Pagination */}
-                                    <div className="pagination-container">
-                                        <ul className="pagination">
-                                            {Array.from({ length: totalPages }, (_, i) => (
-                                                <li
-                                                    className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
-                                                    key={i}
-                                                >
-                                                    <button
-                                                        className="page-link"
-                                                        onClick={() => handlePageChange(i + 1)}
-                                                    >
-                                                        {i + 1}
-                                                    </button>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                    {/*<div className="pagination-container">*/}
+                                    {/*    <ul className="pagination">*/}
+                                    {/*        {Array.from({ length: totalPages }, (_, i) => (*/}
+                                    {/*            <li*/}
+                                    {/*                className={`page-item ${i + 1 === currentPage ? "active" : ""}`}*/}
+                                    {/*                key={i}*/}
+                                    {/*            >*/}
+                                    {/*                <button*/}
+                                    {/*                    className="page-link"*/}
+                                    {/*                    onClick={() => handlePageChange(i + 1)}*/}
+                                    {/*                >*/}
+                                    {/*                    {i + 1}*/}
+                                    {/*                </button>*/}
+                                    {/*            </li>*/}
+                                    {/*        ))}*/}
+                                    {/*    </ul>*/}
+                                    {/*</div>*/}
 
                                     <div className="add-btn-container bg-success">
                                         <i className="fa-solid fa-square-plus fa-2xl"></i>

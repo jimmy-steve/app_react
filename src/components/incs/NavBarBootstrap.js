@@ -58,7 +58,7 @@ class NavbarBootstrap extends React.Component {
               <span className="navbar-toggler-icon"></span>
             </button>
 
-            <h2 className="ms-1 font__sicknes">
+            <h2 className="ms-1 mt-2 font__sicknes">
               <Link to="/">
                 <img className={"f-logo"} src={FLogo} alt="logo" />
             </Link>
