@@ -4,6 +4,7 @@ import NavBarBootstrap from "../incs/NavBarBootstrap";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import AppLoader from "../incs/AppLoader";
+import Footer from "../incs/Footer";
 
 const Article = () => {
   const [articles, setArticles] = useState([]);
@@ -55,7 +56,7 @@ const Article = () => {
                               <div
                                   className="card mx-2 mb-2"
                                   key={article.id}
-                                  style={{ width: "350px" }}
+                                  style={{ width: "320px" }}
                               >
                                 <div className="card-body">
                                   <h5 className="card-title">{article.title}</h5>
@@ -97,6 +98,7 @@ const Article = () => {
             </div>
           </div>
         </div>
+          <Footer/>
       </>
   );
 };

@@ -465,7 +465,32 @@
   top: 340px;
   justify-content: right;
 }
+.f-logo{
+    width: 20px;
+    height: auto;
+    margin-left: 10px;
+    margin-right: 30px;
+    transform: rotate(45deg);
+}
+.f-logo:hover{
+    transform: rotate(0deg);
+}
 
+.f-logo-footer{
+    width: 10%;
+    height: auto;
+    margin-right: 50px;
+    transform: rotate(90deg);
+}
+.f-logo-footer-inverse{
+    width: 10%;
+    height: auto;
+  margin-left: 50px;
+    transform: rotate(270deg);
+}
+audio{
+  display: none;
+}
 
 
 

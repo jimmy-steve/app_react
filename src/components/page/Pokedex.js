@@ -3,6 +3,7 @@ import Axios from "axios";
 import SideBar from "../incs/SideBar";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import { Link } from "react-router-dom";
+import Footer from "../incs/Footer";
 
 const Pokedex = ({ argumentToDisplay }) => {
   // const API = "https://pokeapi.co/api/v2/pokemon?limit=151";
@@ -69,7 +70,7 @@ const Pokedex = ({ argumentToDisplay }) => {
     </div>
   </div>
 
-
+  <Footer/>
 </>
 
   );

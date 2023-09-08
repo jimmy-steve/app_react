@@ -26,15 +26,6 @@ const LeftBar = () => {
             />
             Blog
         </Link>
-      <Link to="/album" className="">
-        <img
-          src={JSIcon}
-          alt="JS Icon"
-          className="text-yellow_vs me-1"
-          style={{ width: "20px" }}
-        />
-        Album Photo
-      </Link>
         <Link to="/recipes" className="">
             <img
                 src={TSIcon}
@@ -42,17 +33,8 @@ const LeftBar = () => {
                 className="text-yellow_vs me-1"
                 style={{ width: "20px" }}
             />
-            Recettes
+            Recipe
         </Link>
-      <Link to="/mealplanner" className="">
-        <img
-          src={TSIcon}
-          alt="TS Icon"
-          className="text-yellow_vs me-1"
-          style={{ width: "20px" }}
-        />
-        Meal Planner
-      </Link>
       <Link to="/pokedex" className="">
         <img
           src={JSIcon}
@@ -62,16 +44,15 @@ const LeftBar = () => {
         />
         Pokedex
       </Link>
-
-      <Link to="/three-d" className="">
-        <img
-          src={JSIcon}
-          alt="JS Icon"
-          className="text-yellow_vs me-1"
-          style={{ width: "20px" }}
-        />
-        ThreeD
-      </Link>
+        <Link to="/album" className="">
+            <img
+                src={TSIcon}
+                alt="TS Icon"
+                className="text-yellow_vs me-1"
+                style={{ width: "20px" }}
+            />
+            Photo Gallery
+        </Link>
     </div>
   );
 
@@ -90,64 +71,103 @@ const LeftBar = () => {
     </div>
   );
 
-  const MyAppList = () => (
-    <div className="list-group  bg-light ms-4">
-      {/*<Link to="/node" className="">*/}
-      {/*  <img*/}
-      {/*    src={FolderIcon}*/}
-      {/*    alt="Folder Icon"*/}
-      {/*    className="text-yellow_vs ms-2 me-1"*/}
-      {/*    style={{ width: "20px" }}*/}
-      {/*  />*/}
-      {/*  node_modules*/}
-      {/*</Link>*/}
-      {/*<Link to="/public" className="">*/}
-      {/*  <img*/}
-      {/*    src={FolderIcon}*/}
-      {/*    alt="Folder Icon"*/}
-      {/*    className="text-yellow_vs ms-2 me-1"*/}
-      {/*    style={{ width: "20px" }}*/}
-      {/*  />*/}
-      {/*  public*/}
-      {/*</Link>*/}
-      {/*<Link to="/src" className="">*/}
-      {/*  <img*/}
-      {/*    src={FolderIcon}*/}
-      {/*    alt="Folder Icon"*/}
-      {/*    className="text-yellow_vs ms-2 me-1"*/}
-      {/*    style={{ width: "20px" }}*/}
-      {/*  />*/}
-      {/*  src*/}
-      {/*</Link>*/}
-      {/*<a href="/gitignore" className="">*/}
-      {/*  <img*/}
-      {/*    src={GitIgnoreIcon}*/}
-      {/*    alt="GitIgnore Icon"*/}
-      {/*    className="text-yellow_vs ms-2 me-1"*/}
-      {/*    style={{ width: "20px" }}*/}
-      {/*  />*/}
-      {/*  gitignore*/}
-      {/*</a>*/}
-      {/*<a href="/package" className="">*/}
-      {/*  <img*/}
-      {/*    src={JsonIcon}*/}
-      {/*    alt="Json Icon"*/}
-      {/*    className="text-yellow_vs ms-2 me-1"*/}
-      {/*    style={{ width: "20px" }}*/}
-      {/*  />*/}
-      {/*  package.json*/}
-      {/*</a>*/}
-        <Link to="/readme" className="">
-            <img
-                src={InfoIcon}
-                alt="Info Icon"
-                className="text-yellow_vs ms-2 me-1"
-                style={{ width: "20px" }}
-            />
-            README.md
-        </Link>
-    </div>
-  );
+    const MyAppList = () => {
+        const isLoggedIn = localStorage.getItem("token");
+
+        return (
+            <div className="list-group bg-light ms-4">
+                {isLoggedIn ? (
+                    <>
+                        {/*On affiche la liste des applications privées*/}
+                        <Link to="/blog" className="">
+                            <img
+                                src={JSIcon}
+                                alt="JS Icon"
+                                className="text-yellow_vs me-1"
+                                style={{ width: "20px" }}
+                            />
+                            this->Articles
+                        </Link>
+                    </>
+                ) : (
+                    <>
+                        {/*On affiche la liste des applications publiques*/}
+                    <Link to="/readme" className="">
+                        <img
+                            src={InfoIcon}
+                            alt="Info Icon"
+                            className="text-yellow_vs ms-2 me-1"
+                            style={{ width: "20px" }}
+                        />
+                        README.md
+                    </Link>
+                    </>
+                )}
+            </div>
+        );
+    };
+
+
+    // const MyAppList = () => (
+  //   <div className="list-group  bg-light ms-4">
+  //
+  //       <Link to="/readme" className="">
+  //           <img
+  //               src={InfoIcon}
+  //               alt="Info Icon"
+  //               className="text-yellow_vs ms-2 me-1"
+  //               style={{ width: "20px" }}
+  //           />
+  //           README.md
+  //       </Link>
+  //
+  //
+  //       {localStorage.getItem("token") ? (
+  //           <>
+  //               <Link to="/blog" className="">
+  //                   <img
+  //                       src={JSIcon}
+  //                       alt="JS Icon"
+  //                       className="text-yellow_vs me-1"
+  //                       style={{ width: "20px" }}
+  //                   />
+  //                   Blog
+  //               </Link>
+  //               <Link to="/recipes" className="">
+  //                   <img
+  //                       src={TSIcon}
+  //                       alt="TS Icon"
+  //                       className="text-yellow_vs me-1"
+  //                       style={{ width: "20px" }}
+  //                   />
+  //                   Recipe
+  //               </Link>
+  //               <Link to="/pokedex" className="">
+  //                   <img
+  //                       src={JSIcon}
+  //                       alt="JS Icon"
+  //                       className="text-yellow_vs me-1"
+  //                       style={{ width: "20px" }}
+  //                   />
+  //                   Pokedex
+  //               </Link>
+  //               <Link to="/album" className="">
+  //                   <img
+  //                       src={TSIcon}
+  //                       alt="TS Icon"
+  //                       className="text-yellow_vs me-1"
+  //                       style={{ width: "20px" }}
+  //                   />
+  //                   Photo Gallery
+  //               </Link>
+  //           </>
+  //       ) : null}
+  //
+  //
+  //
+  //
+  //   </div>
+  // );
 
   return (
     <div className="card">
@@ -179,6 +199,7 @@ const LeftBar = () => {
               )}
               Your stuff
             </div>
+
             {showWebList ? <MyAppList /> : null}
           </>
         ) : null}

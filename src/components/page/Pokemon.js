@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Footer from "../incs/Footer";
 
 const Pokemon = () => {
   const { pokemonName } = useParams();
@@ -152,7 +153,9 @@ const Pokemon = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
+
   );
 };
 

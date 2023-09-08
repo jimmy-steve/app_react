@@ -1,6 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BlogDropdown from "./BlogDropdown"; // Importez votre composant BlogDropdown
+import FLogo from "../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
+import { Howl} from "howler";
+import ClicSound from "../../assets/mp3/sound1.wav";
+
+// Fonction pour jouer le son
+const playMusic = () => {
+  const sound = new Howl({
+    src: [ClicSound],
+    autoplay: true,
+    mute: false,
+  });
+};
+
+
 
 class NavbarBootstrap extends React.Component {
   constructor(props) {
@@ -8,12 +22,16 @@ class NavbarBootstrap extends React.Component {
     this.state = {};
     this.token = null;
   }
+
+
   logout = () => {
     localStorage.setItem("token", "");
     localStorage.clear();
 
     this.setState({ token: null });
     localStorage.removeItem("userLoggedIn");
+    localStorage.removeItem("userName");
+
     // localStorage.removeItem("token");
     window.location = "/";
   };
@@ -21,6 +39,15 @@ class NavbarBootstrap extends React.Component {
   render() {
     // Access the prop value using this.props.argumentToDisplay
     const { pageTitle } = this.props;
+    const userName = localStorage.getItem("userName"); // Récupérez le nom de l'utilisateur depuis le localStorage
+    const currentTime = new Date().getHours();
+    let greetingMessage = "Bonjour";
+
+    if (currentTime >= 12 && currentTime < 17) {
+      greetingMessage = "Bon après-midi";
+    } else if (currentTime >= 17) {
+      greetingMessage = "Bonsoir";
+    }
 
     return (
       <>
@@ -33,10 +60,11 @@ class NavbarBootstrap extends React.Component {
 
             <h2 className="ms-1 font__sicknes">
               <Link to="/">
-                <i className="fa-solid fa-skull-crossbones me-2 mt-1"></i>
+                <img className={"f-logo"} src={FLogo} alt="logo" />
             </Link>
               {pageTitle}
             </h2>
+
 
 
             <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar"
@@ -51,19 +79,16 @@ class NavbarBootstrap extends React.Component {
                     {localStorage.getItem("token") ? (
                         <>
                           <li className="nav-item">
-                            <Link
-                                className="btn btn-sm btn-outline-dark me-3"
-                                to="/pictures/new"
-                            >
-                              Poster une photo
-                            </Link>
+                            <span className="btn btn-sm btn-outline-success me-3">
+                                {greetingMessage}, {userName}
+                              </span>
                           </li>
 
 
                           <li className="nav-item">
                             <Link
-                                className="btn btn-sm btn-outline-dark me-3"
-                                to="/dashboard"
+                                className="btn btn-sm btn-outline-info me-3"
+                                to="/recipes"
                             >
                               <i className="fa-solid fa-burger"></i><span className="hide-desktop"> Recipe</span>
                             </Link>
@@ -71,8 +96,8 @@ class NavbarBootstrap extends React.Component {
 
                           <li className="nav-item">
                             <Link
-                                className="btn btn-sm btn-outline-dark me-3"
-                                to="/dashboard"
+                                className="btn btn-sm btn-outline-warning me-3"
+                                to="/album"
                             >
                               <i className="fa-solid fa-images"></i><span className="hide-desktop"> Picture</span>
                             </Link>
@@ -81,8 +106,8 @@ class NavbarBootstrap extends React.Component {
 
                           <li className="nav-item">
                             <Link
-                                className="btn btn-sm btn-outline-dark me-3"
-                                to="/dashboard"
+                                className="btn btn-sm btn-outline-success me-3"
+                                to="/blog"
                             >
                               <i className="fa-solid fa-blog"></i><span className="hide-desktop"> Blog</span>
                             </Link>
@@ -91,7 +116,7 @@ class NavbarBootstrap extends React.Component {
 
                           <li className="nav-item">
                             <Link
-                                className="btn btn-sm btn-outline-dark me-3"
+                                className="btn btn-sm btn-outline-danger me-3"
                                 to="/dashboard"
                             >
                               <i className="fa-solid fa-house-user"></i><span className="hide-desktop"> Dashboard</span>
@@ -108,17 +133,7 @@ class NavbarBootstrap extends React.Component {
                         </>
                     ) : (
                         <>
-                          <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-haspopup="true" aria-expanded="false">Try</a>
-                            <div className="dropdown-menu">
-
-                              {/*<li><a className="dropdown-item" href="#">Super Forum</a></li>*/}
-                              {/*<li><a className="dropdown-item" href="#">MealPlanner</a></li>*/}
-                            </div>
-                          </li>
-                          <BlogDropdown /> {/* Utilisez le composant BlogDropdown ici */}
-
+                          <BlogDropdown />
                           <li className="nav-item">
                             <a className="nav-link" href="#">About</a>
                           </li>
@@ -127,8 +142,8 @@ class NavbarBootstrap extends React.Component {
                               Home
                             </Link>
                           </li>
-                          <li className="nav-item mt-1">
-                            <Link className="btn btn-sm btn-outline-dark me-3" to="/login">
+                          <li className="nav-item mt-1 btn-connect">
+                            <Link className="btn btn-sm btn-outline-dark me-3" onClick={playMusic} to="/login">
                               Connexion
                             </Link>
                           </li>
@@ -142,62 +157,6 @@ class NavbarBootstrap extends React.Component {
                 </ul>
               </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-            {/*<div className="collapse navbar-collapse" id="navbarColor01">*/}
-            {/*  <ul className="navbar-nav ms-auto me-5">*/}
-            {/*    {localStorage.getItem("token") ? (*/}
-            {/*      <>*/}
-            {/*        <li className="nav-item">*/}
-            {/*          <Link*/}
-            {/*            className="btn btn-outline-dark me-3"*/}
-            {/*            to="/pictures/new"*/}
-            {/*          >*/}
-            {/*            Poster une photo*/}
-            {/*          </Link>*/}
-            {/*        </li>*/}
-            {/*        <li className="nav-item">*/}
-            {/*          <button*/}
-            {/*            className="btn btn-outline-dark me-2"*/}
-            {/*            onClick={() => this.logout()}*/}
-            {/*          >*/}
-            {/*            Déconnexion*/}
-            {/*          </button>*/}
-            {/*        </li>*/}
-            {/*      </>*/}
-            {/*    ) : (*/}
-            {/*      <>*/}
-            {/*        <li className="nav-item">*/}
-            {/*          <Link className="btn btn-outline-dark me-3" to="/login">*/}
-            {/*            Connexion*/}
-            {/*          </Link>*/}
-            {/*        </li>*/}
-            {/*        <li className="nav-item">*/}
-            {/*          <Link className="btn btn-outline-dark" to="/register">*/}
-            {/*            Register*/}
-            {/*          </Link>*/}
-            {/*        </li>*/}
-            {/*      </>*/}
-            {/*    )}*/}
-            {/*  </ul>*/}
-            {/*</div>*/}
-
-
-
-
-
-
-
           </div>
         </nav>
       </>

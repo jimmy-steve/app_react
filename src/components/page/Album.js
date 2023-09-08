@@ -4,6 +4,7 @@ import NavBarBootstrap from "../incs/NavBarBootstrap";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import AppLoader from "../incs/AppLoader";
+import Footer from "../incs/Footer";
 
 const Album = () => {
   const [search, setSearch] = useState("");
@@ -103,13 +104,13 @@ const Album = () => {
                               <div
                                   className="card mx-2 mb-2"
                                   key={picture.id}
-                                  style={{ width: "350px" }}
+                                  style={{ width: "320px" }}
                               >
                                 <img
                                     src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${picture.image}`}
                                     className="card-img-top mt-2 rounded"
                                     alt="..."
-                                    style={{ width: "320px", height: "250px" }}
+                                    style={{ width: "285px", height: "250px" }}
                                 />
                                 <div className="card-body">
                                   <h5 className="card-title">{picture.title}</h5>
@@ -136,6 +137,7 @@ const Album = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

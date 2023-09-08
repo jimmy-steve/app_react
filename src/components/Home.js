@@ -1,68 +1,68 @@
+import React from "react";
 import SideBar from "./incs/SideBar";
 import NavBarBootstrap from "./incs/NavBarBootstrap";
-import {Link} from "react-router-dom";
-import React from "react";
+import { Link } from "react-router-dom";
+import Footer from "./incs/Footer";
+import { Howl, Howler } from "howler"; // Importez Howler et Howl depuis la bibliothèque howler
+import ClicSound from "../assets/mp3/sound1.wav"; // Chemin vers le fichier audio du clic
 
 
 
 const Home = () => {
+  // Fonction pour jouer le son
+  const playMusic = () => {
+    const sound = new Howl({
+      src: [ClicSound],
+      autoplay: true,
+      mute: false,
+    });
+  };
+
+
   return (
-    <>
-      <NavBarBootstrap pageTitle="De-Lafontaine"/>
-      <div className="container-fluid m-1">
-        <div className="row">
-          <div className="col-2 p-0 sidebar">
-            <SideBar />
-          </div>
-          <div className="col">
-            <div className="content">
-              <div className="container-fluid px-4">
-                <div className="row g-4">
-                  <div className="col-md-12 mt-5">
-                    <h1 className="display-4">Hello</h1>
-                    <p className="lead text-muted">
-                      Well, well, well, look who rode into my digital saloon.
-                    </p>
-                    <p className="lead">
-                      Name's <strong>Rusty</strong>, and I ain't just rust, I'm also
-                      a React wrangler. <br />
-                      Yup, this here's my slice of the web frontier.
-                    </p>
-                    <hr />
-                    <p className="lead">
-                      Now, let me spin you a yarn 'bout this little patch of
-                      cyberspace. It's like mixin' up a React stew, you see? Toss in
-                      some JSX veggies, a pinch of state spice, and let it all
-                      simmer into a frontend hoedown.
-                    </p>
-                    <p className="lead">
-                      Here's to a rootin' tootin' website shindig!
-                    </p>
-                    <p className="lead text-end">
-                      <button className="btn btn-primary btn-lg">
-                        Wrangle the Wisdom
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </p>
+      <>
+        <NavBarBootstrap pageTitle="De-Lafontaine"/>
+        <div className="container-fluid m-1">
+          <div className="row">
+            <div className="col-2 p-0 sidebar">
+              <SideBar />
+            </div>
+            <div className="col">
+              <div className="content">
+                <div className="container-fluid px-4">
+                  <div className="row g-4">
+                    <div className="col-md-12 mt-5">
+                      <h1 className="display-4">Hello my Friend !</h1>
+                      <p className="lead text-muted">
+                        Eh bien, bien, bien, regardez qui est arrivé dans mon saloon numérique.
+                      </p>
+                      <p className="lead">
+                        Je m'appelle <strong>Rusty</strong>, et je ne suis pas seulement de la rouille, je suis aussi un cowboy du React. <br />
+                        Ouais, c'est ma petite portion de la frontière numérique.
+                      </p>
+                      <hr />
+                      <p className="lead">
+                        Laissez-moi vous raconter une histoire à propos de ce petit coin de cyberespace. C'est comme mélanger une soupe React, vous voyez ? Jetez-y quelques légumes JSX, une pincée d'épices d'état, et laissez mijoter pour une fête frontale.
+                      </p>
+                      <p className="lead">
+                        Voici pour une fiesta de site web bien animée !
+                      </p>
+                      <p className="lead text-end">
+                        <button className="btn btn-primary btn-lg" onClick={playMusic}>
+                          Découvrir la Sagesse
+                          <i className="fa-solid fa-arrow-right"></i>
+                        </button>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-
-
-
-
-
             </div>
-
-
-
-
-
-          </div>
           </div>
         </div>
-    </>
+
+        <Footer/>
+      </>
   );
 };
 

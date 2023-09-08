@@ -36,6 +36,7 @@ class Login extends React.Component {
     }
   }
 
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -49,8 +50,10 @@ class Login extends React.Component {
     )
       .then((response) => {
         const userId = response.data.user.id;
+        console.log(response.data.user);
         localStorage.setItem("userId", userId);
         localStorage.setItem("token", response.data.user.api_token);
+        localStorage.setItem("userName", response.data.user.name);
 
         // Marquez l'utilisateur comme connecté en définissant un drapeau dans localStorage
         localStorage.setItem("userLoggedIn", "true");
@@ -65,6 +68,8 @@ class Login extends React.Component {
         console.log(error.response);
       });
   };
+
+
 
   render() {
     if (this.state.redirect) {

@@ -5,11 +5,8 @@ import Register from "./components/page/Register";
 import PostPicture from "./components/page/PostPicture";
 import Album from "./components/page/Album";
 import ReadMe from "./components/page/ReadMe";
-import Package from "./components/page/Package";
 import GitIgnore from "./components/page/GitIgnore";
-import Src from "./components/page/Src";
-import Public from "./components/page/Public";
-import Node from "./components/page/Node";
+
 import MealPlanner from "./components/page/MealPlanner";
 import Recipe from "./components/page/Recipe";
 import RecipeDetail from "./components/page/RecipeDetail";
@@ -37,11 +34,7 @@ function App() {
             <Route exact path="/blog/:id" element={<ArticleDetail />}></Route>
 
             <Route exact path="/readme" element={<ReadMe />}></Route>
-            <Route exact path="/package" element={<Package />}></Route>
             <Route exact path="/gitignore" element={<GitIgnore />}></Route>
-            <Route exact path="/src" element={<Src />}></Route>
-            <Route exact path="/public" element={<Public />}></Route>
-            <Route exact path="/node" element={<Node />}></Route>
             <Route exact path="/mealplanner" element={<MealPlanner />}></Route>
             <Route exact path="/pokedex" element={<Pokedex />}></Route>
             <Route exact path="/pokemon/:pokemonName" element={<Pokemon />}></Route>

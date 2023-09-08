@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 import AppLoader from "../incs/AppLoader";
 import dayjs from "dayjs";
+import Footer from "../incs/Footer";
 
 const Recipe = () => {
   const [selectedDate, setSelectedDate] = React.useState(dayjs());
@@ -111,13 +112,13 @@ const Recipe = () => {
                             <div
                                 className="card mx-2 mb-2"
                                 key={recipe.id}
-                                style={{ width: "350px" }}
+                                style={{ width: "320px" }}
                             >
                               <img
                                   src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${recipe.picture_url}`}
                                   className="card-img-top mt-2 rounded"
                                   alt="..."
-                                  style={{ width: "320px", height: "250px" }}
+                                  style={{ width: "285px", height: "250px" }}
                               />
                               <div className="card-body">
                                 <h5 className="card-title">{recipe.title}</h5>
@@ -137,31 +138,10 @@ const Recipe = () => {
                   </div>
                 </div>
             )}
-
-
-          {/*<div className="container-fluid px-4">*/}
-            {/*  <div className="row">*/}
-            {/*    <div className="col-md-4 mt-2 mb-2">*/}
-            {/*      <button*/}
-            {/*          className="btn btn-sm btn-outline-primary btn-lg-square"*/}
-            {/*          onClick={handlePrevWeek}*/}
-            {/*      >*/}
-            {/*        <i className="fa-solid fa-angle-left"></i>*/}
-            {/*      </button>*/}
-            {/*      <button*/}
-            {/*          className="btn btn-sm btn-outline-primary btn-lg-square"*/}
-            {/*          onClick={handleNextWeek}*/}
-            {/*      >*/}
-            {/*        <i className="fa-solid fa-angle-right"></i>*/}
-            {/*      </button>*/}
-            {/*    </div>*/}
-            {/*    <RecipeCalendar date={selectedDate} />*/}
-            {/*  </div>*/}
-            {/*</div>*/}
-
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
