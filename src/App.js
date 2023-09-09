@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/page/Login";
 import Register from "./components/page/Register";
+import ContactForm from "./components/page/ContactForm";
 
 import Album from "./components/page/Album";
 import ReadMe from "./components/page/ReadMe";
@@ -17,10 +18,12 @@ import Picture from "./components/page/Picture";
 import Dashboard from "./components/page/Dashboard";
 import YourArticle from "./components/page/your/YourArticle";
 import PostArticle from "./components/page/your/PostArticle";
+import EditArticle from "./components/page/your/EditArticle";
 import YourPicture from "./components/page/your/YourPicture";
 import PostPicture from "./components/page/your/PostPicture";
 import YourRecipe from "./components/page/your/YourRecipe";
 import PostRecipe from "./components/page/your/PostRecipe";
+import EditArticleWithParams from "./components/page/EditArticleWithParams";
 
 import RequireAuth from "./components/RequireAuth";
 
@@ -31,6 +34,7 @@ function App() {
             <Route exact path="/" element={<Home />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/register" element={<Register />}></Route>
+            <Route exact path="/contact" element={<ContactForm />}></Route>
 
 
             <Route exact path="/readme" element={<ReadMe />}></Route>
@@ -40,6 +44,8 @@ function App() {
             <Route exact path="/blog" element={<Article />}></Route>
             <Route exact path="/blog/:id" element={<ArticleDetail />}></Route>
             <Route exact path="/blog/new" element={<PostArticle />}></Route>
+            <Route exact path="/blog/edit/:id" element={<EditArticleWithParams />}/>
+
 
             <Route exact path="/recipes" element={<Recipe />}></Route>
             <Route exact path="/recipes/:id" element={<RequireAuth><RecipeDetail /></RequireAuth>}></Route>
@@ -53,6 +59,8 @@ function App() {
             <Route exact path="/your-blog" element={<RequireAuth><YourArticle /></RequireAuth>}/>
             <Route exact path="/your-picture" element={<RequireAuth><YourPicture /></RequireAuth>}/>
             <Route exact path="/your-recipe" element={<RequireAuth><YourRecipe /></RequireAuth>}/>
+
+
           </Routes>
         </BrowserRouter>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import Axios from "axios";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // const { login } = useAuth();
 
@@ -138,7 +139,7 @@ class Login extends React.Component {
                   Login
                 </button>
                 <div className="pas-inscrit-container">
-                  <a className="btn-pas-inscrit" href="/register">Pas encore inscrit ?</a>
+                  <Link className="btn-pas-inscrit" to="/register">Pas encore inscrit ?</Link>
                 </div>
 
               </form>

@@ -116,10 +116,11 @@ const YourArticle = () => {
                                                     <td>{article.subtitle}</td>
                                                     <td>{article.status === "1" ? "Active" : "Inactive"}</td>
                                                     <td className="text-end">
-                                                        <i className="fa-solid fa-pen-to-square ms-1"></i>
-
+                                                        <Link to={`/blog/edit/${article.id}`}>
+                                                        <i className="fa-solid fa-pen-to-square btn btn-sm btn-outline-warning"></i>
+                                                        </Link>
                                                         <i
-                                                            className="fa-solid fa-delete-left ms-3 btn btn-sm"
+                                                            className="fa-solid fa-delete-left ms-3 btn btn-sm btn-outline-danger"
                                                             style={{ cursor: "pointer" }}
                                                             onClick={() => handleDeleteArticle(article.id)}
                                                         ></i>

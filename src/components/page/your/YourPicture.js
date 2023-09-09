@@ -65,6 +65,7 @@ const YourPicture = () => {
                                             Désolé, aucune picture trouvée.
                                         </div>
                                     ) : (
+                                        <div className="col-8 mx-auto">
                                         <table className="table table-hover border border-dark">
                                             <thead>
                                             <tr className="table-dark">
@@ -78,14 +79,15 @@ const YourPicture = () => {
                                                 <tr key={picture.id} className="table-active">
                                                     <th scope="row">{picture.id}</th>
                                                     <td>{picture.title}</td>
-                                                    <td>
-                                                        <i className="fa-solid fa-pen-to-square ms-1"></i>
-                                                        <i className="fa-solid fa-delete-left ms-3"></i>
+                                                    <td className="text-end">
+                                                        <i className="fa-solid fa-pen-to-square ms-1 btn btn-sm btn-outline-warning"></i>
+                                                        <i className="fa-solid fa-delete-left ms-3 btn btn-sm btn-outline-danger"></i>
                                                     </td>
                                                 </tr>
                                             ))}
                                             </tbody>
                                         </table>
+                                        </div>
                                     )}
 
                                     {/* Pagination */}
