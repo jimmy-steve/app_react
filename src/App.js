@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import Login from "./components/page/Login";
 import Register from "./components/page/Register";
 import ContactForm from "./components/page/ContactForm";
+import About from "./components/page/About";
 
 import Album from "./components/page/Album";
 import ReadMe from "./components/page/ReadMe";
@@ -35,7 +36,7 @@ function App() {
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/register" element={<Register />}></Route>
             <Route exact path="/contact" element={<ContactForm />}></Route>
-
+            <Route exact path="/about" element={<About />}></Route>
 
             <Route exact path="/readme" element={<ReadMe />}></Route>
             <Route exact path="/pokedex" element={<Pokedex />}></Route>

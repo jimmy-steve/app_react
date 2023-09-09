@@ -3,6 +3,9 @@ import SideBar from "../incs/SideBar";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import Footer from "../incs/Footer";
 import { Link } from "react-router-dom";
+import Eclipse1 from "../../assets/img/big-eclipse.svg";
+import Eclipse2 from "../../assets/img/mid-eclipse.svg";
+import Eclipse3 from "../../assets/img/small-eclipse.svg";
 
 // Composant Readme qui affiche des informations pour les clients
 const Readme = () => {
@@ -18,6 +21,11 @@ const Readme = () => {
             </div>
             <div className="col-md-10">
               <div className="content">
+                <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
+                <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
+                <img className="small-circle" src={Eclipse3} alt="small-circle"/>
+
+
                 <div className="container-fluid px-4">
                   <div className="row g-4">
                     {/* Section de présentation */}

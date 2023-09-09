@@ -579,3 +579,59 @@ audio{
   box-shadow: 0 0 darkred;
   top: 6px;
 }
+
+.container-card {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+.cercle {
+
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: royalblue;
+  background: url("https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  margin: 25px 25px 25px 0px;
+  float: right;
+  shape-outside: circle();
+}
+
+img {
+  width: 600px;
+  /* filter: blur(5px); */
+  /* filter: contrast(250%); */
+  /* filter: grayscale(100%); */
+  /* filter: invert(40%); */
+  /* filter: opacity(50%); */
+  /* filter: saturate(200%); */
+  /* filter: sepia(100%); */
+  /* filter: hue-rotate(90deg); */
+  /* filter: drop-shadow(0px 20px 30px #000); */
+  /* filter: blur(3px) sepia(80%); */
+}
+
+
+.big-circle {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: -1;
+  opacity: 0.5;
+  height: 80%;
+}
+.medium-circle {
+  position: absolute;
+  top: 30%;
+  right: 30%;
+  z-index: -1;
+  height: 60%;
+  opacity: 0.4;
+}
+.small-circle {
+  position: absolute;
+  bottom: 0%;
+  left: 20%;
+  z-index: -1;
+}

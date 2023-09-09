@@ -2,6 +2,9 @@ import React from "react";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
 import Axios from "axios";
 import { Navigate } from "react-router-dom";
+import Eclipse1 from "../../assets/img/big-eclipse.svg";
+import Eclipse2 from "../../assets/img/mid-eclipse.svg";
+import Eclipse3 from "../../assets/img/small-eclipse.svg";
 
 class Register extends React.Component {
   constructor() {
@@ -83,6 +86,9 @@ class Register extends React.Component {
     return (
       <>
         <NavBarBootstrap />
+        <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
+        <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
+        <img className="small-circle" src={Eclipse3} alt="small-circle"/>
         <div className="container">
           <div className="row">
 

@@ -133,15 +133,39 @@ class NavbarBootstrap extends React.Component {
                         </>
                     ) : (
                         <>
-                          <BlogDropdown />
+
+                          <li className="nav-item me-2">
+                            <BlogDropdown />
+                            </li>
                           <li className="nav-item">
-                            <a className="nav-link" href="#">About</a>
-                          </li>
-                          <li className="nav-item">
-                            <Link className="nav-link me-3" to="/">
-                              Home
+                            <Link
+                                className="btn btn-sm btn-outline-warning me-3 mt-1"
+                                to="#"
+                            >
+                              <i className="fa-solid fa-radiation"></i><span className="hide-desktop"> News</span>
                             </Link>
                           </li>
+
+
+                          <li className="nav-item">
+                            <Link
+                                className="btn btn-sm btn-outline-danger me-3 mt-1"
+                                to="/about"
+                            >
+                              <i className="fa-solid fa-code"></i><span className="hide-desktop"> About</span>
+                            </Link>
+                          </li>
+
+                          <li className="nav-item">
+                            <Link
+                                className="btn btn-sm btn-outline-success me-3 mt-1"
+                                to="/"
+                            >
+                              <i className="fa-solid fa-tree-city"></i><span className="hide-desktop"> Home</span>
+                            </Link>
+                          </li>
+
+
                           <li className="nav-item mt-1 btn-connect">
                             <Link className="btn btn-sm btn-outline-dark me-3" onClick={playMusic} to="/login">
                               Connexion

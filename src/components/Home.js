@@ -6,7 +6,9 @@ import Footer from "./incs/Footer";
 import { Howl, Howler } from "howler"; // Importez Howler et Howl depuis la bibliothèque howler
 import ClicSound from "../assets/mp3/sound1.wav"; // Chemin vers le fichier audio du clic
 import Banner from "./incs/Banner";
-
+import Eclipse1 from "../assets/img/big-eclipse.svg";
+import Eclipse2 from "../assets/img/mid-eclipse.svg";
+import Eclipse3 from "../assets/img/small-eclipse.svg";
 
 const Home = () => {
   // Fonction pour jouer le son
@@ -30,11 +32,13 @@ const Home = () => {
             <div className="col">
               <div className="content">
 
-
+                <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
+                <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
+                <img className="small-circle" src={Eclipse3} alt="small-circle"/>
 
                 <div className="container-fluid">
                   <div className="row">
-                    <div className="col-md-12 mt-5">
+                    <div className="col-md-12">
                       <h1 className="display-4">Hello my Friend !</h1>
                       <p className="lead text-muted">
                         Eh bien, bien, bien, regardez qui est arrivé dans mon saloon numérique.

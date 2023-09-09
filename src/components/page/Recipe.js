@@ -6,6 +6,9 @@ import Axios from "axios";
 import AppLoader from "../incs/AppLoader";
 import dayjs from "dayjs";
 import Footer from "../incs/Footer";
+import Eclipse1 from "../../assets/img/big-eclipse.svg";
+import Eclipse2 from "../../assets/img/mid-eclipse.svg";
+import Eclipse3 from "../../assets/img/small-eclipse.svg";
 
 const Recipe = () => {
   const [selectedDate, setSelectedDate] = React.useState(dayjs());
@@ -80,7 +83,9 @@ const Recipe = () => {
             <SideBar />
           </div>
           <div className="col-md-10">
-
+            <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
+            <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
+            <img className="small-circle" src={Eclipse3} alt="small-circle"/>
 
             {isLoading ? ( // Display loader while loading
                 <div className="d-flex justify-content-center mt-5">
