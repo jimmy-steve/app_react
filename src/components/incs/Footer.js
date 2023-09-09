@@ -24,10 +24,15 @@ const Footer = () => {
                         <img className={"f-logo-footer-inverse"} src={FLogo} alt="logo"/>
                     </a>
 
-                    <ul className="nav col-md-4 justify-content-end">
+                    <ul className="nav col-md-4 ">
                         <li className="nav-item">
                             <Link className="nav-link px-2 text-muted" to="/">
                                 Home
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link px-2 text-muted" to="/blog/category/all">
+                                Blog
                             </Link>
                         </li>
                         <li className="nav-item">

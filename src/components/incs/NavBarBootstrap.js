@@ -139,6 +139,27 @@ class NavbarBootstrap extends React.Component {
                                         <>
 
 
+
+                                            <li className="nav-item">
+                                                <Link
+                                                    className="btn btn-sm btn-outline-info me-3 mt-1"
+                                                    to="/recipes"
+                                                >
+                                                    <i className="fa-solid fa-burger"></i><span
+                                                    className="hide-desktop"> Recipe</span>
+                                                </Link>
+                                            </li>
+
+                                            <li className="nav-item">
+                                                <Link
+                                                    className="btn btn-sm btn-outline-warning me-3 mt-1"
+                                                    to="/album"
+                                                >
+                                                    <i className="fa-solid fa-images"></i><span
+                                                    className="hide-desktop"> Picture</span>
+                                                </Link>
+                                            </li>
+
                                             <li className="nav-item">
                                                 <Link
                                                     className="btn btn-sm btn-outline-success me-3 mt-1"
@@ -146,16 +167,6 @@ class NavbarBootstrap extends React.Component {
                                                 >
                                                     <i className="fa-solid fa-blog"></i><span
                                                     className="hide-desktop"> Blog</span>
-                                                </Link>
-                                            </li>
-
-                                            <li className="nav-item">
-                                                <Link
-                                                    className="btn btn-sm btn-outline-warning me-3 mt-1"
-                                                    to="#"
-                                                >
-                                                    <i className="fa-solid fa-radiation"></i><span
-                                                    className="hide-desktop"> News</span>
                                                 </Link>
                                             </li>
 

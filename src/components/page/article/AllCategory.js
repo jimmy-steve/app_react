@@ -59,10 +59,10 @@ const Article = () => {
             <NavBarBootstrap pageTitle="Blog"/>
             <div className="container-fluid m-1">
                 <div className="row">
-                    <div className="col-2 p-0 sidebar">
+                    <div className="col-sm-12 col-md-2 col-lg-2 p-0 sidebar">
                         <SideBar/>
                     </div>
-                    <div className="col-md-8 col-lg-10">
+                    <div className="col-sm-12 col-md-10 col-lg-10">
                         <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
                         <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
                         <img className="small-circle" src={Eclipse3} alt="small-circle"/>

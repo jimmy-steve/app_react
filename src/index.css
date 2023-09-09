@@ -71,7 +71,7 @@
 }
 
 .sidebar {
-  min-width: 175px;
+  /*min-width: 175px;*/
   position: sticky;
   top: 0;
   left: 0;
@@ -83,6 +83,7 @@
 @media (max-width: 768px) {
   .sidebar {
     display: none;
+
   }
   h2{
     margin-top: 10px;
@@ -171,11 +172,9 @@
 }
 
 .pas-inscrit-container{
-  display: flex;
-  position: absolute;
-  right: 10%;
-  top: 340px;
-  justify-content: right;
+  display: inline-block;
+  margin-top: 40px;
+    float: right;
 }
 .f-logo{
     width: 20px;
@@ -345,6 +344,22 @@ img {
   z-index: -1;
 }
 
+@media (max-width: 767px) {
+  .big-circle {
+display: none;
+  }
+  .medium-circle {
+    display: none;
+  }
+  .small-circle {
+    display: none;
+  }
+
+  footer{
+
+  }
+}
+
 
 /* Styles pour les écrans de petite taille (mobiles) */
 @media (max-width: 998px) {
@@ -363,4 +378,8 @@ img {
   .list-group .badge{
     display: none;
   }
+}
+
+.btn-close{
+font-size: 50px;
 }
