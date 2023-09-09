@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import { PerspectiveCamera, RenderTexture, Text } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import React, {useRef} from "react";
+import {PerspectiveCamera, RenderTexture, Text} from "@react-three/drei";
+import {useFrame} from "@react-three/fiber";
 
 const Cube = () => {
     const textRef = useRef();
@@ -10,11 +10,11 @@ const Cube = () => {
     );
     return (
         <mesh>
-            <boxGeometry />
+            <boxGeometry/>
             <meshStandardMaterial color="#ffffff">
                 <RenderTexture attach="map">
-                    <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-                    <color attach="background" args={["#dc9dcd"]} />
+                    <PerspectiveCamera makeDefault position={[0, 0, 5]}/>
+                    <color attach="background" args={["#dc9dcd"]}/>
                     <Text ref={textRef} fontSize={3} color="#444">
                         hello
                     </Text>

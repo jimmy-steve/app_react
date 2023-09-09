@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import AppLoader from "../../incs/AppLoader";
 import SideBar from "../../incs/SideBar";
 import NavBarBootstrap from "../../incs/NavBarBootstrap";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const YourArticle = () => {
     const [articles, setArticles] = useState([]);
@@ -71,11 +71,11 @@ const YourArticle = () => {
 
     return (
         <>
-            <NavBarBootstrap pageTitle="this->Article" />
+            <NavBarBootstrap pageTitle="this->Article"/>
             <div className="container-fluid m-1">
                 <div className="row">
                     <div className="col-2 p-0 sidebar">
-                        <SideBar />
+                        <SideBar/>
                     </div>
                     <div className="col-md-10">
 
@@ -87,7 +87,7 @@ const YourArticle = () => {
                         <div className="container-fluid mt-3">
                             {isLoading ? (
                                 <div className="d-flex justify-content-center mt-5">
-                                    <AppLoader />
+                                    <AppLoader/>
                                 </div>
                             ) : (
                                 <>
@@ -97,45 +97,45 @@ const YourArticle = () => {
                                         </div>
                                     ) : (
                                         <div className="col-8 mx-auto">
-                                        <table className="table table-hover border border-dark">
-                                            <thead>
-                                            <tr className="table-dark">
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Title</th>
-                                                <th scope="col">SubTitle</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Action</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {articles.map((article) => (
-                                                <tr key={article.id} className="table-active">
-                                                    <th scope="row">{article.id}</th>
-                                                    <td>{article.title}</td>
-                                                    <td>{article.subtitle}</td>
-                                                    <td>{article.status === "1" ? "Active" : "Inactive"}</td>
-                                                    <td className="text-end">
-                                                        <Link to={`/blog/edit/${article.id}`}>
-                                                        <i className="fa-solid fa-pen-to-square btn btn-sm btn-outline-warning"></i>
-                                                        </Link>
-                                                        <i
-                                                            className="fa-solid fa-delete-left ms-3 btn btn-sm btn-outline-danger"
-                                                            style={{ cursor: "pointer" }}
-                                                            onClick={() => handleDeleteArticle(article.id)}
-                                                        ></i>
-                                                    </td>
+                                            <table className="table table-hover border border-dark">
+                                                <thead>
+                                                <tr className="table-dark">
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">SubTitle</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Action</th>
 
                                                 </tr>
-                                            ))}
-                                            </tbody>
-                                        </table>
-                                            </div>
+                                                </thead>
+                                                <tbody>
+                                                {articles.map((article) => (
+                                                    <tr key={article.id} className="table-active">
+                                                        <th scope="row">{article.id}</th>
+                                                        <td>{article.title}</td>
+                                                        <td>{article.subtitle}</td>
+                                                        <td>{article.status === "1" ? "Active" : "Inactive"}</td>
+                                                        <td className="text-end">
+                                                            <Link to={`/blog/edit/${article.id}`}>
+                                                                <i className="fa-solid fa-pen-to-square btn btn-sm btn-outline-warning"></i>
+                                                            </Link>
+                                                            <i
+                                                                className="fa-solid fa-delete-left ms-3 btn btn-sm btn-outline-danger"
+                                                                style={{cursor: "pointer"}}
+                                                                onClick={() => handleDeleteArticle(article.id)}
+                                                            ></i>
+                                                        </td>
+
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     )}
 
                                     <div className="pagination-container">
                                         <ul className="pagination">
-                                            {Array.from({ length: totalPages }, (_, i) => (
+                                            {Array.from({length: totalPages}, (_, i) => (
                                                 <li
                                                     className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
                                                     key={i}

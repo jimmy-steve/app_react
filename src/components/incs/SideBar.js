@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import LeftBar from "./LeftBar";
 import Ozzy from "../../assets/mp3/ozzy-musique.mp3";
+
 const BottomSidebar = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [isPlaying, setIsPlaying] = useState(false); // État de lecture de la musique
@@ -41,13 +42,14 @@ const BottomSidebar = () => {
     return (
         <>
             <nav>
-                <LeftBar />
+                <LeftBar/>
             </nav>
             <div className="container">
                 <div className="row">
                     <div className="mt-2 card">
                         <div className="div-hours mt-2">
-                            <h5 className="text-center"><span className="badge bg-secondary">{currentTime.toLocaleTimeString()}</span></h5>
+                            <h5 className="text-center"><span
+                                className="badge bg-secondary">{currentTime.toLocaleTimeString()}</span></h5>
                         </div>
 
                         <div>
@@ -66,7 +68,7 @@ const BottomSidebar = () => {
                         </div>
 
                         <audio ref={audioRef} controls>
-                            <source src={Ozzy} type="audio/mpeg" />
+                            <source src={Ozzy} type="audio/mpeg"/>
                         </audio>
 
                     </div>

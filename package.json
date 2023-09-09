@@ -29,7 +29,8 @@
     "react-social-login-buttons": "^3.9.1",
     "styled-components": "^6.0.3",
     "three": "^0.155.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@react-buddy/ide-toolbox": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

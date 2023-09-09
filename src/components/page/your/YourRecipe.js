@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import AppLoader from "../../incs/AppLoader";
 import SideBar from "../../incs/SideBar"; // Assurez-vous que le chemin du composant SideBar est correct
@@ -45,17 +45,17 @@ const YourRecipe = () => {
 
     return (
         <>
-            <NavBarBootstrap pageTitle="this>-Recipe" />
+            <NavBarBootstrap pageTitle="this>-Recipe"/>
             <div className="container-fluid m-1">
                 <div className="row">
                     <div className="col-2 p-0 sidebar">
-                        <SideBar />
+                        <SideBar/>
                     </div>
                     <div className="col-md-10">
                         <div className="container-fluid mt-3">
                             {isLoading ? ( // Affichez l'indicateur de chargement si isLoading est vrai
                                 <div className="d-flex justify-content-center mt-5">
-                                    <AppLoader />
+                                    <AppLoader/>
                                 </div>
                             ) : (
                                 <>
@@ -90,7 +90,7 @@ const YourRecipe = () => {
                                     {/* Pagination */}
                                     <div className="pagination-container">
                                         <ul className="pagination">
-                                            {Array.from({ length: totalPages }, (_, i) => (
+                                            {Array.from({length: totalPages}, (_, i) => (
                                                 <li
                                                     className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
                                                     key={i}

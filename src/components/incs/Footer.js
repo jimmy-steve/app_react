@@ -20,8 +20,8 @@ const Footer = () => {
                     <p className="col-md-4 mb-0 text-muted">© 2023 Jimmy-Steve, Inc</p>
 
                     <a className="col-md-4 d-flex align-items-center justify-content-center">
-                        <img className={"f-logo-footer"} src={FLogo} alt="logo" />
-                        <img className={"f-logo-footer-inverse"} src={FLogo} alt="logo" />
+                        <img className={"f-logo-footer"} src={FLogo} alt="logo"/>
+                        <img className={"f-logo-footer-inverse"} src={FLogo} alt="logo"/>
                     </a>
 
                     <ul className="nav col-md-4 justify-content-end">

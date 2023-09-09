@@ -1,6 +1,6 @@
 import SideBar from "../incs/SideBar";
 import NavBarBootstrap from "../incs/NavBarBootstrap";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import AppLoader from "../incs/AppLoader"; // Importez votre composant d'indicateur de chargement
 
@@ -33,17 +33,17 @@ const Dashboard = () => {
 
     return (
         <>
-            <NavBarBootstrap pageTitle="Dashboard" />
+            <NavBarBootstrap pageTitle="Dashboard"/>
             <div className="container-fluid m-1">
                 <div className="row">
                     <div className="col-2 p-0 sidebar">
-                        <SideBar />
+                        <SideBar/>
                     </div>
                     <div className="col-md-10">
                         <div className="container-fluid mt-3">
                             {isLoading ? ( // Affichez l'indicateur de chargement si isLoading est vrai
                                 <div className="d-flex justify-content-center mt-5">
-                                    <AppLoader />
+                                    <AppLoader/>
                                 </div>
                             ) : (
                                 <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import AppLoader from "../../incs/AppLoader";
 import SideBar from "../../incs/SideBar"; // Assurez-vous que le chemin du composant SideBar est correct
@@ -46,17 +46,17 @@ const YourPicture = () => {
 
     return (
         <>
-            <NavBarBootstrap pageTitle="this->Picture" />
+            <NavBarBootstrap pageTitle="this->Picture"/>
             <div className="container-fluid m-1">
                 <div className="row">
                     <div className="col-2 p-0 sidebar">
-                        <SideBar />
+                        <SideBar/>
                     </div>
                     <div className="col-md-10">
                         <div className="container-fluid mt-3">
                             {isLoading ? ( // Affichez l'indicateur de chargement si isLoading est vrai
                                 <div className="d-flex justify-content-center mt-5">
-                                    <AppLoader />
+                                    <AppLoader/>
                                 </div>
                             ) : (
                                 <>
@@ -66,34 +66,34 @@ const YourPicture = () => {
                                         </div>
                                     ) : (
                                         <div className="col-8 mx-auto">
-                                        <table className="table table-hover border border-dark">
-                                            <thead>
-                                            <tr className="table-dark">
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Title</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {pictures.map((picture) => (
-                                                <tr key={picture.id} className="table-active">
-                                                    <th scope="row">{picture.id}</th>
-                                                    <td>{picture.title}</td>
-                                                    <td className="text-end">
-                                                        <i className="fa-solid fa-pen-to-square ms-1 btn btn-sm btn-outline-warning"></i>
-                                                        <i className="fa-solid fa-delete-left ms-3 btn btn-sm btn-outline-danger"></i>
-                                                    </td>
+                                            <table className="table table-hover border border-dark">
+                                                <thead>
+                                                <tr className="table-dark">
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Title</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
-                                            ))}
-                                            </tbody>
-                                        </table>
+                                                </thead>
+                                                <tbody>
+                                                {pictures.map((picture) => (
+                                                    <tr key={picture.id} className="table-active">
+                                                        <th scope="row">{picture.id}</th>
+                                                        <td>{picture.title}</td>
+                                                        <td className="text-end">
+                                                            <i className="fa-solid fa-pen-to-square ms-1 btn btn-sm btn-outline-warning"></i>
+                                                            <i className="fa-solid fa-delete-left ms-3 btn btn-sm btn-outline-danger"></i>
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
                                         </div>
                                     )}
 
                                     {/* Pagination */}
                                     <div className="pagination-container">
                                         <ul className="pagination">
-                                            {Array.from({ length: totalPages }, (_, i) => (
+                                            {Array.from({length: totalPages}, (_, i) => (
                                                 <li
                                                     className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
                                                     key={i}
