@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {NavDropdown} from "react-bootstrap";
 import Axios from "axios";
 import {Link} from "react-router-dom";
-import DnaLoader from "./DnaLoader";
+import DnaLoader from "../loader/DnaLoader";
 
 function BlogDropdown() {
     const [categories, setCategories] = useState([]);

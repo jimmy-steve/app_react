@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import FLogo from "../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
+import FLogo from "../../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
 import {Howl} from "howler";
-import ClicSound from "../../assets/mp3/sound1.wav";
+import ClicSound from "../../../assets/mp3/sound1.wav";
 
 // Fonction pour jouer le son
 const playMusic = () => {
@@ -80,9 +80,9 @@ class NavbarBootstrap extends React.Component {
                                     {localStorage.getItem("token") ? (
                                         <>
                                             <li className="nav-item">
-                            <span className="btn btn-sm btn-outline-success me-3">
-                                {greetingMessage}, {userName}
-                              </span>
+                                                <span className="btn btn-sm btn-outline-light me-3">
+                                                    {greetingMessage}, {userName}
+                                                  </span>
                                             </li>
 
                                             <li className="nav-item">
@@ -105,11 +105,10 @@ class NavbarBootstrap extends React.Component {
                                                 </Link>
                                             </li>
 
-
                                             <li className="nav-item">
                                                 <Link
                                                     className="btn btn-sm btn-outline-success me-3"
-                                                    to="/blog"
+                                                    to="/blog/category/all"
                                                 >
                                                     <i className="fa-solid fa-blog"></i><span
                                                     className="hide-desktop"> Blog</span>

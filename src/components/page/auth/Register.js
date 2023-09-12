@@ -1,5 +1,5 @@
 import React from "react";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import Axios from "axios";
 import {Navigate} from "react-router-dom";
 import Eclipse1 from "../../../assets/img/big-eclipse.svg";

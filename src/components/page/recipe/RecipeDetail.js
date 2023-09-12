@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import Axios from "axios";
 import {useParams} from "react-router-dom";
-import AppLoader from "../../incs/AppLoader";
+import AppLoader from "../../incs/loader/AppLoader";
 import FavoriteBorderButton from "@material-ui/icons/FavoriteBorder";
 import FavoriteButton from "@material-ui/icons/Favorite";
 import {Link} from "react-router-dom";
@@ -11,26 +11,8 @@ import {Link} from "react-router-dom";
 const RecipeDetail = () => {
     const {id} = useParams();
     const [recipe, setRecipe] = useState({});
-    // const [like, setLike] = useState(false);
     const [redirect, setRedirect] = useState(false);
-
-    // const handleLike = () => {
-    //   let headers = {
-    //     headers: {
-    //       "API-TOKEN": localStorage.getItem("token"),
-    //     },
-    //   };
-    //   Axios.get(
-    //     `https://de-lafontaine.ca/mealplanner/public/api/pictures/${id}/handlelike`,
-    //     headers
-    //   )
-    //     .then((response) => {
-    //       setLike(response.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error.response);
-    //     });
-    // };
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         let headers = {
@@ -50,23 +32,14 @@ const RecipeDetail = () => {
                 headers
             )
                 .then((response) => {
-                    console.log(response.data);
-                    setRecipe(response.data);
+                    setRecipe(response.data.recipe);
+                    setIsLoading(false);
                 })
                 .catch((error) => {
                     console.log(error.response);
+                    setIsLoading(false);
                 });
 
-            // Axios.get(
-            //   `https://de-lafontaine.ca/mealplanner/public/api/pictures/${id}/checklike`,
-            //   headers
-            // )
-            //   .then((response) => {
-            //     setLike(response.data);
-            //   })
-            //   .catch((error) => {
-            //     console.log(error.response);
-            //   });
         } else {
             setRedirect(true);
         }
@@ -80,8 +53,11 @@ const RecipeDetail = () => {
         <>
             <NavBarBootstrap/>
             <div className="recipe container my-4">
-                {recipe.id ? (
-
+                {isLoading ? ( // Affichez le loader tant que les données sont en cours de chargement
+                    <div className="d-flex justify-content-center mt-5">
+                        <AppLoader />
+                    </div>
+                ) : (
                     <div className="row g-0">
                         <div className="col-sm-12 col-md-6">
                             <img id="img-recipe"
@@ -143,7 +119,9 @@ const RecipeDetail = () => {
                             <div className="col--md-6 col-sm-12 m-1">
                                 <div className="text-start"><span className="h3">Instructions :</span></div>
                                 <div className="card-text card" id="recipe-instructions">
-                                    {recipe.instructions}
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: recipe.instructions }}
+                                    ></div>
                                 </div>
                             </div>
 
@@ -153,10 +131,6 @@ const RecipeDetail = () => {
                                 </Link>
                             </div>
                         </div>
-                    </div>
-                ) : (
-                    <div className="d-flex justify-content-center mt-5">
-                        <AppLoader/>
                     </div>
                 )}
             </div>

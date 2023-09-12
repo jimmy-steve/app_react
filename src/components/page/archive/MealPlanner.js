@@ -1,8 +1,8 @@
-import SideBar from "../../incs/SideBar";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import SideBar from "../../incs/common/SideBar";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import React from "react";
 import dayjs from "dayjs";
-import WeekCalendar from "../../incs/WeekCalendar";
+import WeekCalendar from "../../incs/calendar/WeekCalendar";
 import "dayjs/locale/fr"; // Import the French locale for dayjs
 
 const MealPlanner = () => {

@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import {ChevronDownIcon, ChevronRightIcon} from "@heroicons/react/solid";
 import {Link} from "react-router-dom";
 
-const JSIcon = require("../../assets/icons/JSIcon.png");
-const TSIcon = require("../../assets/icons/TSIcon.png");
-const JsonIcon = require("../../assets/icons/icons8-json-30.png");
-const GitIgnoreIcon = require("../../assets/icons/gitignore-vector.png");
-const FolderIcon = require("../../assets/icons/icons8-folder-48.png");
-const InfoIcon = require("../../assets/icons/icons8-info-48.png");
+const JSIcon = require("../../../assets/icons/JSIcon.png");
+const TSIcon = require("../../../assets/icons/TSIcon.png");
+const JsonIcon = require("../../../assets/icons/icons8-json-30.png");
+const GitIgnoreIcon = require("../../../assets/icons/gitignore-vector.png");
+const FolderIcon = require("../../../assets/icons/icons8-folder-48.png");
+const InfoIcon = require("../../../assets/icons/icons8-info-48.png");
 
 const LeftBar = () => {
     const [showWebList, setShowWebList] = useState(true);
@@ -54,6 +54,15 @@ const LeftBar = () => {
                 ) : (
                     <>
                         {/*On affiche la liste des applications publiques*/}
+                        <Link to="/" className="">
+                            <img
+                                src={InfoIcon}
+                                alt="Info Icon"
+                                className="text-yellow_vs ms-2 me-1"
+                                style={{width: "21px"}}
+                            />
+                            this->Todos
+                        </Link>
                         <Link to="/readme" className="">
                             <img
                                 src={InfoIcon}
@@ -65,13 +74,14 @@ const LeftBar = () => {
                         </Link>
                     </>
                 )}
+
             </div>
         );
     };
 
     const NewProjectList = () => (
         <div className="left-list-group list-group bg-light ms-4">
-            <Link to="/blog" className="">
+            <Link to="/blog/category/all" className="">
                 <img
                     src={JSIcon}
                     alt="JS Icon"
@@ -112,7 +122,7 @@ const LeftBar = () => {
 
     const ContactList = () => (
         <div className="left-list-group list-group bg-light ms-4">
-            <a href="/" className="">
+            <a href="/DossierDeTravail_AppWeb/pull_app-react/public" className="">
                 <img
                     src={JSIcon}
                     alt="JS Icon"

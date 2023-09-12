@@ -1,8 +1,8 @@
 import React from "react";
 import Axios from "axios";
 import {Navigate} from "react-router-dom";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
-import SideBar from "../../incs/SideBar";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
+import SideBar from "../../incs/common/SideBar";
 
 class PostPicture extends React.Component {
     constructor(props) {
@@ -118,7 +118,7 @@ class PostPicture extends React.Component {
                                                             : ""
                                                     }`}
                                                     id="description"
-                                                    rows="6"
+                                                    rows="2"
                                                     data-gramm="false"
                                                     wt-ignore-input="true"
                                                     onChange={this.handleDescriptionChange}

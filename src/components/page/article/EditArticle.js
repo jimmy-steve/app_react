@@ -1,14 +1,16 @@
 import React, {Component} from "react";
 import axios from "axios";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
-import SideBar from "../../incs/SideBar";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
+import SideBar from "../../incs/common/SideBar";
 import Axios from "axios";
-import AppLoader from "../../incs/AppLoader";
+import AppLoader from "../../incs/loader/AppLoader";
+import {Editor} from "@tinymce/tinymce-react";
 
+class EditArticle extends Component {
 
-class AddArticle extends Component {
     constructor(props) {
         super(props);
+        this.editorRef = React.createRef();
         this.state = {
             title: "",
             subtitle: "",
@@ -20,6 +22,8 @@ class AddArticle extends Component {
             redirect: false,
             categories: [], // Un tableau pour stocker les catégories
             confirmationMessage: "",
+            articleData: {},
+            articleId: props.articleId,
             errors: [],
             isLoading: false, // Ajoutez un état pour le chargement initial
         };
@@ -27,6 +31,27 @@ class AddArticle extends Component {
 
 
     componentDidMount() {
+        const articleId = this.state.articleId;
+
+        if (articleId) {
+            axios
+                .get(`https://de-lafontaine.ca/mealplanner/public/api/articles/${articleId}`)
+                .then((response) => {
+                    this.setState({articleData: response.data.article});
+                    // Mettez à jour les champs du formulaire avec les données de l'article
+                    this.setState({
+                        title: response.data.article.title,
+                        subtitle: response.data.article.subtitle,
+                        content: response.data.article.content,
+                        status: response.data.article.status,
+                        category_id: response.data.article.category_id,
+                    });
+                })
+                .catch((error) => {
+                    console.error("Erreur lors de la récupération de l'article : ", error);
+                });
+        }
+
         // Effectuer la requête GET pour récupérer les catégories depuis l'API
         axios
             .get("https://de-lafontaine.ca/mealplanner/public/api/category")
@@ -53,7 +78,10 @@ class AddArticle extends Component {
     };
 
     handleContentChange = (event) => {
-        this.setState({content: event.target.value});
+        if (this.editorRef.current) {
+            // console.log(this.editorRef.current.getContent());
+            this.setState({content: this.editorRef.current.getContent()});
+        }
     };
 
 
@@ -78,7 +106,7 @@ class AddArticle extends Component {
         bodyFormData.append("image", this.state.image);
         bodyFormData.append("content", this.state.content);
         bodyFormData.append("status", this.state.status);
-        bodyFormData.append("category_id", this.state.category_id); // Utilisez cette ligne pour ajouter l'ID de la catégorie
+        bodyFormData.append("category_id", this.state.category_id);
 
 
         let headers = {
@@ -87,15 +115,15 @@ class AddArticle extends Component {
             },
         };
 
-        Axios.post(
-            "https://de-lafontaine.ca/mealplanner/public/api/add_article",
+        Axios.post(`https://de-lafontaine.ca/mealplanner/public/api/edit_article/${this.state.articleId}`
+            ,
             bodyFormData,
             headers
         )
             .then((response) => {
                 this.setState({isLoading: false});
                 this.setState({redirect: true});
-                this.setState({confirmationMessage: "Article ajouté avec succès"});
+                this.setState({confirmationMessage: "Article modifié avec succès"});
 
                 // Réinitialisez les champs du formulaire après la soumission
                 this.setState({
@@ -113,6 +141,7 @@ class AddArticle extends Component {
 
                 }, 2000);
 
+
             })
             .catch((error) => {
                 if (error.response && error.response.data) {
@@ -127,7 +156,7 @@ class AddArticle extends Component {
     render() {
         return (
             <>
-                <NavBarBootstrap pageTitle="Add Article"/>
+                <NavBarBootstrap pageTitle="Edit Article"/>
                 <div className="container-fluid m-1">
                     <div className="row">
                         <div className="col-2 p-0 sidebar">
@@ -148,8 +177,9 @@ class AddArticle extends Component {
                             ) : (
                                 <div className="container">
                                     <div className="row p-1">
-                                        <div className="card mt-2 p-4 col-md-6 col-lg-8 col-sm-12 mx-auto">
-                                            <h3>Ajouter un nouvel Article</h3>
+                                        <div className="card mt-2 p-4 col-md-6 col-lg-10 col-sm-12 mx-auto">
+                                            <h3>Modifier l'article #{this.state.articleId}</h3>
+
                                             <form
                                                 method="POST"
                                                 onSubmit={this.handleSubmit}
@@ -193,7 +223,6 @@ class AddArticle extends Component {
                                                         </div>
                                                     )}
                                                 </div>
-
                                                 <div className="form-group mt-4">
                                                     <label htmlFor="formFile" className="form-label">
                                                         Image
@@ -213,7 +242,6 @@ class AddArticle extends Component {
                                                         </div>
                                                     )}
                                                 </div>
-
                                                 <div className="form-group">
                                                     <label htmlFor="category" className="form-label mt-4">
                                                         Catégorie
@@ -233,36 +261,90 @@ class AddArticle extends Component {
                                                         ))}
                                                     </select>
                                                 </div>
-
                                                 <div className="form-group mt-4">
                                                     <label htmlFor="content">Contenu</label>
-                                                    <textarea
-                                                        className={`form-control ${
-                                                            this.state.errors.content ? "is-invalid" : ""
-                                                        }`}
+                                                    <Editor
+                                                        className={`form-control ${this.state.errors.content ? "is-invalid" : ""}`}
                                                         id="content"
                                                         name="content"
-                                                        rows="6"
-                                                        placeholder="Entrez le contenu"
-                                                        value={this.state.content}
-                                                        onChange={this.handleContentChange}
-                                                    ></textarea>
+                                                        onEditorChange={this.handleContentChange}
+                                                        onInit={(evt, editor) => (this.editorRef.current = editor)}
+                                                        initialValue={this.state.content}
+                                                        init={{
+                                                            height: 500,
+                                                            menubar: false,
+                                                            plugins: 'anchor autolink charmap emoticons image link lists media searchreplace table visualblocks wordcount',
+                                                            toolbar:
+                                                                "undo redo | formatselect | " +
+                                                                "bold italic backcolor | alignleft aligncenter " +
+                                                                "alignright alignjustify | bullist numlist outdent indent | " +
+                                                                "removeformat | help",
+                                                            content_style: "body { font-family: Helvetica, Arial, sans-serif; font-size: 14px }",
+                                                        }}
+                                                    />
+
                                                     {this.state.errors.content && (
                                                         <div className="invalid-feedback">
                                                             {this.state.errors.content}
-                                                        </div>
-                                                    )}
+                                                        </div>)}
                                                 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+                                                {/*    <textarea*/}
+                                                {/*        className={`form-control ${*/}
+                                                {/*            this.state.errors.content ? "is-invalid" : ""*/}
+                                                {/*        }`}*/}
+                                                {/*        id="content"*/}
+                                                {/*        name="content"*/}
+                                                {/*        rows="12"*/}
+                                                {/*        placeholder="Entrez le contenu"*/}
+                                                {/*        value={this.state.content}*/}
+                                                {/*        onChange={this.handleContentChange}*/}
+                                                {/*    ></textarea>*/}
+                                                {/*    {this.state.errors.content && (*/}
+                                                {/*        <div className="invalid-feedback">*/}
+                                                {/*            {this.state.errors.content}*/}
+                                                {/*        </div>*/}
+                                                {/*    )}*/}
+                                                {/*</div>*/}
+
+
+
+
+
+                                                <div className="form-check mt-4">
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        id="status"
+                                                        name="status"
+                                                        checked={this.state.status}
+                                                        onChange={this.handleStatusChange}
+                                                    />
+                                                    <label className="form-check-label" htmlFor="status">
+                                                        Publier l'article
+                                                    </label>
+                                                </div>
                                                 <button
                                                     type="submit"
                                                     className="btn btn-primary mt-4"
                                                     disabled={this.state.isSubmitting}
                                                 >
-                                                    Ajouter
+                                                    Modifier
                                                 </button>
                                             </form>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -275,4 +357,4 @@ class AddArticle extends Component {
     }
 }
 
-export default AddArticle;
+export default EditArticle;

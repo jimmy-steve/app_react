@@ -1,7 +1,7 @@
 import React from "react";
-import SideBar from "../incs/SideBar";
-import NavBarBootstrap from "../incs/NavBarBootstrap";
-import Footer from "../incs/Footer";
+import SideBar from "../incs/common/SideBar";
+import NavBarBootstrap from "../incs/common/NavBarBootstrap";
+import Footer from "../incs/common/Footer";
 import {Link} from "react-router-dom";
 import Eclipse1 from "../../assets/img/big-eclipse.svg";
 import Eclipse2 from "../../assets/img/mid-eclipse.svg";
@@ -29,8 +29,8 @@ const Readme = () => {
                             <div className="container-fluid px-4">
                                 <div className="row g-4">
                                     {/* Section de présentation */}
-                                    <div className="col-md-12 mt-5">
-                                        <h1 className="display-4">Bienvenue dans votre application</h1>
+                                    <div className="col-md-12 mt-4">
+                                        <h6 className="display-5">Bienvenue dans votre app</h6>
                                         <p className="lead">
                                             Notre application vous offre une expérience unique pour gérer des blogs, des
                                             recettes et des photos.

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from "react";
-import SideBar from "../../incs/SideBar";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import SideBar from "../../incs/common/SideBar";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import {Link} from "react-router-dom";
 import Axios from "axios";
-import AppLoader from "../../incs/AppLoader";
-import Footer from "../../incs/Footer";
+import AppLoader from "../../incs/loader/AppLoader";
+import Footer from "../../incs/common/Footer";
 import Eclipse1 from "../../../assets/img/big-eclipse.svg";
 import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
 import Eclipse3 from "../../../assets/img/small-eclipse.svg";
@@ -17,7 +17,7 @@ const Article = () => {
 
     useEffect(() => {
         const getArticles = (page) => {
-            Axios.get(`https://de-lafontaine.ca/mealplanner/public/api/articles?page=${page}`)
+            Axios.get(`https://de-lafontaine.ca/mealplanner/public/api/articles/recent?page=${page}`)
                 .then((response) => {
                     setArticles(response.data.data);
                     setTotalPages(response.data.last_page);
@@ -45,7 +45,7 @@ const Article = () => {
                     <div className="col-2 p-0 sidebar">
                         <SideBar/>
                     </div>
-                    <div className="col-md-8 col-lg-10">
+                    <div className="col-md-10 col-lg-10">
                         <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
                         <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
                         <img className="small-circle" src={Eclipse3} alt="small-circle"/>

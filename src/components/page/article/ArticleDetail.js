@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Link, Navigate} from "react-router-dom";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import Axios from "axios";
 import {useParams} from "react-router-dom";
-import AppLoader from "../../incs/AppLoader";
+import TriangleLoader from "../../incs/loader/TriangleLoader";
+import LittleBanner from "../../incs/banner/LittleBanner";
+import FavoriteBorderButton from "@material-ui/icons/FavoriteBorder";
 
 
 const RecipeDetail = () => {
@@ -30,7 +32,10 @@ const RecipeDetail = () => {
                 headers
             )
                 .then((response) => {
+                    console.log(response.data.article.content);
                     setArticle(response.data.article);
+
+
                     setIsLoading(false); // Mettez isLoading à false lorsque les données sont chargées
                 })
                 .catch((error) => {
@@ -51,16 +56,36 @@ const RecipeDetail = () => {
             <div className="container my-4">
                 {isLoading ? ( // Vérifiez si les données sont en cours de chargement
                     <div className="d-flex justify-content-center mt-5">
-                        <AppLoader/>
+                        <TriangleLoader/>
                     </div>
                 ) : (
                     <div className="row">
-                        <div className="col-md-8">
-                            <h1>{article.title}</h1>
+
+
+                        <div className="container-card m-3">
+
+                            <div className="btn-like-article text-end">
+                                <FavoriteBorderButton
+                                    className="text-danger"
+                                />
+                                <span className="ms-2 text-danger">I love this stuff !!</span>
+                            </div>
+
+
+
+                            <div className="cercle-image">
+                                <img
+                                    src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${article.image}`}
+                                    className="img-fluid"
+                                    alt="Thumbnail de l'image"/>
+                            </div>
+                            <h2 className="article-title">{article.title}</h2>
                             <p>{article.subtitle}</p>
-                            <img src={article.image} alt={article.title}/>
-                            <p>{article.content}</p>
+                            <div
+                                dangerouslySetInnerHTML={{ __html: article.content }}
+                            ></div>
                         </div>
+                        {/*<LittleBanner/>*/}
 
                         <div className="text-end mt-4">
                             <Link to="/blog" className="btn btn-primary">

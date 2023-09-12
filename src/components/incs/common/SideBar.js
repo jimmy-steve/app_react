@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import LeftBar from "./LeftBar";
-import Ozzy from "../../assets/mp3/ozzy-musique.mp3";
+import Ozzy from "../../../assets/mp3/ozzy-musique.mp3";
 
 const BottomSidebar = () => {
     const [currentTime, setCurrentTime] = useState(new Date());

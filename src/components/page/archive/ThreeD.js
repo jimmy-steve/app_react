@@ -1,10 +1,10 @@
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 
 import styled from "styled-components";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Sphere, MeshDistortMaterial} from "@react-three/drei";
 import React, {Suspense} from "react";
-import SideBar from "../../incs/SideBar";
+import SideBar from "../../incs/common/SideBar";
 
 
 const Section = styled.div`

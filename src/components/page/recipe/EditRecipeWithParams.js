@@ -1,13 +1,13 @@
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import EditArticle from './EditArticle';
+import EditRecipe from '../recipe/EditRecipe';
 
-function EditArticleWithParams() {
+function EditRecipeWithParams() {
     const {id} = useParams();
 
     // Utilisez l'ID de l'article comme nécessaire ici
 
-    return <EditArticle articleId={id}/>;
+    return <EditRecipe recipeId={id}/>;
 }
 
-export default EditArticleWithParams;
+export default EditRecipeWithParams;

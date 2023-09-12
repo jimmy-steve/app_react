@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from "react";
-import SideBar from "../../incs/SideBar";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import SideBar from "../../incs/common/SideBar";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import {Link} from "react-router-dom";
 import Axios from "axios";
-import AppLoader from "../../incs/AppLoader";
+import AppLoader from "../../incs/loader/AppLoader";
 import dayjs from "dayjs";
-import Footer from "../../incs/Footer";
+import Footer from "../../incs/common/Footer";
 import Eclipse1 from "../../../assets/img/big-eclipse.svg";
 import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
 import Eclipse3 from "../../../assets/img/small-eclipse.svg";

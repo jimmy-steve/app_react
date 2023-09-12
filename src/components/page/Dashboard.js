@@ -1,8 +1,8 @@
-import SideBar from "../incs/SideBar";
-import NavBarBootstrap from "../incs/NavBarBootstrap";
+import SideBar from "../incs/common/SideBar";
+import NavBarBootstrap from "../incs/common/NavBarBootstrap";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import AppLoader from "../incs/AppLoader"; // Importez votre composant d'indicateur de chargement
+import AppLoader from "../incs/loader/AppLoader"; // Importez votre composant d'indicateur de chargement
 
 const Dashboard = () => {
     const [articles, setArticles] = useState([]);

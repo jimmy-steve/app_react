@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import AppLoader from "../../incs/AppLoader";
-import SideBar from "../../incs/SideBar"; // Assurez-vous que le chemin du composant SideBar est correct
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
+import TriangleLoader from "../../incs/loader/TriangleLoader";
+import SideBar from "../../incs/common/SideBar";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import {Link} from "react-router-dom";
+import DeleteModal from "../../incs/modal/DeleteModal";
+import {format} from "date-fns";
+import {fr} from "date-fns/locale";
+import Eclipse1 from "../../../assets/img/big-eclipse.svg";
+import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
+import Eclipse3 from "../../../assets/img/small-eclipse.svg";
 
 const YourRecipe = () => {
     const [recipes, setRecipes] = useState([]);
@@ -12,6 +18,52 @@ const YourRecipe = () => {
     const [isLoading, setIsLoading] = useState(true); // Ajoutez un état pour le chargement initial
     const [totalPages, setTotalPages] = useState(1); // Total number of pages
     const [redirect, setRedirect] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [confirmationMessage, setConfirmationMessage] = useState("");
+    const [recipeId, setRecipeToDeleteId] = useState(null);
+
+    const handleDeleteClick = (id) => {
+        setShowDeleteModal(true);
+        setRecipeToDeleteId(id);
+    };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return format(date, "d MMMM yyyy", { locale: fr }); // Utilisez le locale "fr" pour le français
+    };
+
+    const handleDeleteConfirm = () => {
+        destroyRecipe(recipeId);
+        setShowDeleteModal(false);
+    };
+
+    const handleModalClose = () => {
+        setShowDeleteModal(false);
+    };
+
+    const destroyRecipe = (recipeId) => {
+        axios.delete(`https://de-lafontaine.ca/mealplanner/public/api/recipes/${recipeId}`)
+            .then(() => {
+
+                // Supprimez l'article de la liste locale
+                const updatedRecipes = recipes.filter((recipe) => recipe.id !== recipeId);
+                setRecipes(updatedRecipes);
+
+                // Mettez à jour le message de confirmation
+                setConfirmationMessage("La Recipe a été supprimé avec succès.");
+
+                // Supprimez le message de confirmation après 3 secondes
+                setTimeout(() => {
+                    setConfirmationMessage("");
+
+                }, 3000);
+
+            })
+            .catch((error) => {
+                console.error("Erreur lors de la suppression de la recipe : ", error);
+
+            });
+    }
 
     useEffect(() => {
         let headers = {
@@ -21,10 +73,8 @@ const YourRecipe = () => {
         };
 
         if (localStorage.getItem("token")) {
-            axios.get(`https://de-lafontaine.ca/mealplanner/public/api/recipes-by-user`, headers)
+            axios.get(`https://de-lafontaine.ca/mealplanner/public/api/recipes-by-user?page=${currentPage}`, headers)
                 .then((response) => {
-                    // Mettez à jour l'état pictures avec les données de l'API
-                    console.log(response.data.recipes.data);
                     setRecipes(response.data.recipes.data);
                     setTotalPages(response.data.recipes.last_page);
                 })
@@ -47,6 +97,10 @@ const YourRecipe = () => {
         <>
             <NavBarBootstrap pageTitle="this>-Recipe"/>
             <div className="container-fluid m-1">
+                <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
+                <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
+                <img className="small-circle" src={Eclipse3} alt="small-circle"/>
+
                 <div className="row">
                     <div className="col-2 p-0 sidebar">
                         <SideBar/>
@@ -55,7 +109,7 @@ const YourRecipe = () => {
                         <div className="container-fluid mt-3">
                             {isLoading ? ( // Affichez l'indicateur de chargement si isLoading est vrai
                                 <div className="d-flex justify-content-center mt-5">
-                                    <AppLoader/>
+                                    <TriangleLoader/>
                                 </div>
                             ) : (
                                 <>
@@ -68,18 +122,46 @@ const YourRecipe = () => {
                                             <thead>
                                             <tr className="table-dark">
                                                 <th scope="col">ID</th>
+                                                <th scope="col">Image</th>
                                                 <th scope="col">Title</th>
+                                                <th scope="col">Servings</th>
+                                                <th scope="col">Preparation Time</th>
+                                                <th scope="col">Cooking Time</th>
+                                                <th scope="col">Date Création</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {recipes.map((picture) => (
-                                                <tr key={picture.id} className="table-active">
-                                                    <th scope="row">{picture.id}</th>
-                                                    <td>{picture.title}</td>
-                                                    <td>
-                                                        <i className="fa-solid fa-pen-to-square ms-1"></i>
-                                                        <i className="fa-solid fa-delete-left ms-3"></i>
+                                            {recipes.map((recipe) => (
+                                                <tr key={recipe.id} className="table-active">
+                                                    <th scope="row">{recipe.id}</th>
+                                                    <td className="text-center">
+                                                        <img
+                                                            src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${recipe.picture_url}`}
+                                                            className="img-fluid img__table"
+                                                            alt="Thumbnail de l'image"/>
+                                                    </td>
+                                                    <td>{recipe.title}</td>
+                                                    <td>{recipe.servings}</td>
+                                                    <td>{recipe.preparation_time}</td>
+                                                    <td>{recipe.cooking_time}</td>
+                                                    <td>{formatDate(recipe.created_at)}</td>
+                                                    <td className="text-end">
+                                                        <Link to={`/recipes/${recipe.id}`}>
+                                                            <i className="fa-solid fa-code ms-1 btn btn-sm btn-outline-dark"></i>
+                                                        </Link>
+                                                        <Link to={`/recipes/edit/${recipe.id}`}>
+                                                            <i className="fa-solid fa-pen-to-square ms-1 btn btn-sm btn-outline-warning"></i>
+                                                        </Link>
+                                                        <i
+                                                            className="fa-solid fa-delete-left ms-1 btn btn-sm btn-outline-danger"
+                                                            onClick={() => handleDeleteClick(recipe.id)}
+                                                        ></i>
+                                                        <DeleteModal
+                                                            show={showDeleteModal}
+                                                            onHide={handleModalClose}
+                                                            onDelete={handleDeleteConfirm}
+                                                        />
                                                     </td>
                                                 </tr>
                                             ))}

@@ -4,6 +4,7 @@ import Login from "./components/page/auth/Login";
 import Register from "./components/page/auth/Register";
 import ContactForm from "./components/page/auth/ContactForm";
 import About from "./components/page/About";
+import GalleryPhoto from "./components/incs/photo/GalleryPhoto";
 
 import Album from "./components/page/picture/Album";
 import ReadMe from "./components/page/ReadMe";
@@ -18,15 +19,17 @@ import Pokemon from "./components/page/pokemon/Pokemon";
 import Picture from "./components/page/picture/Picture";
 import Dashboard from "./components/page/Dashboard";
 import YourArticle from "./components/page/your/YourArticle";
-import PostArticle from "./components/page/your/PostArticle";
+import PostArticle from "./components/page/article/PostArticle";
 import Category from "./components/page/article/Category";
 import AllCategory from "./components/page/article/AllCategory";
 
 import YourPicture from "./components/page/your/YourPicture";
-import PostPicture from "./components/page/your/PostPicture";
+import PostPicture from "./components/page/picture/PostPicture";
 import YourRecipe from "./components/page/your/YourRecipe";
-import PostRecipe from "./components/page/your/PostRecipe";
+import PostRecipe from "./components/page/recipe/PostRecipe";
 import EditArticleWithParams from "./components/page/article/EditArticleWithParams";
+import EditPictureWithParams from "./components/page/picture/EditPictureWithParams";
+import EditRecipeWithParams from "./components/page/recipe/EditRecipeWithParams";
 
 import RequireAuth from "./components/RequireAuth";
 
@@ -39,6 +42,7 @@ function App() {
                 <Route exact path="/register" element={<Register/>}></Route>
                 <Route exact path="/contact" element={<ContactForm/>}></Route>
                 <Route exact path="/about" element={<About/>}></Route>
+                <Route exact path="/photo-gallery" element={<GalleryPhoto/>}></Route>
 
                 <Route exact path="/readme" element={<ReadMe/>}></Route>
                 <Route exact path="/pokedex" element={<Pokedex/>}></Route>
@@ -54,10 +58,12 @@ function App() {
                 <Route exact path="/recipes" element={<Recipe/>}></Route>
                 <Route exact path="/recipes/:id" element={<RequireAuth><RecipeDetail/></RequireAuth>}></Route>
                 <Route exact path="/recipes/new" element={<RequireAuth><PostRecipe/></RequireAuth>}></Route>
+                <Route exact path="/recipes/edit/:id" element={<EditRecipeWithParams/>}/>
 
                 <Route exact path="/album" element={<Album/>}></Route>
                 <Route exact path="/pictures/:id" element={<RequireAuth><Picture/></RequireAuth>}></Route>
                 <Route exact path="/pictures/new" element={<RequireAuth><PostPicture/></RequireAuth>}></Route>
+                <Route exact path="/pictures/edit/:id" element={<EditPictureWithParams/>}/>
 
                 <Route exact path="/dashboard" element={<RequireAuth><Dashboard/></RequireAuth>}/>
                 <Route exact path="/your-blog" element={<RequireAuth><YourArticle/></RequireAuth>}/>

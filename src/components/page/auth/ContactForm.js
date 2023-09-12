@@ -1,7 +1,7 @@
 import React from "react";
-import NavBarBootstrap from "../../incs/NavBarBootstrap";
-import SideBar from "../../incs/SideBar";
-import Footer from "../../incs/Footer";
+import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
+import SideBar from "../../incs/common/SideBar";
+import Footer from "../../incs/common/Footer";
 import axios from "axios";
 import {useState} from "react";
 

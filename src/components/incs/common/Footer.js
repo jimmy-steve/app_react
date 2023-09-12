@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import FLogo from "../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
-import Banner from "./Banner";
+import FLogo from "../../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
+import Banner from "../banner/Banner";
 
 const Footer = () => {
     const scrollToTop = () => {
