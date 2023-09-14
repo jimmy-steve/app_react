@@ -107,23 +107,41 @@ const Article = () => {
                                         </div>
                                         <div className="row justify-content-center mt-3 pagination-container">
                                             <nav aria-label="Page navigation">
-                                                <ul className="pagination">
-                                                    {Array.from({length: totalPages}, (_, i) => (
-                                                        <li
-                                                            className={`page-item ${
-                                                                i + 1 === currentPage ? "active" : ""
-                                                            }`}
-                                                            key={i}
-                                                        >
-                                                            <button
-                                                                className="page-link"
-                                                                onClick={() => handlePageChange(i + 1)}
+                                                    <ul className="pagination">
+                                                        {currentPage > 1 && ( // Conditionally render the Previous button
+                                                            <li className={`page-item`}>
+                                                                <button
+                                                                    className="page-link"
+                                                                    onClick={() => handlePageChange(currentPage - 1)}
+                                                                >
+                                                                    Précédent
+                                                                </button>
+                                                            </li>
+                                                        )}
+                                                        {Array.from({ length: totalPages }, (_, i) => (
+                                                            <li
+                                                                className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
+                                                                key={i}
                                                             >
-                                                                {i + 1}
-                                                            </button>
-                                                        </li>
-                                                    ))}
-                                                </ul>
+                                                                <button
+                                                                    className="page-link"
+                                                                    onClick={() => handlePageChange(i + 1)}
+                                                                >
+                                                                    {i + 1}
+                                                                </button>
+                                                            </li>
+                                                        ))}
+                                                        {currentPage < totalPages && ( // Conditionally render the Next button
+                                                            <li className={`page-item`}>
+                                                                <button
+                                                                    className="page-link"
+                                                                    onClick={() => handlePageChange(currentPage + 1)}
+                                                                >
+                                                                    Suivant
+                                                                </button>
+                                                            </li>
+                                                        )}
+                                                    </ul>
                                             </nav>
                                         </div>
                                     </div>

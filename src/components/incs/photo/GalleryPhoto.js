@@ -3,7 +3,6 @@ import NavBarBootstrap from "../common/NavBarBootstrap";
 import PhotoAlbum from "react-photo-album";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css"; // Assurez-vous d'importer le CSS de la bibliothèque
-import SliderPhoto from "./SliderPhoto";
 
 import photos from "./Photos";
 

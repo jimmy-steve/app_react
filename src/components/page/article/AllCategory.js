@@ -11,6 +11,12 @@ import Eclipse3 from "../../../assets/img/small-eclipse.svg";
 import CustomBreadcrumb from "../../incs/common/BreadCrumb";
 import DnaLoader from "../../incs/loader/DnaLoader";
 import InfiniLoader from "../../incs/loader/InfiniLoader";
+import ReactHtmlParser from 'react-html-parser';
+import { Buffer } from 'buffer';
+
+// Assurez-vous d'ajouter cet import au début de votre fichier
+global.Buffer = Buffer;
+
 
 const Article = () => {
     const [categories, setCategories] = useState([]);
@@ -106,8 +112,8 @@ const Article = () => {
                                                     <h3>{article.title}</h3>
                                                     <p>
                                                         {article.content && article.content.length > 200
-                                                            ? article.content.substring(0, 200) + "..."
-                                                            : article.content}
+                                                            ? ReactHtmlParser(article.content.substring(0, 200) + '...')
+                                                            : ReactHtmlParser(article.content)}
                                                     </p>
                                                     <Link
                                                         to={`/blog/${article.id}`}
@@ -122,11 +128,19 @@ const Article = () => {
                                         <div className="row justify-content-center mt-3 pagination-container">
                                             <nav aria-label="Page navigation">
                                                 <ul className="pagination">
-                                                    {Array.from({length: totalPages}, (_, i) => (
+                                                    {currentPage > 1 && ( // Conditionally render the Previous button
+                                                        <li className={`page-item`}>
+                                                            <button
+                                                                className="page-link"
+                                                                onClick={() => handlePageChange(currentPage - 1)}
+                                                            >
+                                                                Précédent
+                                                            </button>
+                                                        </li>
+                                                    )}
+                                                    {Array.from({ length: totalPages }, (_, i) => (
                                                         <li
-                                                            className={`page-item ${
-                                                                i + 1 === currentPage ? "active" : ""
-                                                            }`}
+                                                            className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
                                                             key={i}
                                                         >
                                                             <button
@@ -137,6 +151,16 @@ const Article = () => {
                                                             </button>
                                                         </li>
                                                     ))}
+                                                    {currentPage < totalPages && ( // Conditionally render the Next button
+                                                        <li className={`page-item`}>
+                                                            <button
+                                                                className="page-link"
+                                                                onClick={() => handlePageChange(currentPage + 1)}
+                                                            >
+                                                                Suivant
+                                                            </button>
+                                                        </li>
+                                                    )}
                                                 </ul>
                                             </nav>
                                         </div>

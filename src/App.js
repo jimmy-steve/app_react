@@ -2,9 +2,12 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/page/auth/Login";
 import Register from "./components/page/auth/Register";
+import ForgotPassword from "./components/page/auth/ForgotPassword";
 import ContactForm from "./components/page/auth/ContactForm";
 import About from "./components/page/About";
 import GalleryPhoto from "./components/incs/photo/GalleryPhoto";
+import Todo from "./components/page/Todo";
+import Script from "./components/page/Script";
 
 import Album from "./components/page/picture/Album";
 import ReadMe from "./components/page/ReadMe";
@@ -40,9 +43,12 @@ function App() {
                 <Route exact path="/" element={<Home/>}></Route>
                 <Route exact path="/login" element={<Login/>}></Route>
                 <Route exact path="/register" element={<Register/>}></Route>
+                <Route exact path="/forgot-password" element={<ForgotPassword/>}></Route>
                 <Route exact path="/contact" element={<ContactForm/>}></Route>
                 <Route exact path="/about" element={<About/>}></Route>
                 <Route exact path="/photo-gallery" element={<GalleryPhoto/>}></Route>
+                <Route exact path="/todos" element={<Todo/>}></Route>
+                <Route exact path="/script" element={<Script/>}></Route>
 
                 <Route exact path="/readme" element={<ReadMe/>}></Route>
                 <Route exact path="/pokedex" element={<Pokedex/>}></Route>

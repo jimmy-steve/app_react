@@ -5,6 +5,7 @@ import {Navigate} from "react-router-dom";
 import Eclipse1 from "../../../assets/img/big-eclipse.svg";
 import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
 import Eclipse3 from "../../../assets/img/small-eclipse.svg";
+import FtoLogo from "../../../assets/logos/f-low-resolution-color-logo.png";
 
 class Register extends React.Component {
     constructor() {
@@ -64,17 +65,17 @@ class Register extends React.Component {
             bodyFormData
         )
             .then((response) => {
-                console.log(response.data);
-                localStorage.setItem("token", response.data.api_token);
                 this.setState({redirect: true});
             })
             .catch((error) => {
-                if (error.response.status === 401) {
+                if (error.response && error.response.status === 401) {
                     this.setState({errors: error.response.data.errors}, () => {
                         console.log(this.state.errors);
                     });
+                } else {
+                    // Handle other error cases
+                    console.log("Error occurred:", error);
                 }
-                console.log(error.response);
             });
     };
 
@@ -89,8 +90,17 @@ class Register extends React.Component {
                 <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
                 <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
                 <img className="small-circle" src={Eclipse3} alt="small-circle"/>
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
+
+
+                        <div className="col-md-6 col-sm-12 mt-3">
+                            <div className="container-card m-3">
+                                <div>
+                                    <img className="block-super-left" src={FtoLogo} alt=""/>
+                                </div>
+                            </div>
+                        </div>
 
                         <div className=" col-md-6 col-sm-10 col-lg-6 mx-auto">
                             <div className="card mt-3 p-4 mx-auto mb-3">
@@ -198,6 +208,8 @@ class Register extends React.Component {
                                 </form>
                             </div>
                         </div>
+
+
 
                     </div>
                 </div>

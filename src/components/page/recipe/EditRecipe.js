@@ -22,10 +22,15 @@ class PostRecipe extends React.Component {
             note: "",
             image: "",
             user_id: "",
+            addedIngredients: [],
+            buttonClicked: false,
             redirect: false,
             errors: [],
             recipeId: props.recipeId,
             ingredients: [],
+            quantity: "",
+            unit: "",
+            name: "",
         };
     }
 
@@ -65,22 +70,22 @@ class PostRecipe extends React.Component {
                 });
         }
     }
-    handleIngredientChange = (index, field, value) => {
-        const updatedIngredients = [...this.state.ingredients];
-        updatedIngredients[index][field] = value;
-        this.setState({ ingredients: updatedIngredients });
-    };
+    // handleIngredientChange = (index, field, value) => {
+    //     const updatedIngredients = [...this.state.ingredients];
+    //     updatedIngredients[index][field] = value;
+    //     this.setState({ ingredients: updatedIngredients });
+    // };
 
-    handleAddIngredient = () => {
-        const newIngredient = { quantity: "", unit: "", name: "" };
-        this.setState({ ingredients: [...this.state.ingredients, newIngredient] });
-    };
+    // handleAddIngredient = () => {
+    //     const newIngredient = { quantity: "", unit: "", name: "" };
+    //     this.setState({ ingredients: [...this.state.ingredients, newIngredient] });
+    // };
 
-    handleRemoveIngredient = (index) => {
-        const updatedIngredients = [...this.state.ingredients];
-        updatedIngredients.splice(index, 1);
-        this.setState({ ingredients: updatedIngredients });
-    };
+    // handleRemoveIngredient = (index) => {
+    //     const updatedIngredients = [...this.state.ingredients];
+    //     updatedIngredients.splice(index, 1);
+    //     this.setState({ ingredients: updatedIngredients });
+    // };
 
 
 
@@ -142,9 +147,70 @@ class PostRecipe extends React.Component {
         });
     }
 
+    handleAddIngredient = (event) => {
+
+        event.preventDefault();
+        const newIngredient = {
+            quantity: "",
+            unit: "",
+            name: "",
+        };
+
+        this.setState((prevState) => ({
+            ingredients: [...prevState.ingredients, newIngredient],
+            buttonClicked: true,
+        }));
+    };
+
+    handleAddToListIngredient = (index) => {
+        const {quantity, unit, name} = this.state.ingredients[index];
+
+        // Vérifiez si les champs ne sont pas vides
+        if (quantity.trim() !== "" && unit.trim() !== "" && name.trim() !== "") {
+            // Ajoutez le nouvel ingrédient au tableau addedIngredients
+            this.setState((prevState) => ({
+                addedIngredients: [...prevState.addedIngredients, this.state.ingredients[index]],
+            }));
+
+            // Réinitialisez les champs d'entrée de l'ingrédient
+            const updatedIngredients = [...this.state.ingredients];
+            updatedIngredients[index] = {
+                quantity: "",
+                unit: "",
+                name: "",
+            };
+
+            this.setState({ingredients: updatedIngredients});
+        } else {
+            // Affichez un message d'erreur ou faites quelque chose en conséquence
+            console.log("Tous les champs de l'ingrédient doivent être remplis.");
+        }
+    };
+
+
+    handleIngredientChange = (index, field, value) => {
+        const updatedIngredients = [...this.state.ingredients];
+        updatedIngredients[index][field] = value;
+        this.setState({ingredients: updatedIngredients});
+    };
+
+    handleRemoveIngredient = (index) => {
+        const updatedIngredients = [...this.state.ingredients];
+        updatedIngredients.splice(index, 1);
+        this.setState({ingredients: updatedIngredients, buttonClicked: false});
+    };
+
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const formattedIngredients = this.state.ingredients.map((ingredient) => ({
+            quantity: ingredient.quantity,
+            unit: ingredient.unit,
+            name: ingredient.name,
+        }));
+
+        // Convertissez le tableau d'objets en JSON
+        const ingredientsJSON = JSON.stringify(formattedIngredients);
 
         let bodyFormData = new FormData();
         bodyFormData.set("title", this.state.title);
@@ -157,6 +223,18 @@ class PostRecipe extends React.Component {
         bodyFormData.set("cooking_time", this.state.cooking_time);
         bodyFormData.set("note", this.state.note);
         bodyFormData.set("user_id", localStorage.getItem("userId"));
+        bodyFormData.set("ingredients", ingredientsJSON);
+        // bodyFormData.append("ingredients", this.state.ingredients.map((ingredient) => ({
+        //     quantity: ingredient.quantity,
+        //     unit: ingredient.unit,
+        //     name: ingredient.name,
+        // })));
+
+
+        // Ajoutez les ingrédients au FormData
+
+
+        console.log(bodyFormData);
 
         let headers = {
             headers: {
@@ -165,10 +243,7 @@ class PostRecipe extends React.Component {
         };
 
         Axios.post(
-            "https://de-lafontaine.ca/mealplanner/public/api/edit_recipe",
-            bodyFormData,
-            headers
-        )
+            `https://de-lafontaine.ca/mealplanner/public/api/edit_recipe/${this.state.recipeId}`, bodyFormData, headers)
             .then((response) => {
                 console.log(response);
                 this.setState({redirect: true});
@@ -347,10 +422,13 @@ class PostRecipe extends React.Component {
                                                                 <th className="col-2">Unité</th>
                                                                 <th scope="col">Nom</th>
                                                                 <th className="col-2">
-                                                                    <button className="btn btn-sm btn-warning"
+                                                                    <button onClick={this.handleAddIngredient}
+                                                                            disabled={this.state.buttonClicked}
+                                                                            className="btn btn-sm btn-warning"
                                                                             id="add-ingredient-btnTest"><i
-                                                                        className="fa fa-arrow-down"
-                                                                        aria-hidden="true"></i></button>
+                                                                            className="fa fa-arrow-down"
+                                                                            aria-hidden="true"></i>
+                                                                    </button>
                                                                 </th>
                                                             </tr>
                                                             </thead>
@@ -386,7 +464,7 @@ class PostRecipe extends React.Component {
                                                                             className="btn btn-sm btn-danger"
                                                                             onClick={() => this.handleRemoveIngredient(index)}
                                                                         >
-                                                                            Supprimer
+                                                                            <i className="fa-solid fa-minus"></i>
                                                                         </button>
                                                                     </td>
                                                                 </tr>

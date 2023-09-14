@@ -7,6 +7,7 @@ import Eclipse1 from "../../../assets/img/big-eclipse.svg";
 import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
 import Eclipse3 from "../../../assets/img/small-eclipse.svg";
 
+import FtoLogo from "../../../assets/logos/f-low-resolution-color-logo.png";
 // const { login } = useAuth();
 
 class Login extends React.Component {
@@ -54,12 +55,9 @@ class Login extends React.Component {
         )
             .then((response) => {
                 const userId = response.data.user.id;
-                console.log(response.data.user);
                 localStorage.setItem("userId", userId);
                 localStorage.setItem("token", response.data.user.api_token);
                 localStorage.setItem("userName", response.data.user.name);
-
-                // Marquez l'utilisateur comme connecté en définissant un drapeau dans localStorage
                 localStorage.setItem("userLoggedIn", "true");
                 this.setState({redirect: true});
             })
@@ -148,13 +146,21 @@ class Login extends React.Component {
                                         Login
                                     </button>
                                     <div className="pas-inscrit-container">
-                                        <Link className="btn-pas-inscrit" to="/register">Pas encore inscrit ?</Link>
+                                        <Link className="btn-pas-inscrit" to="/register">Pas encore inscrit ?</Link><br/>
+                                        <small><Link className="btn-forgot-password" to="/forgot-password">Forgot password</Link></small>
                                     </div>
 
                                 </form>
                             </div>
 
 
+                        </div>
+                        <div className="col-6 mt-3">
+                            <div className="container-card m-3">
+                                <div>
+                                    <img className="block-super" src={FtoLogo} alt=""/>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

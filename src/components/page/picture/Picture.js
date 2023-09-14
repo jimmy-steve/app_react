@@ -84,7 +84,7 @@ const Picture = () => {
 
                         <div className="col-sm-12 m-1 col-lg-8 col-md-8 special-card">
                             <div className=" col-lg-8 col-md-12 mt-2">
-                                <h1 className="text-center">{picture.title}</h1>
+
                                 <div className="authormt-2 text-end">
                                     <span className="text-muted">Par </span>
                                     <span className="badge bg-primary">{picture.user?.name}</span>
@@ -116,13 +116,10 @@ const Picture = () => {
                                         )}{" "}
                                     </p>
                                 </div>
-                                <div className="description">
-                                    <p>{picture.description}</p>
-                                </div>
                             </div>
 
                             <div className="col-md-6">
-
+                                <h2 className="text-center picture-left-title">{picture.title}</h2>
                                 <div className="picture-left">
                                     <img
                                         src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${picture.image}`}
@@ -134,12 +131,17 @@ const Picture = () => {
                         </div>
 
                         <div className="col-md-10 col-lg-6 col-sm-12 left-offset picture-right">
+                            <h1 className="text-center">{picture.title}</h1>
                             <img
                                 src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${picture.image}`}
                                 className="img-fluid w-100"
                                 alt="image a partager"
                             />
+                            <div className="description">
+                                <p>{picture.description}</p>
+                            </div>
                         </div>
+
 
 
                         <div className="col-12 mt-5">

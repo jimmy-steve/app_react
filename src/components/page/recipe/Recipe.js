@@ -11,17 +11,8 @@ import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
 import Eclipse3 from "../../../assets/img/small-eclipse.svg";
 
 const Recipe = () => {
-    const [selectedDate, setSelectedDate] = React.useState(dayjs());
-
-    const handlePrevWeek = () => {
-        setSelectedDate(selectedDate.subtract(1, "week"));
-    };
-
-    const handleNextWeek = () => {
-        setSelectedDate(selectedDate.add(1, "week"));
-    };
-
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1); // Total number of pages
     const [search, setSearch] = useState("");
     const [recipes, setRecipes] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // New state for loading
@@ -33,6 +24,7 @@ const Recipe = () => {
 
     const handleKeyPress = (e) => {
         if (e.key === "Enter") {
+            setSearch(inputValue); // Set search state with input value
 
             e.preventDefault(); // Empêche le comportement par défaut de la touche "Entrée"
             // Vous pouvez ajouter ici une logique personnalisée pour gérer l'événement de la touche "Entrée"
@@ -45,33 +37,38 @@ const Recipe = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        this.getArticles();
+        this.getArticles(currentPage);
+    };
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
     };
 
     useEffect(() => {
-        // Load articles on component mount
+        let bodyFormData = new FormData();
+        bodyFormData.set("search", search);
 
-        const getRecipes = () => {
-            let bodyFormData = new FormData();
-            bodyFormData.set("search", search);
-
+        const getRecipes = (page) => {
             Axios.post(
-                "https://de-lafontaine.ca/mealplanner/public/api/recipes",
+                `https://de-lafontaine.ca/mealplanner/public/api/recipes?page=${page}`,
                 bodyFormData
             )
                 .then((response) => {
-                    setRecipes(response.data);
+                    setRecipes(response.data.data);
+                    setTotalPages(response.data.last_page);
                 })
                 .catch((error) => {
                     console.log(error.response);
                 })
                 .finally(() => {
-                    setIsLoading(false); // Set loading to false after request completes
+                    setIsLoading(false);
                 });
         };
 
-        getRecipes();
-    }, [search]);
+        getRecipes(currentPage); // Include currentPage here
+
+    }, [search, currentPage]); // Add currentPage as a dependency
+
 
 
     return (
@@ -115,30 +112,78 @@ const Recipe = () => {
                                         <div className="row justify-content-center mt-3">
                                             {recipes.map((recipe) => (
                                                 <div
-                                                    className="card mx-2 mb-2"
+                                                    className="col-md-4 col-sm-12 col-lg-3 p-2"
                                                     key={recipe.id}
-                                                    style={{width: "320px"}}
                                                 >
+                                                    <div className="col-picture-4">
                                                     <img
                                                         src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${recipe.picture_url}`}
-                                                        className="card-img-top mt-2 rounded"
+                                                        className="img-fluid card"
                                                         alt="..."
-                                                        style={{width: "285px", height: "250px"}}
                                                     />
                                                     <div className="card-body">
-                                                        <h5 className="card-title">{recipe.title}</h5>
+                                                        <h5 className="card-title ms-3 mt-1">{recipe.title}</h5>
                                                         <Link
                                                             to={`/recipes/${recipe.id}`}
-                                                            className="btn btn-primary"
+                                                            className="btn btn-primary m-3"
                                                         >
                                                             En savoir plus
                                                         </Link>
                                                     </div>
+                                                    </div>
                                                 </div>
+
                                             ))}
-
-
                                         </div>
+
+                                        <div className="row justify-content-center mt-3 pagination-container">
+                                            <nav aria-label="Page navigation">
+                                                <ul className="pagination">
+                                                    <li
+                                                        className={`page-item ${
+                                                            currentPage === 1 ? "disabled" : ""
+                                                        }`}
+                                                    >
+                                                        <button
+                                                            className="page-link"
+                                                            onClick={() => handlePageChange(currentPage - 1)}
+                                                        >
+                                                            Précédent
+                                                        </button>
+                                                    </li>
+                                                    {Array.from({length: totalPages}, (_, i) => (
+                                                        <li
+                                                            className={`page-item ${
+                                                                i + 1 === currentPage ? "active" : ""
+                                                            }`}
+                                                            key={i}
+                                                        >
+                                                            <button
+                                                                className="page-link"
+                                                                onClick={() => handlePageChange(i + 1)}
+                                                            >
+                                                                {i + 1}
+                                                            </button>
+                                                        </li>
+                                                    ))}
+                                                    <li
+                                                        className={`page-item ${
+                                                            currentPage === totalPages ? "disabled" : ""
+                                                        }`}
+                                                    >
+                                                        <button
+                                                            className="page-link"
+                                                            onClick={() => handlePageChange(currentPage + 1)}
+                                                        >
+                                                            Suivant
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>

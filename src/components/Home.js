@@ -3,12 +3,14 @@ import SideBar from "./incs/common/SideBar";
 import NavBarBootstrap from "./incs/common/NavBarBootstrap";
 import {Link} from "react-router-dom";
 import Footer from "./incs/common/Footer";
-import {Howl, Howler} from "howler"; // Importez Howler et Howl depuis la bibliothèque howler
-import ClicSound from "../assets/mp3/sound1.wav"; // Chemin vers le fichier audio du clic
+import {Howl, Howler} from "howler";
+import ClicSound from "../assets/mp3/sound1.wav";
 import Banner from "./incs/banner/Banner";
 import Eclipse1 from "../assets/img/big-eclipse.svg";
 import Eclipse2 from "../assets/img/mid-eclipse.svg";
 import Eclipse3 from "../assets/img/small-eclipse.svg";
+
+
 
 const Home = () => {
     // Fonction pour jouer le son
@@ -39,6 +41,7 @@ const Home = () => {
                             <div className="container-fluid">
                                 <div className="row">
                                     <div className="col-md-12">
+                                        <img className="super-logo" src={process.env.PUBLIC_URL + '/logo512.png'} alt="Logo React" />
                                         <h1 className="display-4">Hello my Friend !</h1>
                                         <p className="lead text-muted">
                                             Eh bien, bien, bien, regardez qui est arrivé dans mon saloon numérique.

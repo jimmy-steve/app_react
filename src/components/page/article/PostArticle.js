@@ -111,8 +111,6 @@ class AddArticle extends Component {
 
                 setTimeout(() => {
                     this.setState({confirmationMessage: ""});
-
-
                 }, 2000);
 
             })

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import FLogo from "../../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
-import Banner from "../banner/Banner";
+import PanoBanner from "../banner/PanoBanner";
 
 const Footer = () => {
     const scrollToTop = () => {
@@ -13,10 +13,12 @@ const Footer = () => {
 
     return (
         <>
+            <div className="container-fluid p-0 m-0">
+                <PanoBanner/>
+            </div>
+            <div className="container-fluid">
+                <footer className="d-flex flex-wrap justify-content-between align-items-center border-top">
 
-            <div className="container-fluid ">
-                <footer className="d-flex flex-wrap justify-content-between align-items-center border-top border-dark">
-                    <Banner/>
                     <p className="col-md-4 mb-0 text-muted">© 2023 Jimmy-Steve, Inc</p>
 
                     <a className="col-md-4 d-flex align-items-center justify-content-center">

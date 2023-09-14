@@ -54,7 +54,7 @@ const LeftBar = () => {
                 ) : (
                     <>
                         {/*On affiche la liste des applications publiques*/}
-                        <Link to="/" className="">
+                        <Link to="/todos" className="">
                             <img
                                 src={InfoIcon}
                                 alt="Info Icon"
@@ -122,7 +122,7 @@ const LeftBar = () => {
 
     const ContactList = () => (
         <div className="left-list-group list-group bg-light ms-4">
-            <a href="/DossierDeTravail_AppWeb/pull_app-react/public" className="">
+            <a href="/script" className="">
                 <img
                     src={JSIcon}
                     alt="JS Icon"
