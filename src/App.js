@@ -6,7 +6,7 @@ import ForgotPassword from "./components/page/auth/ForgotPassword";
 import ContactForm from "./components/page/auth/ContactForm";
 import About from "./components/page/About";
 import GalleryPhoto from "./components/incs/photo/GalleryPhoto";
-import Todo from "./components/page/Todo";
+import Project from "./components/page/project/Project";
 import Script from "./components/page/Script";
 
 import Album from "./components/page/picture/Album";
@@ -47,7 +47,7 @@ function App() {
                 <Route exact path="/contact" element={<ContactForm/>}></Route>
                 <Route exact path="/about" element={<About/>}></Route>
                 <Route exact path="/photo-gallery" element={<GalleryPhoto/>}></Route>
-                <Route exact path="/todos" element={<Todo/>}></Route>
+                <Route exact path="/projects" element={<Project/>}></Route>
                 <Route exact path="/script" element={<Script/>}></Route>
 
                 <Route exact path="/readme" element={<ReadMe/>}></Route>

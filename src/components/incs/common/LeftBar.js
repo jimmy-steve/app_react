@@ -23,6 +23,15 @@ const LeftBar = () => {
                 {isLoggedIn ? (
                     <>
                         {/*On affiche la liste des applications privées*/}
+                        <Link to="/projects" className="">
+                            <img
+                                src={JSIcon}
+                                alt="Js Icon"
+                                className="text-yellow_vs me-1"
+                                style={{width: "20px"}}
+                            />
+                            this->Projects
+                        </Link>
                         <Link to="/your-blog" className="">
                             <img
                                 src={TSIcon}
