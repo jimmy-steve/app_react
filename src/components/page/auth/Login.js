@@ -54,11 +54,21 @@ class Login extends React.Component {
             bodyFormData
         )
             .then((response) => {
+                console.log(response.data.user);
                 const userId = response.data.user.id;
+                localStorage.setItem("userId", userId);
                 localStorage.setItem("userId", userId);
                 localStorage.setItem("token", response.data.user.api_token);
                 localStorage.setItem("userName", response.data.user.name);
                 localStorage.setItem("userLoggedIn", "true");
+
+                if (response.data.user.role === 'ADMIN') {
+                    localStorage.setItem("userRole", "ADMIN");
+                    console.log('L\'utilisateur est un administrateur.');
+                } else {
+                    console.log('L\'utilisateur est un utilisateur normal.');
+                }
+
                 this.setState({redirect: true});
             })
             .catch((error) => {
@@ -155,7 +165,7 @@ class Login extends React.Component {
 
 
                         </div>
-                        <div className="col-6 mt-3">
+                        <div className="col-sm-12 col-md-6 mt-3 mx-auto">
                             <div className="container-card m-3">
                                 <div>
                                     <img className="block-super" src={FtoLogo} alt=""/>

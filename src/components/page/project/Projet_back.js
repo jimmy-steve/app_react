@@ -14,6 +14,7 @@ import DeleteModal from "../../incs/modal/DeleteModal";
 import {format} from "date-fns";
 import {fr} from "date-fns/locale";
 
+
 const Project = () => {
     const [showAddProjectModal, setShowAddProjectModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -22,15 +23,27 @@ const Project = () => {
     const [redirect, setRedirect] = useState(false);
     const [projects, setProjects] = useState([]);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [projetToDeleteId, setProjetToDeleteId] = useState(null);
+    const [confirmationMessage, setConfirmationMessage] = useState("");
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return format(date, "d MMMM yyyy", { locale: fr }); // Utilisez le locale "fr" pour le français
+    };
 
     const handleDeleteClick = (id) => {
         setShowDeleteModal(true);
-        // setRecipeToDeleteId(id);
+        setProjetToDeleteId(id);
+    };
+
+    const handleProjectAdded = (newProject) => {
+        // Mettez à jour la liste des projets en ajoutant le nouveau projet
+        setProjects([...projects, newProject]);
     };
 
 
     const handleDeleteConfirm = () => {
-        // destroyRecipe(recipeId);
+        destroyProjet(projetToDeleteId);
         setShowDeleteModal(false);
     };
 
@@ -50,6 +63,28 @@ const Project = () => {
     const handleModalDeleteClose = () => {
         setShowDeleteModal(false);
     };
+
+    const destroyProjet = (projetId) => {
+        axios.delete(`https://de-lafontaine.ca/mealplanner/public/api/projects/${projetId}`)
+            .then((response) => {
+                // Supprimez l'article de la liste locale
+                const updatedprojets = projects.filter((projet) => projet.id !== projetId);
+                setProjects(updatedprojets);
+                setTotalPages(response.data.last_page);
+
+                // Mettez à jour le message de confirmation
+                setConfirmationMessage("Le projet a été supprimé avec succès.");
+
+                // Supprimez le message de confirmation après 3 secondes
+                setTimeout(() => {
+                    setConfirmationMessage("");
+                }, 3000);
+            })
+            .catch((error) => {
+                console.error("Erreur lors de la suppression de l'article : ", error);
+            });
+    }
+
 
 
     useEffect(() => {
@@ -98,6 +133,12 @@ const Project = () => {
                             <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
                             <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
                             <img className="small-circle" src={Eclipse3} alt="small-circle"/>
+
+                            {confirmationMessage && (
+                                <div className="alert alert-success mt-3">
+                                    {confirmationMessage}
+                                </div>
+                            )}
                             <div className="container-fluid px-4">
                                 <div className="row g-4">
                                     {/* Section de présentation */}
@@ -121,7 +162,7 @@ const Project = () => {
                                                                 <th scope="col">Nom</th>
                                                                 <th scope="col">Statut</th>
                                                                 <th scope="col">Created Date</th>
-                                                                <th scope="col">Action</th>
+                                                                <th scope="col" className="text-end pe-5">Action</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -130,9 +171,9 @@ const Project = () => {
                                                                     <th scope="row">{project.id}</th>
                                                                     <td>{project.nom}</td>
                                                                     <td>{project.statut}</td>
-                                                                    <td>{project.created_at}</td>
+                                                                    <td>{formatDate(project.created_at)}</td>
 
-                                                                    <td>
+                                                                    <td className="text-end">
                                                                         <Link to={`/project/${project.id}`}>
                                                                             <i className="fa-solid fa-code ms-1 btn btn-sm btn-outline-dark"></i>
                                                                         </Link>
@@ -162,22 +203,44 @@ const Project = () => {
                                                     )}
 
                                                     {/* Pagination */}
-                                                    <div className="pagination-container">
-                                                        <ul className="pagination">
-                                                            {Array.from({length: totalPages}, (_, i) => (
-                                                                <li
-                                                                    className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
-                                                                    key={i}
-                                                                >
-                                                                    <button
-                                                                        className="page-link"
-                                                                        onClick={() => handlePageChange(i + 1)}
+                                                    <div className="row justify-content-center mt-3 pagination-container">
+                                                        <nav aria-label="Page navigation">
+                                                            <ul className="pagination">
+                                                                {currentPage > 0 && ( // Conditionally render the Previous button
+                                                                    <li className={`page-item`}>
+                                                                        <button
+                                                                            className="page-link"
+                                                                            onClick={() => handlePageChange(currentPage - 1)}
+                                                                        >
+                                                                            Précédent
+                                                                        </button>
+                                                                    </li>
+                                                                )}
+                                                                {Array.from({ length: totalPages }, (_, i) => (
+                                                                    <li
+                                                                        className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
+                                                                        key={i}
                                                                     >
-                                                                        {i + 1}
-                                                                    </button>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                                        <button
+                                                                            className="page-link"
+                                                                            onClick={() => handlePageChange(i + 1)}
+                                                                        >
+                                                                            {i + 1}
+                                                                        </button>
+                                                                    </li>
+                                                                ))}
+                                                                {currentPage < totalPages+1 && ( // Conditionally render the Next button
+                                                                    <li className={`page-item`}>
+                                                                        <button
+                                                                            className="page-link"
+                                                                            onClick={() => handlePageChange(currentPage + 1)}
+                                                                        >
+                                                                            Suivant
+                                                                        </button>
+                                                                    </li>
+                                                                )}
+                                                            </ul>
+                                                        </nav>
                                                     </div>
 
                                                     <div className="add-btn-container bg-success">
@@ -196,16 +259,18 @@ const Project = () => {
                 </div>
             </div>
 
-                <div className="add-btn-container bg-success">
-                    <a type="button" onClick={() => handleAddClick()}>
-                        <i className="fa-solid fa-square-plus"></i>
-                    </a>
-                </div>
-                <AddProjectModal
-                    show={showAddProjectModal}
-                    onHide={handleModalClose}
-                    onDelete={handleAddConfirm}
-                />
+            <div className="add-btn-container bg-success">
+                <a type="button" onClick={() => handleAddClick()}>
+                    <i className="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+
+            <AddProjectModal
+                show={showAddProjectModal}
+                onHide={handleModalClose}
+                onDelete={handleAddConfirm}
+                onProjectAdded={handleProjectAdded}
+            />
             {/* Pied de page */}
             <Footer/>
         </>

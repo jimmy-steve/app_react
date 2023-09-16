@@ -128,13 +128,13 @@ const Article = () => {
                                         <div className="row justify-content-center mt-3 pagination-container">
                                             <nav aria-label="Page navigation">
                                                 <ul className="pagination">
-                                                    {currentPage > 1 && ( // Conditionally render the Previous button
-                                                        <li className={`page-item`}>
+                                                    {currentPage > 0 && (
+                                                        <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
                                                             <button
                                                                 className="page-link"
                                                                 onClick={() => handlePageChange(currentPage - 1)}
                                                             >
-                                                                Précédent
+                                                                <i className="fa-solid fa-chevron-left"></i>
                                                             </button>
                                                         </li>
                                                     )}
@@ -151,13 +151,13 @@ const Article = () => {
                                                             </button>
                                                         </li>
                                                     ))}
-                                                    {currentPage < totalPages && ( // Conditionally render the Next button
-                                                        <li className={`page-item`}>
+                                                    {currentPage < totalPages+1 && ( // Conditionally render the Next button
+                                                        <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
                                                             <button
                                                                 className="page-link"
                                                                 onClick={() => handlePageChange(currentPage + 1)}
                                                             >
-                                                                Suivant
+                                                                <i className="fa-solid fa-chevron-right"></i>
                                                             </button>
                                                         </li>
                                                     )}

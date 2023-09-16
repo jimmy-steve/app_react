@@ -148,7 +148,7 @@ const Recipe = () => {
                                                             className="page-link"
                                                             onClick={() => handlePageChange(currentPage - 1)}
                                                         >
-                                                            Précédent
+                                                            <i className="fa-solid fa-chevron-left"></i>
                                                         </button>
                                                     </li>
                                                     {Array.from({length: totalPages}, (_, i) => (
@@ -175,7 +175,7 @@ const Recipe = () => {
                                                             className="page-link"
                                                             onClick={() => handlePageChange(currentPage + 1)}
                                                         >
-                                                            Suivant
+                                                            <i className="fa-solid fa-chevron-right"></i>
                                                         </button>
                                                     </li>
                                                 </ul>

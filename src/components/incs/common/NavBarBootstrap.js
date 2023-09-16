@@ -79,6 +79,17 @@ class NavbarBootstrap extends React.Component {
 
                                     {localStorage.getItem("token") ? (
                                         <>
+                                            {localStorage.getItem("userRole") === 'ADMIN' && (
+                                                <li className="nav-item li-admin">
+                                                     <Link
+                                                         className="btn btn-sm btn-dark me-3"
+                                                         to="/super-admin"
+                                                     >
+                                                        <i className="fa-solid fa-rocket"></i><span className="hide-desktop"> Rocket</span>
+                                                    </Link>
+                                                </li>
+                                            )}
+
                                             <li className="nav-item">
                                                 <span className="btn btn-sm btn-outline-light me-3">
                                                     {greetingMessage}, {userName}

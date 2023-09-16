@@ -63,15 +63,15 @@ const LeftBar = () => {
                 ) : (
                     <>
                         {/*On affiche la liste des applications publiques*/}
-                        <Link to="/todos" className="">
-                            <img
-                                src={InfoIcon}
-                                alt="Info Icon"
-                                className="text-yellow_vs ms-2 me-1"
-                                style={{width: "21px"}}
-                            />
-                            this->Todos
-                        </Link>
+                        {/*<Link to="/todos" className="">*/}
+                        {/*    <img*/}
+                        {/*        src={InfoIcon}*/}
+                        {/*        alt="Info Icon"*/}
+                        {/*        className="text-yellow_vs ms-2 me-1"*/}
+                        {/*        style={{width: "21px"}}*/}
+                        {/*    />*/}
+                        {/*    this->Todos*/}
+                        {/*</Link>*/}
                         <Link to="/readme" className="">
                             <img
                                 src={InfoIcon}

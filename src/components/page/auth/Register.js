@@ -95,7 +95,7 @@ class Register extends React.Component {
 
 
                         <div className="col-md-6 col-sm-12 mt-3">
-                            <div className="container-card m-3">
+                            <div className="container-card">
                                 <div>
                                     <img className="block-super-left" src={FtoLogo} alt=""/>
                                 </div>

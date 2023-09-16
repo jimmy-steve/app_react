@@ -6,7 +6,8 @@ import ForgotPassword from "./components/page/auth/ForgotPassword";
 import ContactForm from "./components/page/auth/ContactForm";
 import About from "./components/page/About";
 import GalleryPhoto from "./components/incs/photo/GalleryPhoto";
-import Project from "./components/page/project/Project";
+import YourProject from "./components/page/your/YourProject";
+import ProjectDetail from "./components/page/project/ProjectDetail";
 import Script from "./components/page/Script";
 
 import Album from "./components/page/picture/Album";
@@ -21,6 +22,7 @@ import Pokedex from "./components/page/pokemon/Pokedex";
 import Pokemon from "./components/page/pokemon/Pokemon";
 import Picture from "./components/page/picture/Picture";
 import Dashboard from "./components/page/Dashboard";
+import AdminDashboard from "./components/page/admin/AdminDashboard";
 import YourArticle from "./components/page/your/YourArticle";
 import PostArticle from "./components/page/article/PostArticle";
 import Category from "./components/page/article/Category";
@@ -47,7 +49,8 @@ function App() {
                 <Route exact path="/contact" element={<ContactForm/>}></Route>
                 <Route exact path="/about" element={<About/>}></Route>
                 <Route exact path="/photo-gallery" element={<GalleryPhoto/>}></Route>
-                <Route exact path="/projects" element={<Project/>}></Route>
+                <Route exact path="/projects" element={<YourProject/>}></Route>
+                <Route exact path="/projects/:id" element={<ProjectDetail/>}></Route>
                 <Route exact path="/script" element={<Script/>}></Route>
 
                 <Route exact path="/readme" element={<ReadMe/>}></Route>
@@ -75,6 +78,7 @@ function App() {
                 <Route exact path="/your-blog" element={<RequireAuth><YourArticle/></RequireAuth>}/>
                 <Route exact path="/your-picture" element={<RequireAuth><YourPicture/></RequireAuth>}/>
                 <Route exact path="/your-recipe" element={<RequireAuth><YourRecipe/></RequireAuth>}/>
+                <Route exact path="/super-admin" element={<RequireAuth><AdminDashboard/></RequireAuth>}/>
 
 
             </Routes>
