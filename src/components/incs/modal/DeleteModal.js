@@ -5,6 +5,7 @@ import React from "react";
 function DeleteModal({ show, onHide, onDelete }) {
     return (
         <div className={`modal ${show ? "show" : ""}`} tabIndex="-1" role="dialog">
+
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                     {/* Contenu de la fenêtre modale */}

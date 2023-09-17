@@ -12,126 +12,30 @@ import { Link } from "react-router-dom";
 import DeleteModal from "../../incs/modal/DeleteModal";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
-
-// Pagination component
-function Pagination({ currentPage, totalPages, onPageChange }) {
-    return (
-        <div className="row justify-content-center mt-3 pagination-container">
-            <nav aria-label="Page navigation">
-                <ul className="pagination">
-                    <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-                        <button
-                            className="page-link"
-                            onClick={() => onPageChange(currentPage - 1)}
-                        >
-                            <i className="fa-solid fa-chevron-left"></i>
-                        </button>
-                    </li>
-                    {Array.from({ length: totalPages }, (_, i) => (
-                        <li
-                            className={`page-item ${i + 1 === currentPage ? "active" : ""}`}
-                            key={i}
-                        >
-                            <button
-                                className="page-link"
-                                onClick={() => onPageChange(i + 1)}
-                            >
-                                {i + 1}
-                            </button>
-                        </li>
-                    ))}
-                    <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
-                        <button
-                            className="page-link"
-                            onClick={() => onPageChange(currentPage + 1)}
-                        >
-                            <i className="fa-solid fa-chevron-right"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    );
-}
-
-
-// Table content component
-function TableContent({ projects, handleDeleteClick }) {
-    const formatDate = (dateString) => {
-
-        if (!dateString) {
-            return ''; // ou une valeur par défaut
-        }
-
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) {
-            return ''; // ou une valeur par défaut
-        }
-        return format(date, "d MMMM yyyy", { locale: fr });
-    };
-
-
-
-    return (
-        <table className="table table-hover border border-dark">
-            <thead>
-            <tr className="table-dark">
-                <th scope="col">ID</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Statut</th>
-                <th scope="col">Created Date</th>
-                <th scope="col" className="text-end pe-5">
-                    Action
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {projects.map((project) => (
-                <tr key={project.id} className="table-active">
-                    <th scope="row">{project.id}</th>
-                    <td>{project.nom}</td>
-                    <td>{project.statut}</td>
-                    <td>{formatDate(project.created_at)}</td>
-
-                    <td className="text-end">
-                        <Link to={`/projects/${project.id}`}>
-                            <i className="fa-solid fa-code ms-1 btn btn-sm btn-outline-dark"></i>
-                        </Link>
-                        <Link>
-                            <i className="fa-solid fa-pencil ms-1 btn btn-sm btn-outline-warning"></i>
-                        </Link>
-                        <DeleteModal
-                            id={project.id}
-                            name={project.nom}
-                            type="project"
-                        />
-                        <i
-                            className="fa-solid fa-delete-left ms-1 btn btn-sm btn-outline-danger"
-                            onClick={() => handleDeleteClick(project.id)}
-                        ></i>
-                    </td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
-    );
-}
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const YourProject = () => {
     const [showAddProjectModal, setShowAddProjectModal] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [isLoading, setIsLoading] = useState(true); // Ajoutez un état pour le chargement initial
-    const [totalPages, setTotalPages] = useState(1); // Total number of pages
-    const [redirect, setRedirect] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [totalPages, setTotalPages] = useState(1);
     const [projects, setProjects] = useState([]);
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [projetToDeleteId, setProjetToDeleteId] = useState(null);
+    const [projectToDeleteId, setProjectToDeleteId] = useState(null);
     const [confirmationMessage, setConfirmationMessage] = useState("");
 
-    const handleDeleteClick = (id) => {
-        console.log("id", id);
-        setProjetToDeleteId(id);
-        setShowDeleteModal(true);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return format(date, "d MMMM yyyy", {locale: fr}); // Utilisez le locale "fr" pour le français
+    };
+
+    const handleShow = (id) => {
+        setShow(true);
+        setProjectToDeleteId(id);
     };
 
     const handleProjectAdded = (newProject) => {
@@ -142,15 +46,24 @@ const YourProject = () => {
         setShowAddProjectModal(false);
     };
 
+    const handleDeleteClick = (id) => {
+        setProjectToDeleteId(id);
+        handleDeleteConfirm();
+        //close the door
+        setShow(false);
+    };
+
     const handleDeleteConfirm = () => {
+        // Envoyez la requête DELETE à l'API
         axios
-            .delete(`https://de-lafontaine.ca/mealplanner/public/api/projects/${projetToDeleteId}`)
+            .delete(`https://de-lafontaine.ca/mealplanner/public/api/projects/${projectToDeleteId}`)
             .then(() => {
-                const updatedProjects = projects.filter((project) => project.id !== projetToDeleteId);
+                // Supprimez le projet de la liste des projets
+                const updatedProjects = projects.filter((project) => project.id !== projectToDeleteId);
                 setProjects(updatedProjects);
-                // setShowDeleteModal(false);
-                setTotalPages(totalPages - 1); // Update total pages after deletion
+                setTotalPages(totalPages - 1); // Mettez à jour le nombre total de pages après la suppression
                 setConfirmationMessage("Le projet a été supprimé avec succès.");
+                setProjectToDeleteId(null); // Réinitialisez projectToDeleteId après la suppression
 
                 setTimeout(() => {
                     setConfirmationMessage("");
@@ -159,6 +72,8 @@ const YourProject = () => {
             .catch((error) => {
                 console.error("Erreur lors de la suppression de l'article : ", error);
             });
+
+
     };
 
     useEffect(() => {
@@ -182,32 +97,11 @@ const YourProject = () => {
                     setIsLoading(false);
                 });
         }
-    }, [currentPage,projects]);
+    }, [currentPage, projects]);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
     };
-    const destroyProjet = (projetId) => {
-        axios.delete(`https://de-lafontaine.ca/mealplanner/public/api/projects/${projetId}`)
-            .then((response) => {
-                // Supprimez l'article de la liste locale
-                const updatedprojets = projects.filter((projet) => projet.id !== projetId);
-                setProjects(updatedprojets);
-                setTotalPages(response.data.last_page);
-
-                // Mettez à jour le message de confirmation
-                setConfirmationMessage("Le projet a été supprimé avec succès.");
-
-                // Supprimez le message de confirmation après 3 secondes
-                setTimeout(() => {
-                    setConfirmationMessage("");
-                }, 3000);
-            })
-            .catch((error) => {
-                console.error("Erreur lors de la suppression de l'article : ", error);
-            });
-    }
-
 
     return (
         <>
@@ -228,6 +122,7 @@ const YourProject = () => {
                                     {confirmationMessage}
                                 </div>
                             )}
+
                             <div className="container-fluid px-4">
                                 <div className="row g-4">
                                     <div className="col-12">
@@ -243,10 +138,57 @@ const YourProject = () => {
                                                             Désolé, aucune recettes trouvée.
                                                         </div>
                                                     ) : (
-                                                        <>
-                                                            <TableContent projects={projects} handleDeleteClick={handleDeleteClick} />
-                                                            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-                                                        </>
+                                                        <table className="table table-hover border border-dark">
+                                                            <thead>
+                                                            <tr className="table-dark">
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Nom</th>
+                                                                <th scope="col">Statut</th>
+                                                                <th scope="col">Created Date</th>
+                                                                <th scope="col" className="text-end pe-5">
+                                                                    Action
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {projects.map((project) => (
+                                                                <tr key={project.id} className="table-active">
+                                                                    <th scope="row">{project.id}</th>
+                                                                    <td>{project.nom}</td>
+                                                                    <td>{project.statut}</td>
+                                                                    <td>{formatDate(project.created_at)}</td>
+                                                                    <td className="text-end">
+                                                                        <Link to={`/projects/${project.id}`}>
+                                                                            <i className="fa-solid fa-code ms-1 btn btn-sm btn-outline-dark"></i>
+                                                                        </Link>
+                                                                        <Link>
+                                                                            <i className="fa-solid fa-pencil ms-1 btn btn-sm btn-outline-warning"></i>
+                                                                        </Link>
+
+
+                                                                        <Link className="" onClick={() => handleShow(project.id)}>
+                                                                            <i className="fa-solid fa-delete-left btn btn-sm btn-outline-danger"></i>
+                                                                        </Link>
+
+                                                                        <Modal show={show} onHide={handleClose}>
+                                                                            <Modal.Header closeButton>
+                                                                                <Modal.Title>Confirmation de suppression</Modal.Title>
+                                                                            </Modal.Header>
+                                                                            <Modal.Body>Woohoo, Êtes-vous sûr de vouloir supprimer cet élément ?</Modal.Body>
+                                                                            <Modal.Footer>
+                                                                                <Button variant="secondary" onClick={handleClose}>
+                                                                                    Close
+                                                                                </Button>
+                                                                                <Button variant="primary" onClick={handleDeleteClick}>
+                                                                                    Save Changes
+                                                                                </Button>
+                                                                            </Modal.Footer>
+                                                                        </Modal>
+                                                                    </td>
+                                                                </tr>
+                                                            ))}
+                                                            </tbody>
+                                                        </table>
                                                     )}
                                                 </>
                                             )}
@@ -260,9 +202,9 @@ const YourProject = () => {
             </div>
 
             <div className="add-btn-container bg-success">
-                <a type="button" onClick={() => setShowAddProjectModal(true)}>
+                <button type="button" onClick={() => setShowAddProjectModal(true)}>
                     <i className="fa-solid fa-square-plus"></i>
-                </a>
+                </button>
             </div>
 
             <AddProjectModal
