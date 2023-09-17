@@ -659,3 +659,76 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
 }
+
+.drag-drop-container {
+  text-align: center;
+  font-family: monospace;
+}
+
+.drag-drop-board {
+  display: flex;
+  justify-content: space-around;
+}
+
+.drag-drop-header {
+  text-decoration-line: underline;
+  font-size: 1.5rem;
+}
+
+.task-header {
+  margin: 10px;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.task-card {
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.container-card-user {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  z-index: 0;
+}
+
+.img-cadre {
+  position: absolute;
+  max-width: 140%;
+  min-height:90%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.img-user {
+  max-width: 100px;
+  min-height: 75px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* styles.css */
+.move-animation {
+  animation: moveLeftRight 2s linear infinite alternate;
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(500%); /* Ajustez la distance de déplacement comme souhaité */
+  }
+}

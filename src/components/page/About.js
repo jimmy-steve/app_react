@@ -15,11 +15,7 @@ const About = () => {
             <NavBarBootstrap pageTitle="About"/>
             <div className="container-fluid m-1">
                 <div className="row">
-                    {/* Barre latérale */}
-                    <div className="col-2 p-0 sidebar">
-                        <SideBar/>
-                    </div>
-                    <div className="col-md-10">
+                    <div className="col-md-12">
                         <div className="content">
 
                             <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>

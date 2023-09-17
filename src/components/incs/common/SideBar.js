@@ -7,6 +7,7 @@ const BottomSidebar = (props) => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [isPlaying, setIsPlaying] = useState(false); // État de lecture de la musique
     const audioRef = React.createRef(); // Créez une référence pour l'élément audio
+    const [isAnimating, setIsAnimating] = useState(false); // État de l'animation
 
     // Utilise useEffect pour mettre à jour l'heure toutes les secondes
     useEffect(() => {
@@ -22,6 +23,7 @@ const BottomSidebar = (props) => {
         // Démarrer la musique en utilisant la référence audio
         audioRef.current.play();
         setIsPlaying(true);
+        setIsAnimating(true);
     };
 
     // Fonction pour arrêter la musique
@@ -29,6 +31,7 @@ const BottomSidebar = (props) => {
         // Arrêter la musique en utilisant la référence audio
         audioRef.current.pause();
         setIsPlaying(false);
+        setIsAnimating(false);
     };
 
     // Gestionnaire d'événement pour la switch
@@ -42,10 +45,9 @@ const BottomSidebar = (props) => {
 
     return (
         <>
-            <div className="container-fluid mb-2">
+            <div className="container-fluid mb-2 mt-2">
                 <div className="row ">
-
-                    <div className="col card container-card-user mx-auto">
+                    <div className={`col container-card-user mx-auto ${isAnimating ? 'move-animation' : ''}`}>
                         <img src={ImgCadre} alt="Cadre" className="img-cadre img-fluid"/>
                         <img src={ImgUser} alt="Cadre" className="img-user img-fluid"/>
                     </div>

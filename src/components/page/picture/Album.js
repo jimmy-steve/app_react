@@ -3,7 +3,7 @@ import SideBar from "../../incs/common/SideBar";
 import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import AppLoader from "../../incs/loader/AppLoader";
+import TriangleLoader from "../../incs/loader/TriangleLoader";
 import Footer from "../../incs/common/Footer";
 import Eclipse1 from "../../../assets/img/big-eclipse.svg";
 import Eclipse2 from "../../../assets/img/mid-eclipse.svg";
@@ -73,10 +73,7 @@ const Album = () => {
             <NavBarBootstrap pageTitle="Super Album" />
             <div className="container-fluid m-1">
                 <div className="row">
-                    <div className="col-2 p-0 sidebar">
-                        <SideBar />
-                    </div>
-                    <div className="col-md-8 col-lg-10">
+                    <div className="col-md-12 col-lg-12">
                         <div className="content">
                             <img className="big-circle" src={Eclipse1} alt="{Eclipse1}" />
                             <img className="medium-circle" src={Eclipse2} alt="medium-circle" />
@@ -84,7 +81,7 @@ const Album = () => {
 
                             {isLoading ? (
                                 <div className="d-flex justify-content-center mt-5">
-                                    <AppLoader />
+                                    <TriangleLoader />
                                 </div>
                             ) : (
                                 <div className="container-fluid px-4">
