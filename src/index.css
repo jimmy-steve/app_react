@@ -490,8 +490,18 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 4px;
 }
 .col-album-2{
+  border-radius: 87% 13% 88% 12% / 22% 73% 27% 78% ;
+  border: 1px solid black;
   transform: rotate(-15deg);
   box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.col-album-2 img{
+  background-position: center;
+    background-size: cover;
+  transform: rotate(-5deg);
+
 }
 
 .col-picture-4{
@@ -731,4 +741,9 @@ input[type="number"]::-webkit-outer-spin-button {
   100% {
     transform: translateX(500%); /* Ajustez la distance de déplacement comme souhaité */
   }
+}
+
+.col-special-radius{
+  border--color: darkred;
+  border-radius: 87% 13% 88% 12% / 22% 73% 27% 78% ;
 }

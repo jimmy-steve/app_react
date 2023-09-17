@@ -87,7 +87,7 @@ const Album = () => {
                                 <div className="container-fluid px-4">
                                     <div className="row g-4">
                                         <div className="container my-3">
-                                            <div className="d-flex justify-content-center mb-4 mt-4">
+                                            <div className="d-flex justify-content-center mb-5 mt-4">
                                                 <form
                                                     action="POST"
                                                     className="form-inline my-2 my-lg-0"
@@ -107,19 +107,19 @@ const Album = () => {
                                             <div className="row justify-content-center mt-3">
                                                 {pictures.map((picture) => (
                                                     <div
-                                                        className="col-3 mx-5 mb-2 col-album-2 mt-3"
+                                                        className="ms-0 p-0 col-4 mx-5 mb-2 col-album-2 mt-1"
                                                         key={picture.id}
                                                     >
                                                         <img
                                                             src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${picture.image}`}
-                                                            className="card-img-top mt-2"
+                                                            className="card-img-top ,m-0"
                                                             alt="..."
                                                         />
                                                         <div className="card-body">
                                                             <h3 className="card-title text-center mt-2">{picture.title}</h3>
                                                             <Link
                                                                 to={`/pictures/${picture.id}`}
-                                                                className="btn btn-primary m-2"
+                                                                className="btn btn-primary ms-5 m-2"
                                                             >
                                                                 Dive in
                                                             </Link>
@@ -128,7 +128,7 @@ const Album = () => {
                                                 ))}
                                             </div>
 
-                                            <div className="row justify-content-center mt-3 pagination-container">
+                                            <div className="row justify-content-center mt-3 pagination-container mt-5">
                                                 <nav aria-label="Page navigation">
                                                     <ul className="pagination">
                                                         <li

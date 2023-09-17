@@ -89,7 +89,7 @@ const Recipe = () => {
                             <div className="container-fluid px-4">
                                 <div className="row g-4">
                                     <div className="container my-3">
-                                        <div className="d-flex justify-content-center mb-4 mt-4">
+                                        <div className="d-flex justify-content-center mb-5 mt-4">
                                             <form
                                                 action="POST"
                                                 className="form-inline my-2 my-lg-0"
@@ -109,7 +109,7 @@ const Recipe = () => {
                                         <div className="row justify-content-center mt-3">
                                             {recipes.map((recipe) => (
                                                 <div
-                                                    className="col-md-4 col-sm-12 col-lg-3 p-2"
+                                                    className="col-md-4 p-3 col-sm-12 col-lg-3"
                                                     key={recipe.id}
                                                 >
                                                     <div className="col-picture-4">
@@ -133,7 +133,7 @@ const Recipe = () => {
                                             ))}
                                         </div>
 
-                                        <div className="row justify-content-center mt-3 pagination-container">
+                                        <div className="row justify-content-center mt-5 pagination-container">
                                             <nav aria-label="Page navigation">
                                                 <ul className="pagination">
                                                     <li

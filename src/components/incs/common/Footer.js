@@ -2,7 +2,49 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FLogo from "../../../assets/logos/f-low-resolution-logo-black-on-transparent-background.png";
 import PanoBanner from "../banner/PanoBanner";
+import PanoBanner2 from "../banner/PanoBanner2";
+// import ImagePano1 from "../../../assets/img/pano/pano1.jpg";
+// import ImagePano2 from "../../../assets/img/pano/pano2.jpg";
+// import ImagePano3 from "../../../assets/img/pano/pano3.jpg";
+import { useState } from "react";
+import ImagePano1 from "../../../assets/img/pano/pano1.jpg";
+import ImagePano2 from "../../../assets/img/pano/pano2.jpg";
+import ImagePano3 from "../../../assets/img/pano/pano3.jpg";
 
+const Slider = ({ images }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const goToPreviousSlide = () => {
+        const newIndex = (currentIndex - 1 + images.length) % images.length;
+        setCurrentIndex(newIndex);
+    };
+
+    const goToNextSlide = () => {
+        const newIndex = (currentIndex + 1) % images.length;
+        setCurrentIndex(newIndex);
+    };
+
+    return (
+        <div className="slider-container">
+            <div className="slider">
+                {images.map((image, index) => (
+                    <div
+                        key={index}
+                        className={`slide ${index === currentIndex ? 'active' : ''}`}
+                    >
+                        <img src={image} alt={`Slide ${index}`} />
+                    </div>
+                ))}
+            </div>
+            <button className="prev-button" onClick={goToPreviousSlide}>
+                &lt;
+            </button>
+            <button className="next-button" onClick={goToNextSlide}>
+                &gt;
+            </button>
+        </div>
+    );
+};
 const Footer = () => {
     const scrollToTop = () => {
         window.scrollTo({
@@ -10,6 +52,29 @@ const Footer = () => {
             behavior: "smooth" // Faites défiler en douceur
         });
     };
+
+    const slides = [
+        {
+            image: ImagePano1,
+            title: "Des moments inoubliables en famille au Mont Orford",
+            subTitle: "Sortez en grand aux Mont Orford",
+            interval: 1000,
+        },
+        {
+            image: ImagePano2,
+            title: "Plaisir et détente entre amis à Sand Banks",
+            subTitle: "Sand Banks",
+            interval: 1000,
+        },
+        {
+            image: ImagePano3,
+            title: "Exploration en plein air au Parc des Laurentides",
+            subTitle: "Nature préservée et activités passionnantes",
+            interval: 1000,
+        },
+    ];
+
+
 
     return (
         <>

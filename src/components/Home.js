@@ -39,7 +39,7 @@ const Home = () => {
 
                             <div className="container-fluid">
                                 <div className="row">
-                                    <div className="col-md-12">
+                                    <div className="col-md-12 card col-special-radius">
                                         <img className="super-logo" src={process.env.PUBLIC_URL + '/logo512.png'} alt="Logo React" />
                                         <h1 className="display-4">Hello my Friend !</h1>
                                         <p className="lead text-muted">
