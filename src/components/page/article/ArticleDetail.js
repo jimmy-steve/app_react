@@ -4,14 +4,18 @@ import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import Axios from "axios";
 import {useParams} from "react-router-dom";
 import TriangleLoader from "../../incs/loader/TriangleLoader";
-import LittleBanner from "../../incs/banner/LittleBanner";
-import FavoriteBorderButton from "@material-ui/icons/FavoriteBorder";
-
+import Heart from '../../incs/common/Heart'
+import Footer from "../../incs/common/Footer";
 
 const RecipeDetail = () => {
     const {id} = useParams();
     const [article, setArticle] = useState({});
     const [isLoading, setIsLoading] = useState(true); // Ajoutez un état isLoading
+    const [toggle, setToggle] = useState(false)
+
+    const handleClick = () => {
+        setToggle(!toggle)
+    }
 
     const [redirect, setRedirect] = useState(false);
     useEffect(() => {
@@ -53,25 +57,21 @@ const RecipeDetail = () => {
     return (
         <>
             <NavBarBootstrap/>
-            <div className="container my-4">
+            <div className="container-fluid my-4">
                 {isLoading ? ( // Vérifiez si les données sont en cours de chargement
                     <div className="d-flex justify-content-center mt-5">
                         <TriangleLoader/>
                     </div>
                 ) : (
-                    <div className="row">
-
-
-                        <div className="container-card m-3">
-
-                            <div className="btn-like-article text-end">
-                                <FavoriteBorderButton
-                                    className="text-danger"
-                                />
-                                <span className="ms-2 text-danger">I love this stuff !!</span>
+                    <div className="row m-1">
+                        <div className="container-card">
+                            <div className="row">
+                                <div className="col text-end">
+                                    <Heart
+                                        handleClick={handleClick}
+                                        toggle={toggle} />
+                                </div>
                             </div>
-
-
 
                             <div className="cercle-image">
                                 <img
@@ -95,6 +95,7 @@ const RecipeDetail = () => {
                     </div>
                 )}
             </div>
+            <Footer />
         </>
     );
 };
