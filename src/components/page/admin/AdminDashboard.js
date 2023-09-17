@@ -3,7 +3,6 @@ import NavBarBootstrap from "../../incs/common/NavBarBootstrap";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TriangleLoader from "../../incs/loader/TriangleLoader";
-import Chart from "chart.js/auto";
 
 
 const AdminDashboard = () => {

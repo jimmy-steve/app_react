@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="container-fluid">
                 <footer className="d-flex flex-wrap align-items-center border-top">
                     <div className="col-sm-12 col-md-4">
-                        <p className="mb-0 ps-4 text-muted">© 2023 Jimmy-Steve, Inc</p>
+                        <p className="mb-0 ps-4 text-muted m-2">© 2023 Jimmy-Steve, Inc</p>
                     </div>
                     <div className="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
                         <img className="f-logo-footer" src={FLogo} alt="logo" />

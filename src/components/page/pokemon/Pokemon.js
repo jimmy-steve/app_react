@@ -147,7 +147,7 @@ const Pokemon = () => {
                         </div>
                         <div className="card-footer">
                             <Link to={`/pokedex/`} className="btn btn-outline-primary mb-2">
-                                <i class="fa-solid fa-arrow-left"></i> My Pokedex
+                                <i className="fa-solid fa-arrow-left"></i> My Pokedex
                             </Link>
                         </div>
                     </div>

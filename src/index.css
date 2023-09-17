@@ -659,3 +659,63 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
 }
+
+
+/* CSS */
+.container-card-user {
+  position: relative; /* Permet à l'image de l'utilisateur d'être positionnée par rapport à ce conteneur */
+  width: 100%; /* Ajustez la largeur du cadre selon vos besoins */
+  padding: 20px;
+  height: 200px; /* Ajustez la hauteur du cadre selon vos besoins */
+}
+.img-cadre,
+.img-user {
+  position: absolute; /* Positionne les images par rapport au conteneur */
+  top: 0; /* Place l'image de l'utilisateur en haut du cadre */
+  left: 0; /* Place l'image de l'utilisateur à gauche du cadre */
+}
+.img-user {
+  top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  width: 80px; /* Déplace l'image de l'utilisateur de 50% vers le bas et de 50% vers la droite */
+  z-index: 1; /* Place l'image de l'utilisateur au-dessus de l'image du cadre */
+}
+
+
+.drag-drop-container {
+  text-align: center;
+  font-family: monospace;
+}
+
+.drag-drop-board {
+  display: flex;
+  justify-content: space-around;
+}
+
+.drag-drop-header {
+  text-decoration-line: underline;
+  font-size: 1.5rem;
+}
+
+.task-header {
+  margin: 10px;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.task-card {
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Handjet', cursive;
+}

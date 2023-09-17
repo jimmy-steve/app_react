@@ -37,7 +37,7 @@ const Dashboard = () => {
             <div className="container-fluid m-1">
                 <div className="row">
                     <div className="col-2 p-0 sidebar">
-                        <SideBar/>
+                        <SideBar source="dashboard"/>
                     </div>
                     <div className="col-md-10">
                         <div className="container-fluid mt-3">
@@ -47,6 +47,7 @@ const Dashboard = () => {
                                 </div>
                             ) : (
                                 <>
+                                    {/*<img src={UserImg} alt="User" className="user-img"/>*/}
                                     <h1>Dashboard</h1>
 
                                     {/*<table className="table table-hover border border-dark">*/}

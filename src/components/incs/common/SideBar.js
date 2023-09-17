@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import LeftBar from "./LeftBar";
 import Ozzy from "../../../assets/mp3/ozzy-musique.mp3";
-
-const BottomSidebar = () => {
+import ImgCadre from "../../../assets/img/cadre.png";
+import ImgUser from "../../../assets/img/user1.png";
+const BottomSidebar = (props) => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [isPlaying, setIsPlaying] = useState(false); // État de lecture de la musique
     const audioRef = React.createRef(); // Créez une référence pour l'élément audio
@@ -41,6 +42,15 @@ const BottomSidebar = () => {
 
     return (
         <>
+            <div className="container-fluid mb-2">
+                <div className="row ">
+
+                    <div className="col card container-card-user mx-auto">
+                        <img src={ImgCadre} alt="Cadre" className="img-cadre img-fluid"/>
+                        <img src={ImgUser} alt="Cadre" className="img-user img-fluid"/>
+                    </div>
+                </div>
+            </div>
             <nav>
                 <LeftBar/>
             </nav>
