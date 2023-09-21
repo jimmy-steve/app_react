@@ -78,9 +78,9 @@ const Footer = () => {
 
     return (
         <>
-            <div className="container-fluid p-0 m-0">
-                <PanoBanner />
-            </div>
+            {/*<div className="container-fluid p-0 m-0">*/}
+            {/*    <PanoBanner />*/}
+            {/*</div>*/}
             <div className="container-fluid">
                 <footer className="d-flex flex-wrap align-items-center border-top">
                     <div className="col-sm-12 col-md-4">

@@ -43,10 +43,7 @@ const Category = () => {
             <NavBarBootstrap pageTitle="Blog"/>
             <div className="container-fluid m-1">
                 <div className="row">
-                    <div className="col-2 p-0 sidebar">
-                        <SideBar/>
-                    </div>
-                    <div className="col-md-10">
+                    <div className="col-md-12">
                         <img className="big-circle" src={Eclipse1} alt="{Eclipse1}"/>
                         <img className="medium-circle" src={Eclipse2} alt="medium-circle"/>
                         <img className="small-circle" src={Eclipse3} alt="small-circle"/>

@@ -1,6 +1,6 @@
 import React from "react";
-import ImagePano1 from "../../../assets/img/pano/pano1.jpg";
-import ImagePano2 from "../../../assets/img/pano/pano2.jpg";
+import ImagePano1 from "../../../assets/img/pano/pano5.jpg";
+import ImagePano2 from "../../../assets/img/pano/pano1.jpg";
 import ImagePano3 from "../../../assets/img/pano/pano3.jpg";
 
 
@@ -16,8 +16,8 @@ const slides = [
     },
     {
         image: ImagePano2,
-        title: "Plaisir et détente entre amis à Sand Banks",
-        subTitle: "Sand Banks",
+        title: "Mont Orford",
+        subTitle: "Sortez",
         interval: 3000,
     },
     {

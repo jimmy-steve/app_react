@@ -30,7 +30,7 @@ const RecipeDetail = () => {
             return;
         }
 
-        if (localStorage.getItem("token")) {
+        // if (localStorage.getItem("token")) {
             Axios.get(
                 `https://de-lafontaine.ca/mealplanner/public/api/articles/${id}`,
                 headers
@@ -45,13 +45,13 @@ const RecipeDetail = () => {
                 .catch((error) => {
                     console.log(error.response);
                 });
-        } else {
-            setRedirect(true);
-        }
+        // } else {
+        //     setRedirect(true);
+        // }
     }, [id]);
 
     if (redirect) {
-        return <Navigate to="/"/>;
+        return <Navigate to="/login"/>;
     }
 
     return (
@@ -79,13 +79,12 @@ const RecipeDetail = () => {
                                     className="img-fluid"
                                     alt="Thumbnail de l'image"/>
                             </div>
-                            <h2 className="article-title">{article.title}</h2>
+                            <h2 className="article-title mt-4">{article.title}</h2>
                             <p>{article.subtitle}</p>
                             <div
                                 dangerouslySetInnerHTML={{ __html: article.content }}
                             ></div>
                         </div>
-                        {/*<LittleBanner/>*/}
 
                         <div className="text-end mt-4">
                             <Link to="/blog" className="btn btn-primary">

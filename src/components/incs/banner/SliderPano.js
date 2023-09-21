@@ -19,7 +19,7 @@ function SliderPano({ slides }) {
           <img
             className="d-block w-100"
             src={slide.image}
-            alt="First slide"
+            alt={slide.title}
           />
           <Carousel.Caption>
             <h3>{slide.title}</h3>
