@@ -89,7 +89,7 @@ const Recipe = () => {
                             <div className="container-fluid px-4">
                                 <div className="row g-4">
                                     <div className="container my-3">
-                                        <div className="d-flex justify-content-center mb-5 mt-4">
+                                        <div className="d-flex justify-content-center mt-4">
                                             <form
                                                 action="POST"
                                                 className="form-inline my-2 my-lg-0"
@@ -106,27 +106,27 @@ const Recipe = () => {
                                             </form>
                                         </div>
 
-                                        <div className="row justify-content-center mt-3">
+                                        <div className="row justify-content-center mt-1">
                                             {recipes.map((recipe) => (
                                                 <div
                                                     className="col-md-4 p-3 col-sm-12 col-lg-3"
                                                     key={recipe.id}
                                                 >
                                                     <div className="col-picture-4">
-                                                    <img
-                                                        src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${recipe.picture_url}`}
-                                                        className="img-fluid card"
-                                                        alt="..."
-                                                    />
-                                                    <div className="card-body">
-                                                        <h5 className="card-title ms-3 mt-1">{recipe.title}</h5>
-                                                        <Link
-                                                            to={`/recipes/${recipe.id}`}
-                                                            className="btn btn-primary m-3"
-                                                        >
-                                                            En savoir plus
-                                                        </Link>
-                                                    </div>
+                                                        <img
+                                                            src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${recipe.picture_url}`}
+                                                            className="img-fluid card"
+                                                            alt="..."
+                                                        />
+                                                        <div className="card-body">
+                                                            <h5 className="card-title ms-3 mt-1">{recipe.title}</h5>
+                                                            <Link
+                                                                to={`/recipes/${recipe.id}`}
+                                                                className="btn btn-primary m-3"
+                                                            >
+                                                                En savoir plus
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                 </div>
 

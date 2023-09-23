@@ -166,7 +166,7 @@ class Login extends React.Component {
 
                         </div>
                         <div className="col-sm-12 col-md-6 mt-3 mx-auto">
-                            <div className="container-card m-3">
+                            <div className="container-card">
                                 <div>
                                     <img className="block-super" src={FtoLogo} alt=""/>
                                 </div>

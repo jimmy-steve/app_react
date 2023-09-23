@@ -104,8 +104,13 @@ const Article = () => {
                                     <div className="col-12 col-md-10 my-3">
                                         <div className="row justify-content-center">
                                             {articles.map((article) => (
-                                                <div className="container-card m-3">
-                                                    <div className="cercle"></div>
+                                                <div className="container-card-all m-3">
+                                                    <div className="">
+                                                        <img className={"img-fluid"}
+                                                             src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${article.image}`}
+                                                             alt=""/>
+
+                                                    </div>
                                                     <h3>{article.title}</h3>
                                                     <p>
                                                         {article.content && article.content.length > 200

@@ -72,22 +72,21 @@ const Album = () => {
         <>
             <NavBarBootstrap pageTitle="Super Album" />
             <div className="container-fluid m-1">
+                <img className="big-circle" src={Eclipse1} alt="{Eclipse1}" />
+                <img className="medium-circle" src={Eclipse2} alt="medium-circle" />
+                <img className="small-circle" src={Eclipse3} alt="small-circle" />
                 <div className="row">
                     <div className="col-md-12 col-lg-12">
                         <div className="content">
-                            <img className="big-circle" src={Eclipse1} alt="{Eclipse1}" />
-                            <img className="medium-circle" src={Eclipse2} alt="medium-circle" />
-                            <img className="small-circle" src={Eclipse3} alt="small-circle" />
-
                             {isLoading ? (
-                                <div className="d-flex justify-content-center mt-5">
+                                <div className="d-flex justify-content-center">
                                     <TriangleLoader />
                                 </div>
                             ) : (
                                 <div className="container-fluid px-4">
                                     <div className="row g-4">
-                                        <div className="container my-3">
-                                            <div className="d-flex justify-content-center mb-5 mt-4">
+                                        <div className="container">
+                                            <div className="d-flex justify-content-center mb-5 mt-5">
                                                 <form
                                                     action="POST"
                                                     className="form-inline my-2 my-lg-0"
@@ -104,15 +103,15 @@ const Album = () => {
                                                 </form>
                                             </div>
 
-                                            <div className="row justify-content-center mt-3">
+                                            <div className="row justify-content-center">
                                                 {pictures.map((picture) => (
                                                     <div
-                                                        className="ms-0 p-0 col-4 mx-5 mb-2 col-album-2 mt-1"
+                                                        className="col-sm-12 col-md-4 mb-2 "
                                                         key={picture.id}
                                                     >
                                                         <img
                                                             src={`https://de-lafontaine.ca/mealplanner/storage/app/public/images/${picture.image}`}
-                                                            className="card-img-top ,m-0"
+                                                            className="img-fluid col-album-2"
                                                             alt="..."
                                                         />
                                                         <div className="card-body">
