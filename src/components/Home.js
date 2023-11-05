@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import React, { Suspense } from "react";
+import Axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 const Section = styled.div`
@@ -146,7 +150,68 @@ const Img = styled.img`
 `;
 
 function Home() {
-  return (
+    const [email, setEmail] = useState("");
+    const [confirmationMessage, setConfirmationMessage] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        // Écoutez les changements de route
+        if (location.hash === "#skills") {
+            // Faites défiler la page jusqu'à la section "Skills"
+            const skillsSection = document.getElementById("skills");
+            if (skillsSection) {
+                skillsSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+        if (location.hash === "#projects") {
+            // Faites défiler la page jusqu'à la section "Projects"
+            const projectsSection = document.getElementById("projects");
+            if (projectsSection) {
+                projectsSection.scrollIntoView({ behavior: "smooth" });
+            }
+
+        }
+    }, [location.hash]);
+
+    const handleAlertClick = () => {
+        // Masquer l'alerte lorsque l'utilisateur clique dessus
+        setShowAlert(false);
+    };
+
+    const subscribe = () => {
+        // Validation de l'adresse e-mail
+        if (!email || !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(email)) {
+            setConfirmationMessage("Veuillez saisir une adresse e-mail valide.");
+            setShowAlert(true, setTimeout(() => {
+                setShowAlert(false);
+            }, 3000));
+
+            return;
+        }
+
+        Axios.get(
+            `https://de-lafontaine.ca/mealplanner/public/api/subscribe?email=${email}`
+        )
+            .then((response) => {
+                setConfirmationMessage("Souscription réussie, email de confirmation envoyé.");
+                // Réinitialisez l'adresse e-mail après la soumission réussie
+                setEmail("");
+                setShowAlert(true, setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000));
+            })
+            .catch((error) => {
+                console.log(error.response);
+                setConfirmationMessage("Une erreur s'est produite lors de la soumission.");
+                setShowAlert(true, setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000));
+            });
+    };
+
+    return (
       <>
         <Navbar />
         <div className={"container-fluid"}>
@@ -268,38 +333,47 @@ function Home() {
           <div className={"container-fluid"} id={"contact"}>
               <h2 className={"text-center text-primary mb-4 border-bottom border-primary pb-4"}>Contact</h2>
               <div className={"row"}>
-                  <div className={"col-4 m-1 mx-auto"}>
-                      <div className="card border-primary mb-3" >
-                          <div className="card-header">Header</div>
-                          <div className="card-body">
-                              <h4 className="card-title">Primary card title</h4>
-                              <p className="card-text">Some quick example text to build on the card title and make up the
-                                  bulk of the card's content.</p>
-                          </div>
-                      </div>
-                  </div>
 
-                  <div className={"col-3 m-1 mx-auto"}>
-                      <div className="card border-primary mb-3" >
-                          <div className="card-header">Header</div>
-                          <div className="card-body">
-                              <h4 className="card-title">Primary card title</h4>
-                              <p className="card-text">Some quick example text to build on the card title and make up the
-                                  bulk of the card's content.</p>
-                          </div>
-                      </div>
-                  </div>
 
-                  <div className={"col-4 m-1 mx-auto"}>
-                      <div className="card border-primary mb-3" >
-                          <div className="card-header">Header</div>
-                          <div className="card-body">
-                              <h4 className="card-title">Primary card title</h4>
-                              <p className="card-text">Some quick example text to build on the card title and make up the
-                                  bulk of the card's content.</p>
+
+
+                  <section>
+                      <div className="container-fluid row-subscribe">
+                          <div className="row">
+                              <div className="col-md-4 mx-auto">
+                                  <div className="input-group form-floating mb-2 ">
+                                      <input name="email" type="email" className="form-control input-subscribe" id="email"
+                                             placeholder="Saisir votre émail"
+                                             value={email}
+                                             onChange={(e) => setEmail(e.target.value)} required
+                                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+                                      <label htmlFor="email" className="form-label label-subscribe">Email address</label>
+                                      <button className="btn btn-primary border-light" type="button" onClick={subscribe} id="button-addon2">Subscribe</button>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div className="row">
+                              {/* Affichage de l'alerte Bootstrap */}
+                              {showAlert && (
+                                  <div
+                                      className="alert alert-success alert-dismissible fade show col-4 mx-auto super-alert"
+                                      role="alert"
+                                      onClick={handleAlertClick} // Gestionnaire d'événements pour masquer l'alerte lors du clic
+                                  >
+                                      {confirmationMessage}
+                                      <button
+                                          type="button"
+                                          className="btn-close"
+                                          data-bs-dismiss="alert"
+                                          aria-label="Close"
+                                      ></button>
+                                  </div>
+                              )}
                           </div>
                       </div>
-                  </div>
+                  </section>
+
 
               </div>
           </div>

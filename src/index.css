@@ -42,6 +42,58 @@ body {
     color: var(--light);
 }
 
+
+
+.row-subscribe{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: lightblue;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url("./assets/img/back/pano1-min.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.row-contact-form{
+    width: 100%;
+    height: auto;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url("./assets/img/back/food1-min.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home-contact-form input:focus{
+    border: white 1px solid;
+    color: white;
+    background-color: transparent;
+}
+.back-transparent{
+    border: white 1px solid;
+    color: white;
+    background-color: transparent;
+}
+.home-contact-form label{
+    color: white;
+}
+
+.input-subscribe{
+    border: white 1px solid;
+    color: white;
+    background-color: transparent;
+}
+.label-subscribe{
+    color: white;
+}
+
+.input-subscribe:focus{
+    border: white 1px solid;
+    color: white;
+    background-color: transparent;
+}
+
 /*!********** Template CSS **********!*/
 /*:root {*/
 /*  --primary: #00cc00;*/

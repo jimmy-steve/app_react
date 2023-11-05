@@ -23,7 +23,7 @@ class Navbar extends React.Component {
             <>
                 <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">Frank</a>
+                        <Link className="navbar-brand" to={"/"}>Frank</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
                                 aria-label="Toggle navigation">
@@ -32,18 +32,18 @@ class Navbar extends React.Component {
                         <div className="collapse navbar-collapse" id="navbarColor01">
                             <ul className="navbar-nav ms-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link active" href="#">Home
+                                    <Link className="nav-link active" to={"/"}>Home
                                         <span className="visually-hidden">(current)</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#skills">Skills</a>
+                                    <Link className="nav-link" to="/#skills">Skills</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#projects">Projects</a>
+                                    <Link className="nav-link" to="/#projects">Projects</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#contact">Contact</a>
+                                    <Link className="nav-link" to={"contact-me"}>Contact</Link>
                                 </li>
                             </ul>
                         </div>
