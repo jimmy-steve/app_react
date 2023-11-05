@@ -49,12 +49,18 @@ const Left = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 74px;
+  font-size: 70px;
 
   @media only screen and (max-width: 768px) {
     text-align: center;
   }
+  
+    @media only screen and (max-width: 1400px) {
+    font-size: 50px;
+      
+    }
 `;
+
 
 const WhatWeDo = styled.div`
   display: flex;
@@ -114,11 +120,22 @@ const Img = styled.img`
   @media only screen and (max-width: 768px) {
     width: 300px;
     height: 300px;
+    top: 200%;
+    left:8%;
+  }
+
+  @media only screen and (max-width: 380px) {
+    top: 225%;
+  }
+
+  @media only screen and (max-width: 320px) {
+    top: 250%;
   }
 
   @media only screen and (max-width: 1400px) {
     width: 300px;
     height: 300px;
+    top: 10%;
   }
 
   @keyframes animate {
@@ -134,23 +151,26 @@ function Home() {
         <Navbar />
         <div className={"container-fluid"}>
           <div className={"row"}>
-            <div className={"col-md-6 container-left"}>
-                <Title>Think. Make. Solve.</Title>
+            <div className={"col-md-12 col-lg-6 col-sm-12 container-left"}>
+                <Title>Hey there, I'm <br/><span className={"my-name text-primary"}>Francis Lafontaine!</span></Title>
                 <WhatWeDo>
                   <Line src="./img/line.png" />
-                  <Subtitle>Francis Lafontaine</Subtitle>
+                  <Subtitle>Digital Experience Wizard</Subtitle>
                 </WhatWeDo>
                 <Desc>
-                  we enjoy creating delightful, human-centered digital
-                  experiences.
+                    I'm on a mission to create digital magic that brings smiles and amazement. With a coffee in hand and a sprinkle of code, I turn pixels into adventures. Join me on this pixel-perfect journey! 🚀
                 </Desc>
-                <Button>Learn More</Button>
+                <button type="button" className="btn btn-outline-primary p-1 m-1">Github</button>
+                <button type="button" className="btn btn-outline-primary p-1 m-1">Twitter</button>
+                <button type="button" className="btn btn-outline-primary p-1 m-1">Youtube</button>
+                <button type="button" className="btn btn-outline-primary p-1 m-1">LinkedIn</button>
+                <button type="button" className="btn btn-outline-primary p-1 m-1">Email</button>
             </div>
 
-            <div className={"col-md-6 container-right"}>
+            <div className={"col-md-12 col-lg-6 col-sm-12 container-right"}>
                 <Canvas>
                   <Suspense fallback={null}>
-                    <OrbitControls enableZoom={true} />
+                    <OrbitControls enableZoom={false} />
                     <ambientLight intensity={1} />
                     <directionalLight position={[3, 2, 1]} />
                     <Sphere args={[1, 100, 200]} scale={2.4}>
@@ -167,6 +187,138 @@ function Home() {
             </div>
           </div>
         </div>
+        <div className={"container-fluid"} id={"skills"}>
+          <h2 className={"text-center text-primary mb-4 border-bottom border-primary pb-4"}>Skills</h2>
+          <div className={"row"}>
+              <div className={"col-md-4 col-sm-12 m-1 mx-auto"}>
+                  <div className="card border-primary mb-3" >
+                      <div className="card-header">Header</div>
+                      <div className="card-body">
+                          <h4 className="card-title">Primary card title</h4>
+                          <p className="card-text">Some quick example text to build on the card title and make up the
+                              bulk of the card's content.</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div className={"col-md-3 col-sm-12 m-1 mx-auto"}>
+                  <div className="card border-primary mb-3" >
+                      <div className="card-header">Header</div>
+                      <div className="card-body">
+                          <h4 className="card-title">Primary card title</h4>
+                          <p className="card-text">Some quick example text to build on the card title and make up the
+                              bulk of the card's content.</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div className={"col-md-4 col-sm-12 m-1 mx-auto"}>
+                  <div className="card border-primary mb-3" >
+                      <div className="card-header">Header</div>
+                      <div className="card-body">
+                          <h4 className="card-title">Primary card title</h4>
+                          <p className="card-text">Some quick example text to build on the card title and make up the
+                              bulk of the card's content.</p>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+
+          <div className={"container-fluid"} id={"projects"}>
+              <h2 className={"text-center text-primary mb-4 border-bottom border-primary pb-4"}>Projects</h2>
+              <div className={"row"}>
+                  <div className={"col-4 m-1 mx-auto"}>
+                      <div className="card border-primary mb-3" >
+                          <div className="card-header">Header</div>
+                          <div className="card-body">
+                              <h4 className="card-title">Primary card title</h4>
+                              <p className="card-text">Some quick example text to build on the card title and make up the
+                                  bulk of the card's content.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className={"col-3 m-1 mx-auto"}>
+                      <div className="card border-primary mb-3" >
+                          <div className="card-header">Header</div>
+                          <div className="card-body">
+                              <h4 className="card-title">Primary card title</h4>
+                              <p className="card-text">Some quick example text to build on the card title and make up the
+                                  bulk of the card's content.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className={"col-4 m-1 mx-auto"}>
+                      <div className="card border-primary mb-3" >
+                          <div className="card-header">Header</div>
+                          <div className="card-body">
+                              <h4 className="card-title">Primary card title</h4>
+                              <p className="card-text">Some quick example text to build on the card title and make up the
+                                  bulk of the card's content.</p>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+          <div className={"container-fluid"} id={"contact"}>
+              <h2 className={"text-center text-primary mb-4 border-bottom border-primary pb-4"}>Contact</h2>
+              <div className={"row"}>
+                  <div className={"col-4 m-1 mx-auto"}>
+                      <div className="card border-primary mb-3" >
+                          <div className="card-header">Header</div>
+                          <div className="card-body">
+                              <h4 className="card-title">Primary card title</h4>
+                              <p className="card-text">Some quick example text to build on the card title and make up the
+                                  bulk of the card's content.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className={"col-3 m-1 mx-auto"}>
+                      <div className="card border-primary mb-3" >
+                          <div className="card-header">Header</div>
+                          <div className="card-body">
+                              <h4 className="card-title">Primary card title</h4>
+                              <p className="card-text">Some quick example text to build on the card title and make up the
+                                  bulk of the card's content.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className={"col-4 m-1 mx-auto"}>
+                      <div className="card border-primary mb-3" >
+                          <div className="card-header">Header</div>
+                          <div className="card-body">
+                              <h4 className="card-title">Primary card title</h4>
+                              <p className="card-text">Some quick example text to build on the card title and make up the
+                                  bulk of the card's content.</p>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+
+
+          <div className="container-fluid ">
+              <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                  <p className="col-md-4 mb-0 text-light">© 2022 Jimy-Steve, Inc</p>
+
+                  <a href="/"
+                     className="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                  </a>
+
+                  <ul className="nav col-md-4 justify-content-end">
+                      <li className="nav-item"><a href="#" className="nav-link px-2 text-light">Home</a></li>
+                      <li className="nav-item"><a href="#" className="nav-link px-2 text-light">Features</a></li>
+                  </ul>
+              </footer>
+          </div>
 
       </>
   );
